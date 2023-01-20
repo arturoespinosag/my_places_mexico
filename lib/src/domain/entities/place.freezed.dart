@@ -28,8 +28,8 @@ mixin _$Place {
   String get estrato => throw _privateConstructorUsedError;
   String get tipo_vialidad => throw _privateConstructorUsedError;
   String get calle => throw _privateConstructorUsedError;
-  String get num_exterior => throw _privateConstructorUsedError;
-  String get num_interior => throw _privateConstructorUsedError;
+  String get num_Exterior => throw _privateConstructorUsedError;
+  String get num_Interior => throw _privateConstructorUsedError;
   String get colonia => throw _privateConstructorUsedError;
   String get cP => throw _privateConstructorUsedError;
   String get ubicacion => throw _privateConstructorUsedError;
@@ -62,8 +62,8 @@ abstract class $PlaceCopyWith<$Res> {
       String estrato,
       String tipo_vialidad,
       String calle,
-      String num_exterior,
-      String num_interior,
+      String num_Exterior,
+      String num_Interior,
       String colonia,
       String cP,
       String ubicacion,
@@ -99,8 +99,8 @@ class _$PlaceCopyWithImpl<$Res, $Val extends Place>
     Object? estrato = null,
     Object? tipo_vialidad = null,
     Object? calle = null,
-    Object? num_exterior = null,
-    Object? num_interior = null,
+    Object? num_Exterior = null,
+    Object? num_Interior = null,
     Object? colonia = null,
     Object? cP = null,
     Object? ubicacion = null,
@@ -147,13 +147,13 @@ class _$PlaceCopyWithImpl<$Res, $Val extends Place>
           ? _value.calle
           : calle // ignore: cast_nullable_to_non_nullable
               as String,
-      num_exterior: null == num_exterior
-          ? _value.num_exterior
-          : num_exterior // ignore: cast_nullable_to_non_nullable
+      num_Exterior: null == num_Exterior
+          ? _value.num_Exterior
+          : num_Exterior // ignore: cast_nullable_to_non_nullable
               as String,
-      num_interior: null == num_interior
-          ? _value.num_interior
-          : num_interior // ignore: cast_nullable_to_non_nullable
+      num_Interior: null == num_Interior
+          ? _value.num_Interior
+          : num_Interior // ignore: cast_nullable_to_non_nullable
               as String,
       colonia: null == colonia
           ? _value.colonia
@@ -222,8 +222,8 @@ abstract class _$$_PlaceCopyWith<$Res> implements $PlaceCopyWith<$Res> {
       String estrato,
       String tipo_vialidad,
       String calle,
-      String num_exterior,
-      String num_interior,
+      String num_Exterior,
+      String num_Interior,
       String colonia,
       String cP,
       String ubicacion,
@@ -255,8 +255,8 @@ class __$$_PlaceCopyWithImpl<$Res> extends _$PlaceCopyWithImpl<$Res, _$_Place>
     Object? estrato = null,
     Object? tipo_vialidad = null,
     Object? calle = null,
-    Object? num_exterior = null,
-    Object? num_interior = null,
+    Object? num_Exterior = null,
+    Object? num_Interior = null,
     Object? colonia = null,
     Object? cP = null,
     Object? ubicacion = null,
@@ -303,13 +303,13 @@ class __$$_PlaceCopyWithImpl<$Res> extends _$PlaceCopyWithImpl<$Res, _$_Place>
           ? _value.calle
           : calle // ignore: cast_nullable_to_non_nullable
               as String,
-      num_exterior: null == num_exterior
-          ? _value.num_exterior
-          : num_exterior // ignore: cast_nullable_to_non_nullable
+      num_Exterior: null == num_Exterior
+          ? _value.num_Exterior
+          : num_Exterior // ignore: cast_nullable_to_non_nullable
               as String,
-      num_interior: null == num_interior
-          ? _value.num_interior
-          : num_interior // ignore: cast_nullable_to_non_nullable
+      num_Interior: null == num_Interior
+          ? _value.num_Interior
+          : num_Interior // ignore: cast_nullable_to_non_nullable
               as String,
       colonia: null == colonia
           ? _value.colonia
@@ -376,8 +376,8 @@ class _$_Place implements _Place {
       required this.estrato,
       required this.tipo_vialidad,
       required this.calle,
-      required this.num_exterior,
-      required this.num_interior,
+      required this.num_Exterior,
+      required this.num_Interior,
       required this.colonia,
       required this.cP,
       required this.ubicacion,
@@ -411,9 +411,9 @@ class _$_Place implements _Place {
   @override
   final String calle;
   @override
-  final String num_exterior;
+  final String num_Exterior;
   @override
-  final String num_interior;
+  final String num_Interior;
   @override
   final String colonia;
   @override
@@ -441,7 +441,7 @@ class _$_Place implements _Place {
 
   @override
   String toString() {
-    return 'Place(cLEE: $cLEE, id: $id, nombre: $nombre, razon_social: $razon_social, clase_actividad: $clase_actividad, estrato: $estrato, tipo_vialidad: $tipo_vialidad, calle: $calle, num_exterior: $num_exterior, num_interior: $num_interior, colonia: $colonia, cP: $cP, ubicacion: $ubicacion, telefono: $telefono, correo_e: $correo_e, sitio_internet: $sitio_internet, tipo: $tipo, longitud: $longitud, latitud: $latitud, centroComercial: $centroComercial, tipoCentroComercial: $tipoCentroComercial, numLocal: $numLocal)';
+    return 'Place(cLEE: $cLEE, id: $id, nombre: $nombre, razon_social: $razon_social, clase_actividad: $clase_actividad, estrato: $estrato, tipo_vialidad: $tipo_vialidad, calle: $calle, num_Exterior: $num_Exterior, num_Interior: $num_Interior, colonia: $colonia, cP: $cP, ubicacion: $ubicacion, telefono: $telefono, correo_e: $correo_e, sitio_internet: $sitio_internet, tipo: $tipo, longitud: $longitud, latitud: $latitud, centroComercial: $centroComercial, tipoCentroComercial: $tipoCentroComercial, numLocal: $numLocal)';
   }
 
   @override
@@ -460,10 +460,10 @@ class _$_Place implements _Place {
             (identical(other.tipo_vialidad, tipo_vialidad) ||
                 other.tipo_vialidad == tipo_vialidad) &&
             (identical(other.calle, calle) || other.calle == calle) &&
-            (identical(other.num_exterior, num_exterior) ||
-                other.num_exterior == num_exterior) &&
-            (identical(other.num_interior, num_interior) ||
-                other.num_interior == num_interior) &&
+            (identical(other.num_Exterior, num_Exterior) ||
+                other.num_Exterior == num_Exterior) &&
+            (identical(other.num_Interior, num_Interior) ||
+                other.num_Interior == num_Interior) &&
             (identical(other.colonia, colonia) || other.colonia == colonia) &&
             (identical(other.cP, cP) || other.cP == cP) &&
             (identical(other.ubicacion, ubicacion) ||
@@ -498,8 +498,8 @@ class _$_Place implements _Place {
         estrato,
         tipo_vialidad,
         calle,
-        num_exterior,
-        num_interior,
+        num_Exterior,
+        num_Interior,
         colonia,
         cP,
         ubicacion,
@@ -538,8 +538,8 @@ abstract class _Place implements Place {
       required final String estrato,
       required final String tipo_vialidad,
       required final String calle,
-      required final String num_exterior,
-      required final String num_interior,
+      required final String num_Exterior,
+      required final String num_Interior,
       required final String colonia,
       required final String cP,
       required final String ubicacion,
@@ -572,9 +572,9 @@ abstract class _Place implements Place {
   @override
   String get calle;
   @override
-  String get num_exterior;
+  String get num_Exterior;
   @override
-  String get num_interior;
+  String get num_Interior;
   @override
   String get colonia;
   @override

@@ -14,7 +14,17 @@ class PlacesApi {
         ApiRequest.get(
           PlacesEndpoint.search(query, coordinates, distance),
         ),
-        (dynamic j) => Places.fromJson(j as Map<String, dynamic>),
+        (dynamic j) {
+          List<Place> places = [];
+          (j as List<dynamic>)
+              .map(
+                (e) => places.add(
+                  Place.fromJson(e),
+                ),
+              )
+              .toList();
+          return Places(places: places);
+        },
       );
 
   Future<ApiResult<Place>> individual({
@@ -24,6 +34,10 @@ class PlacesApi {
         ApiRequest.get(
           PlacesEndpoint.individual(placeId),
         ),
-        (dynamic j) => Place.fromJson(j as Map<String, dynamic>),
+        (dynamic j) {
+          Place place = Place.fromJson((j as List<dynamic>)[0]);
+
+          return place;
+        },
       );
 }

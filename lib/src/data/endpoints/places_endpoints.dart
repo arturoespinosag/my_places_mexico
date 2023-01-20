@@ -5,5 +5,5 @@ class PlacesEndpoint {
   static String search(String query, String coordinates, String distance) =>
       'Buscar/$query/$coordinates/$distance/$_token';
 
-  static String individual(String placeId) => 'Ficha/{$placeId}/$_token';
+  static String individual(String placeId) => 'Ficha/$placeId/$_token';
 }
