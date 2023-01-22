@@ -11,6 +11,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       : _placesRepository = placesRepository,
         super(const HomeState()) {
     on<_FetchNearbyPlaces>(_onFetchNearbyPlaces);
+    on<_SwitchHomeList>(_onSwitchHomeList);
   }
 
   final IPlacesRepository _placesRepository;
@@ -41,5 +42,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         ),
       );
     }
+  }
+
+  Future<void> _onSwitchHomeList(
+    _SwitchHomeList event,
+    Emitter<HomeState> emit,
+  ) async {
+    emit(
+      state.copyWith(isList: !state.isList),
+    );
   }
 }

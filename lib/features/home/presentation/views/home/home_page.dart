@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myplaces_mexico/core/core.dart';
 import 'package:myplaces_mexico/features/features.dart';
 
 class HomePage extends StatelessWidget {
@@ -24,34 +25,97 @@ class _Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: BlocBuilder<HomeBloc, HomeState>(
+    return BlocBuilder<HomeBloc, HomeState>(
         buildWhen: (previous, current) =>
             previous.status != current.status ||
-            previous.places != current.places,
+            previous.places != current.places ||
+            previous.isList != current.isList,
         builder: (context, state) {
-          final places = state.places;
-          return Center(
-            child: Container(
-              child: state.status == HomeStatus.loading
-                  ? const CircularProgressIndicator()
-                  : ((places.isNotEmpty)
-                      ? ListView.builder(
-                          itemCount: places.length,
-                          itemBuilder: (context, index) {
-                            return ListTile(
-                              title: Text(places[index].nombre),
-                              leading: Text(places[index].latitud),
-                            );
-                          },
-                        )
-                      : const Center(
-                          child: Text('No se encontro informacion'))),
+          return Scaffold(
+            floatingActionButton: FloatingActionButton(
+              child: const Icon(Icons.list),
+              onPressed: () {
+                //add event to switch list to card
+                context.read<HomeBloc>().add(
+                      const HomeEvent.switchHomeList(),
+                    );
+              },
             ),
+            body: BlocBuilder<HomeBloc, HomeState>(
+              buildWhen: (previous, current) =>
+                  previous.status != current.status ||
+                  previous.places != current.places ||
+                  previous.isList != current.isList,
+              builder: (context, state) {
+                final places = state.places;
+                return SafeArea(
+                  child: CustomScrollView(
+                    slivers: <Widget>[
+                      SliverAppBar(
+                        pinned: false,
+                        snap: false,
+                        floating: true,
+                        expandedHeight: 160.0,
+                        flexibleSpace: FlexibleSpaceBar(
+                          title: const Text('Mexico places'),
+                          background: Image.asset(
+                            'assets/images/tab_bar_bg.jpg',
+                            fit: BoxFit.fitWidth,
+                          ),
+                        ),
+                      ),
+                      SliverList(
+                        delegate: SliverChildListDelegate(
+                          List.generate(places.length + 2, (index) {
+                            if (index == 0) {
+                              return CustomCard(
+                                title: Text(
+                                  'This is going to be the search bar',
+                                  style: FontStyles.regular.copyWith(
+                                      color: Colors.white, fontSize: 35),
+                                ),
+                                firstColor: Colors.cyan,
+                                secondColor: Colors.amber,
+                              );
+                            }
+                            if (index == 1) {
+                              return const CategoriesList();
+                            }
+                            return AnimatedCrossFade(
+                              firstChild: CustomCard(
+                                firstColor: Colors.red,
+                                secondColor: Colors.blue,
+                                title: Text(
+                                  places[index - 2].nombre,
+                                ),
+                                image: 'assets/images/no-image.png',
+                              ),
+                              secondChild: CustomCard(
+                                title: Text(
+                                  places[index - 2].nombre,
+                                  style: FontStyles.regular.copyWith(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                                firstColor: Colors.grey,
+                                height: 100,
+                              ),
+                              duration: const Duration(milliseconds: 300),
+                              crossFadeState: state.isList
+                                  ? CrossFadeState.showFirst
+                                  : CrossFadeState.showSecond,
+                            );
+                          }),
+                        ),
+                      )
+                    ],
+                  ),
+                );
+              },
+            ),
+            // bottomNavigationBar: NavigationBar(),
           );
-        },
-      ),
-    );
+        });
   }
 }
