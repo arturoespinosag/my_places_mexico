@@ -26,8 +26,8 @@ class ApiClient {
         headers: <String, String>{
           HttpHeaders.contentTypeHeader: 'application/json'
         },
-        connectTimeout: 30000,
-        receiveTimeout: 30000,
+        connectTimeout: const Duration(milliseconds: 30000),
+        receiveTimeout: const Duration(milliseconds: 30000),
       ),
     );
     // dio.interceptors.add(AuthInterceptor(localRepository: localRepository));

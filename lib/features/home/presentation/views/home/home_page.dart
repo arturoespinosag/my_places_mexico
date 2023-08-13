@@ -81,30 +81,35 @@ class _Home extends StatelessWidget {
                             if (index == 1) {
                               return const CategoriesList();
                             }
-                            return AnimatedCrossFade(
-                              firstChild: CustomCard(
-                                firstColor: Colors.red,
-                                secondColor: Colors.blue,
-                                title: Text(
-                                  places[index - 2].nombre,
-                                ),
-                                image: 'assets/images/no-image.png',
-                              ),
-                              secondChild: CustomCard(
-                                title: Text(
-                                  places[index - 2].nombre,
-                                  style: FontStyles.regular.copyWith(
-                                    color: Colors.white,
-                                    fontSize: 20,
+                            final place = places[index - 2];
+                            return GestureDetector(
+                              onTap: () => show(context, place),
+                              child: AnimatedCrossFade(
+                                firstChild: CustomCard(
+                                  firstColor: Colors.red,
+                                  secondColor: Colors.blue,
+                                  title: Text(
+                                    places[index - 2].nombre.toTitleCase(),
+                                    style: FontStyles.title,
                                   ),
+                                  image: 'assets/images/no-image.png',
                                 ),
-                                firstColor: Colors.grey,
-                                height: 100,
+                                secondChild: CustomCard(
+                                  title: Text(
+                                    places[index - 2].nombre.toTitleCase(),
+                                    style: FontStyles.regular.copyWith(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  firstColor: Colors.grey,
+                                  height: 100,
+                                ),
+                                duration: const Duration(milliseconds: 400),
+                                crossFadeState: state.isList
+                                    ? CrossFadeState.showFirst
+                                    : CrossFadeState.showSecond,
                               ),
-                              duration: const Duration(milliseconds: 300),
-                              crossFadeState: state.isList
-                                  ? CrossFadeState.showFirst
-                                  : CrossFadeState.showSecond,
                             );
                           }),
                         ),
