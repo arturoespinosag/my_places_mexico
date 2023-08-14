@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:myplaces_mexico/core/config/api/api_config.dart';
+import 'package:myplaces_mexico/core/core.dart';
 import 'package:myplaces_mexico/features/features.dart';
 import 'package:myplaces_mexico/src/data/client/api_client.dart';
 import 'package:myplaces_mexico/src/domain/domain.dart';
@@ -19,8 +19,10 @@ class MyPlacesApp extends StatelessWidget {
           create: (_) => placesRepository,
         )
       ],
-      child: const MaterialApp(
-        home: HomePage(),
+      child: MaterialApp(
+        home: const HomePage(),
+        theme: AppTheme.light,
+        debugShowCheckedModeBanner: false,
       ),
     );
   }
