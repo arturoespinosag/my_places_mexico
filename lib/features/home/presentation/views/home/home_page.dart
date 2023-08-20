@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myplaces_mexico/core/core.dart';
 import 'package:myplaces_mexico/features/features.dart';
-import 'package:myplaces_mexico/src/domain/domain.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -41,7 +40,7 @@ class _Home extends StatelessWidget {
                     toolbarHeight: 80,
                     title: const Padding(
                       padding: edgeInsetsSymetricH10,
-                      child: _SearchBarWidget(),
+                      child: SearchBarWidget(),
                     ),
                   ),
                   title: Padding(
@@ -82,90 +81,16 @@ class _Home extends StatelessWidget {
                         ? const Center(
                             child: CircularProgressIndicator(),
                           )
-                        : SingleChildScrollView(
-                            physics: const ClampingScrollPhysics(),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Padding(
-                                  padding: edgeInsetsAll35,
-                                  child: Text(
-                                    'Lugares cercanos',
-                                    style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  padding: edgeInsetsSymetricH30,
-                                  height: 60,
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: Palette.lightGrey,
-                                    border: Border.all(
-                                      color: Colors.black,
-                                      width: 0.1,
-                                    ),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      Row(children: [
-                                        _ListIconWidget(
-                                          icon: Icons.expand_sharp,
-                                          isSelected: !isList,
-                                          onTap: isList
-                                              ? () =>
-                                                  context.read<HomeBloc>().add(
-                                                        const HomeEvent
-                                                            .switchHomeList(
-                                                          isList: false,
-                                                        ),
-                                                      )
-                                              : () {},
-                                        ),
-                                        const SizedBox(
-                                          width: 20,
-                                        ),
-                                        _ListIconWidget(
-                                          icon: Icons.list_sharp,
-                                          isSelected: isList,
-                                          onTap: !isList
-                                              ? () =>
-                                                  context.read<HomeBloc>().add(
-                                                        const HomeEvent
-                                                            .switchHomeList(
-                                                          isList: true,
-                                                        ),
-                                                      )
-                                              : () {},
-                                        ),
-                                      ]),
-                                      _RefreshButton(
-                                        onTap: () {},
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding:
-                                      edgeInsetsSymetricH16.copyWith(top: 20),
-                                  child: Column(
-                                    children: [
-                                      ...List.generate(
-                                        places.length,
-                                        (index) => _PlaceItemWidget(
-                                          place: places[index],
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
+                        : Column(
+                            children: [
+                              HeaderWidget(
+                                isList: isList,
+                              ),
+                              PlacesListWidget(
+                                places: places,
+                                isList: isList,
+                              ),
+                            ],
                           );
                   },
                 ),
@@ -195,122 +120,5 @@ class _Home extends StatelessWidget {
             ),
           );
         });
-  }
-}
-
-class _RefreshButton extends StatelessWidget {
-  const _RefreshButton({
-    required this.onTap,
-  });
-
-  final Function() onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return const SizedBox(
-      height: double.infinity,
-      child: Icon(Icons.refresh_outlined),
-    );
-  }
-}
-
-class _ListIconWidget extends StatelessWidget {
-  const _ListIconWidget({
-    required this.icon,
-    required this.isSelected,
-    required this.onTap,
-  });
-
-  final IconData icon;
-  final bool isSelected;
-  final Function() onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: double.infinity,
-      decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: isSelected ? Palette.mainBlue : Colors.white,
-          ),
-        ),
-      ),
-      child: GestureDetector(
-        onTap: onTap,
-        child: Icon(
-          icon,
-          size: 30,
-          color: isSelected ? Palette.mainBlue : Colors.grey,
-        ),
-      ),
-    );
-  }
-}
-
-class _PlaceItemWidget extends StatelessWidget {
-  const _PlaceItemWidget({
-    required this.place,
-  });
-
-  final Place place;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      leading: const Icon(Icons.restaurant),
-      title: Text(place.nombre.toTitleCase()),
-    );
-  }
-}
-
-class _SearchBarWidget extends StatefulWidget {
-  const _SearchBarWidget();
-
-  @override
-  State<_SearchBarWidget> createState() => _SearchBarWidgetState();
-}
-
-class _SearchBarWidgetState extends State<_SearchBarWidget> {
-  late final TextEditingController _controller;
-
-  @override
-  void initState() {
-    _controller = TextEditingController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    return Container(
-      height: 45,
-      width: width * 0.9,
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: borderRadius4,
-      ),
-      child: TextField(
-        onChanged: (text) {},
-        controller: _controller,
-        decoration: const InputDecoration(
-          prefixIcon: Icon(
-            Icons.search,
-            color: Colors.grey,
-          ),
-          hintText: 'Search',
-          hintStyle: TextStyle(
-            fontSize: 17,
-            color: Colors.grey,
-          ),
-        ),
-      ),
-    );
   }
 }
