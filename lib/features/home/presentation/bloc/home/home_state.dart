@@ -11,7 +11,7 @@ enum HomeStatus {
 class HomeState with _$HomeState {
   const factory HomeState({
     @Default(HomeStatus.initial) HomeStatus status,
-    @Default([]) List<Place> places,
+    @Default([]) List<PlaceWithDistance> places,
     @Default(true) bool isList,
   }) = _HomeState;
 }

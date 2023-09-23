@@ -10,7 +10,7 @@ class PlacesListWidget extends StatelessWidget {
     required this.isList,
   });
 
-  final List<Place> places;
+  final List<PlaceWithDistance> places;
   final bool isList;
 
   @override

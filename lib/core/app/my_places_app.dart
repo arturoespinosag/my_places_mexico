@@ -7,9 +7,14 @@ import 'package:myplaces_mexico/src/data/client/api_client.dart';
 import 'package:myplaces_mexico/src/domain/domain.dart';
 
 class MyPlacesApp extends StatelessWidget {
-  const MyPlacesApp({super.key, required, required this.placesRepository});
+  const MyPlacesApp(
+      {super.key,
+      required,
+      required this.placesRepository,
+      required this.locationService});
 
   final IPlacesRepository placesRepository;
+  final LocationService locationService;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +23,9 @@ class MyPlacesApp extends StatelessWidget {
       providers: [
         RepositoryProvider(
           create: (_) => placesRepository,
+        ),
+        RepositoryProvider(
+          create: (_) => locationService,
         )
       ],
       child: GestureDetector(

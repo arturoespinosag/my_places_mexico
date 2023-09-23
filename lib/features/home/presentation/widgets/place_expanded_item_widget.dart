@@ -9,7 +9,7 @@ class PlaceExpandedItemWidget extends StatelessWidget {
     required this.place,
   });
 
-  final Place place;
+  final PlaceWithDistance place;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class PlaceExpandedItemWidget extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const Icon(Icons.restaurant),
+                  Icon(getIcon(place.kind)),
                   const SizedBox(width: 10),
                   SizedBox(
                       width: width * 0.5,

@@ -12,12 +12,14 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   final placesRepository = PlacesRepository();
+  final locationService = LocationService();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]).then(
     (_) => runApp(
       MyPlacesApp(
         placesRepository: placesRepository,
+        locationService: locationService,
       ),
     ),
   );

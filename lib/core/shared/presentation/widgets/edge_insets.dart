@@ -35,11 +35,11 @@ const edgeInsetsBR10Left20 = EdgeInsets.only(
   right: 10,
 );
 
-const edgeInsetsSymetricH4 = EdgeInsets.symmetric(horizontal: 4);
-const edgeInsetsSymetricV4 = EdgeInsets.symmetric(vertical: 4);
-const edgeInsetsSymetricH5 = EdgeInsets.symmetric(horizontal: 5);
-const edgeInsetsSymetricV5 = EdgeInsets.symmetric(vertical: 5);
-const edgeInsetsSymetricV8 = EdgeInsets.symmetric(vertical: 8);
+const edgeInsetsSymmetricH4 = EdgeInsets.symmetric(horizontal: 4);
+const edgeInsetsSymmetricV4 = EdgeInsets.symmetric(vertical: 4);
+const edgeInsetsSymmetricH5 = EdgeInsets.symmetric(horizontal: 5);
+const edgeInsetsSymmetricV5 = EdgeInsets.symmetric(vertical: 5);
+const edgeInsetsSymmetricV8 = EdgeInsets.symmetric(vertical: 8);
 const edgeInsetsSymetricH8 = EdgeInsets.symmetric(horizontal: 8);
 const edgeInsetsSymetricH10 = EdgeInsets.symmetric(horizontal: 10);
 const edgeInsetsSymetricH12 = EdgeInsets.symmetric(horizontal: 12);

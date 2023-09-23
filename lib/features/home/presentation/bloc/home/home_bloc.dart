@@ -7,14 +7,14 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc({required IPlacesRepository placesRepository})
-      : _placesRepository = placesRepository,
+  HomeBloc({required PlacesUseCase placesUseCase})
+      : _placesUseCase = placesUseCase,
         super(const HomeState()) {
     on<_FetchNearbyPlaces>(_onFetchNearbyPlaces);
     on<_SwitchHomeList>(_onSwitchHomeList);
   }
 
-  final IPlacesRepository _placesRepository;
+  final PlacesUseCase _placesUseCase;
 
   Future<void> _onFetchNearbyPlaces(
     _FetchNearbyPlaces event,
@@ -26,14 +26,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       ),
     );
     try {
-      final response = await _placesRepository.fetchNearbyPlaces(
-        event.query,
-        event.coordinates,
-        event.distance,
+      final response = await _placesUseCase.getPlaces(
+        coordinates: event.coordinates,
+        distance: event.distance,
       );
+
       emit(state.copyWith(
         status: HomeStatus.loaded,
-        places: response.places,
+        places: response.placesWithDistance,
       ));
     } catch (e) {
       emit(

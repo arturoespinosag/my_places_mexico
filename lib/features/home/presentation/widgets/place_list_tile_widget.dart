@@ -9,13 +9,14 @@ class PlaceListTileWidget extends StatelessWidget {
     required this.place,
   });
 
-  final Place place;
+  final PlaceWithDistance place;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: const Icon(Icons.restaurant),
+      leading: Icon(getIcon(place.kind)),
       title: Text(place.nombre.toTitleCase()),
+      subtitle: Text('a ${place.distance.toStringAsFixed(0)} m'),
       trailing: const AnimatedHeartWidget(),
     );
   }
