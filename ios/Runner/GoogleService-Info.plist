@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>652760207114-gip7594ks95ji0qo0ajplsp1f8aut62f.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.652760207114-gip7594ks95ji0qo0ajplsp1f8aut62f</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCqlLtgT8MTQyAWEOVOHs6pxiJ7et63kb4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>652760207114</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.mx.arturo-espinosag.myplacesMexico</string>
+	<key>PROJECT_ID</key>
+	<string>myplaces-mexico</string>
+	<key>STORAGE_BUCKET</key>
+	<string>myplaces-mexico.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:652760207114:ios:9859811c17b893aee134f3</string>
+</dict>
+</plist>

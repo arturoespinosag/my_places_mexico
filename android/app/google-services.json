@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "652760207114",
+    "project_id": "myplaces-mexico",
+    "storage_bucket": "myplaces-mexico.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652760207114:android:896af0999e2f1386e134f3",
+        "android_client_info": {
+          "package_name": "com.mx.arturoespinosag.myplaces_mexico"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "652760207114-ft2a4vmd238rf5sobol18r8k0i940hvm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPNIqa2oeRGmLjufzlkxjv87tT8PWfN7s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "652760207114-ft2a4vmd238rf5sobol18r8k0i940hvm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "652760207114-gip7594ks95ji0qo0ajplsp1f8aut62f.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mx.arturo-espinosag.myplacesMexico"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
