@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myplaces_mexico/core/core.dart';
+import 'package:myplaces_mexico/core/shared/presentation/widgets/animated_heart_widget.dart';
 import 'package:myplaces_mexico/src/domain/domain.dart';
 
 class PlaceExpandedItemWidget extends StatelessWidget {
@@ -53,7 +54,7 @@ class PlaceExpandedItemWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              const Icon(Icons.favorite_border_outlined),
+              const AnimatedHeartWidget(),
               Text(place.telefono),
             ],
           ),

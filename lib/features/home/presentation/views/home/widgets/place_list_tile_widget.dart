@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myplaces_mexico/core/core.dart';
+import 'package:myplaces_mexico/core/shared/presentation/widgets/animated_heart_widget.dart';
 import 'package:myplaces_mexico/src/domain/domain.dart';
 
 class PlaceListTileWidget extends StatelessWidget {
@@ -15,7 +16,7 @@ class PlaceListTileWidget extends StatelessWidget {
     return ListTile(
       leading: const Icon(Icons.restaurant),
       title: Text(place.nombre.toTitleCase()),
-      trailing: const Icon(Icons.favorite_border_outlined),
+      trailing: const AnimatedHeartWidget(),
     );
   }
 }
