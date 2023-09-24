@@ -26,14 +26,20 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       ),
     );
     try {
-      final response = await _placesUseCase.getPlaces(
+      var response = await _placesUseCase.getPlaces(
         coordinates: event.coordinates,
         distance: event.distance,
+      );
+      final sortedPlaces = <PlaceWithDistance>[];
+
+      sortedPlaces.addAll(response.placesWithDistance);
+      sortedPlaces.sort(
+        (a, b) => a.distance.compareTo(b.distance),
       );
 
       emit(state.copyWith(
         status: HomeStatus.loaded,
-        places: response.placesWithDistance,
+        places: sortedPlaces,
       ));
     } catch (e) {
       emit(
