@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:myplaces_mexico/src/src.dart';
@@ -25,6 +27,25 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         status: HomeStatus.loading,
       ),
     );
+
+    try {
+      final position = await _placesUseCase.getCurrentPosition();
+      if (position == null) {
+        emit(
+          state.copyWith(
+            locationStatus: LocationStatus.serviceNotEnabled,
+          ),
+        );
+        return;
+      } else if (position.latitude == 0 && position.longitude == 0) {
+        emit(state.copyWith(
+          locationStatus: LocationStatus.deniedForever,
+        ));
+        return;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
     try {
       var response = await _placesUseCase.getPlaces(
         coordinates: event.coordinates,

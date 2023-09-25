@@ -1,3 +1,4 @@
+import 'package:geolocator/geolocator.dart';
 import 'package:myplaces_mexico/src/data/models/response/places_with_distance.dart';
 import 'package:myplaces_mexico/src/src.dart';
 
@@ -12,6 +13,7 @@ abstract class PlacesUseCase {
       {required String query,
       required String coordinates,
       required String distance});
+  Future<Position?> getCurrentPosition();
 }
 
 class PlacesUseCaseImpl implements PlacesUseCase {
@@ -93,4 +95,9 @@ class PlacesUseCaseImpl implements PlacesUseCase {
           required String coordinates,
           required String distance}) =>
       _placesRepository.fetchNearbyPlaces(query, coordinates, distance);
+
+  @override
+  Future<Position?> getCurrentPosition() {
+    return _locationService.getCurrentPosition();
+  }
 }
