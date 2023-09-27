@@ -25,8 +25,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(
       state.copyWith(
         status: HomeStatus.loading,
+        locationStatus: LocationStatus.retrieving,
       ),
     );
+
+    var coordinates = '';
 
     try {
       final position = await _placesUseCase.getCurrentPosition();
@@ -42,33 +45,45 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           locationStatus: LocationStatus.deniedForever,
         ));
         return;
+      } else {
+        coordinates = '${position.latitude},${position.longitude}';
+        emit(state.copyWith(locationStatus: LocationStatus.retrieved));
       }
     } catch (e) {
       log(e.toString());
+      return;
     }
-    try {
-      var response = await _placesUseCase.getPlaces(
-        coordinates: event.coordinates,
-        distance: event.distance,
-      );
-      final sortedPlaces = <PlaceWithDistance>[];
-
-      sortedPlaces.addAll(response.placesWithDistance);
-      sortedPlaces.sort(
-        (a, b) => a.distance.compareTo(b.distance),
-      );
-
-      emit(state.copyWith(
-        status: HomeStatus.loaded,
-        places: sortedPlaces,
-      ));
-    } catch (e) {
-      emit(
-        state.copyWith(
-          status: HomeStatus.error,
-        ),
-      );
+    const queries = PlaceKind.values;
+    final places = <PlaceWithDistance>[];
+    for (final query in queries) {
+      try {
+        var response = await _placesUseCase.getPlaces(
+          query: query.query,
+          coordinates: coordinates,
+          distance: '500',
+          kind: query,
+        );
+        places.addAll(response.placesWithDistance);
+      } catch (e) {
+        log('No se encontraron lugares ${query.query}');
+        emit(
+          state.copyWith(
+            status: HomeStatus.error,
+          ),
+        );
+      }
     }
+    final sortedPlaces = <PlaceWithDistance>[];
+
+    sortedPlaces.addAll(places);
+    sortedPlaces.sort(
+      (a, b) => a.distance.compareTo(b.distance),
+    );
+
+    emit(state.copyWith(
+      status: HomeStatus.loaded,
+      places: sortedPlaces,
+    ));
   }
 
   Future<void> _onSwitchHomeList(

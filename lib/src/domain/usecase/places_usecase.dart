@@ -4,7 +4,10 @@ import 'package:myplaces_mexico/src/src.dart';
 
 abstract class PlacesUseCase {
   Future<PlacesWithDistance> getPlaces(
-      {required String coordinates, required String distance});
+      {required String query,
+      required String coordinates,
+      required String distance,
+      required PlaceKind kind});
   List<PlaceWithDistance> getDistances({
     required List<Place> places,
     required PlaceKind kind,
@@ -23,38 +26,16 @@ class PlacesUseCaseImpl implements PlacesUseCase {
   final LocationService _locationService;
   @override
   Future<PlacesWithDistance> getPlaces(
-      {required String coordinates, required String distance}) async {
-    final restaurants = await _placesRepository.fetchNearbyPlaces(
-        'restaurante', coordinates, distance);
-    final groceries = await _placesRepository.fetchNearbyPlaces(
-        'abarrotes', coordinates, distance);
+      {required String query,
+      required String coordinates,
+      required String distance,
+      required PlaceKind kind}) async {
+    final result =
+        await _placesRepository.fetchNearbyPlaces(query, coordinates, distance);
+    final resultsWithDistance = getDistances(places: result.places, kind: kind);
 
-    final schools = await _placesRepository.fetchNearbyPlaces(
-        'escuela', coordinates, distance);
-    final stationeries = await _placesRepository.fetchNearbyPlaces(
-        'papeleria', coordinates, distance);
-    final hotels = await _placesRepository.fetchNearbyPlaces(
-        'hotel', coordinates, distance);
-    final restaurantsWithDistance =
-        getDistances(places: restaurants.places, kind: PlaceKind.restaurant);
-    final groceriesWithDistance =
-        getDistances(places: groceries.places, kind: PlaceKind.grocery);
-
-    final schoolsWithDistance =
-        getDistances(places: schools.places, kind: PlaceKind.school);
-    final stationariesWithDistance =
-        getDistances(places: stationeries.places, kind: PlaceKind.stationery);
-    final hotelsWithDistace =
-        getDistances(places: hotels.places, kind: PlaceKind.hotel);
-    final places = [
-      ...restaurantsWithDistance,
-      ...groceriesWithDistance,
-      ...schoolsWithDistance,
-      ...stationariesWithDistance,
-      ...hotelsWithDistace,
-    ];
     return Future.value(PlacesWithDistance(
-      placesWithDistance: places,
+      placesWithDistance: resultsWithDistance,
     ));
   }
 

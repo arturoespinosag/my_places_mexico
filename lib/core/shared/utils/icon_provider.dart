@@ -13,5 +13,7 @@ IconData getIcon(PlaceKind kind) {
       return Icons.document_scanner;
     case PlaceKind.hotel:
       return Icons.hotel;
+    case PlaceKind.gasStation:
+      return Icons.gas_meter;
   }
 }

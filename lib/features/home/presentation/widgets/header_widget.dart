@@ -69,7 +69,9 @@ class HeaderWidget extends StatelessWidget {
                 ),
               ]),
               RefreshButtonWidget(
-                onTap: () {},
+                onTap: () => context
+                    .read<HomeBloc>()
+                    .add(const HomeEvent.fetchNearbyPlaces()),
               ),
             ],
           ),

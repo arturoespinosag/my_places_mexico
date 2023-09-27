@@ -9,6 +9,7 @@ enum HomeStatus {
 
 enum LocationStatus {
   unknown,
+  retrieving,
   retrieved,
   deniedForever,
   serviceNotEnabled,

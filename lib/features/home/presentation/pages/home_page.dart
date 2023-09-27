@@ -15,8 +15,7 @@ class HomePage extends StatelessWidget {
           RepositoryProvider.of(context),
         ),
       )..add(
-          const HomeEvent.fetchNearbyPlaces(
-              'restaurante', '19.257463808899686,-99.17140684609475', '1000'),
+          const HomeEvent.fetchNearbyPlaces(),
         ),
       child: const HomeView(),
     );

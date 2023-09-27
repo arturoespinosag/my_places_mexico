@@ -10,9 +10,12 @@ class RefreshButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      height: double.infinity,
-      child: Icon(Icons.refresh_outlined),
+    return GestureDetector(
+      onTap: onTap,
+      child: const SizedBox(
+        height: double.infinity,
+        child: Icon(Icons.refresh_outlined),
+      ),
     );
   }
 }
