@@ -76,6 +76,9 @@ class HomeView extends StatelessWidget {
                       : PlacesListWidget(
                           places: places,
                           isList: isList,
+                          onRefresh: () async => context
+                              .read<HomeBloc>()
+                              .add(const HomeEvent.fetchNearbyPlaces()),
                         ),
                 ],
               );

@@ -1,16 +1,19 @@
 import 'package:geolocator/geolocator.dart';
-import 'package:myplaces_mexico/src/data/models/response/places_with_distance.dart';
+
 import 'package:myplaces_mexico/src/src.dart';
 
 abstract class PlacesUseCase {
-  Future<PlacesWithDistance> getPlaces(
-      {required String query,
-      required String coordinates,
-      required String distance,
-      required PlaceKind kind});
+  Future<PlacesWithDistance> getPlaces({
+    required String query,
+    required String coordinates,
+    required String distance,
+    required PlaceKind kind,
+    required Position currentPosition,
+  });
   List<PlaceWithDistance> getDistances({
     required List<Place> places,
     required PlaceKind kind,
+    required Position currentPosition,
   });
   Future<Places> getNearbyPlaces(
       {required String query,
@@ -25,14 +28,20 @@ class PlacesUseCaseImpl implements PlacesUseCase {
   final IPlacesRepository _placesRepository;
   final LocationService _locationService;
   @override
-  Future<PlacesWithDistance> getPlaces(
-      {required String query,
-      required String coordinates,
-      required String distance,
-      required PlaceKind kind}) async {
+  Future<PlacesWithDistance> getPlaces({
+    required String query,
+    required String coordinates,
+    required String distance,
+    required PlaceKind kind,
+    required Position currentPosition,
+  }) async {
     final result =
         await _placesRepository.fetchNearbyPlaces(query, coordinates, distance);
-    final resultsWithDistance = getDistances(places: result.places, kind: kind);
+    final resultsWithDistance = getDistances(
+      places: result.places,
+      kind: kind,
+      currentPosition: currentPosition,
+    );
 
     return Future.value(PlacesWithDistance(
       placesWithDistance: resultsWithDistance,
@@ -43,10 +52,13 @@ class PlacesUseCaseImpl implements PlacesUseCase {
   List<PlaceWithDistance> getDistances({
     required List<Place> places,
     required PlaceKind kind,
+    required Position currentPosition,
   }) {
     final placeswithDistance = places.map(
       (e) {
         final distance = _locationService.getDistance(
+            currentLatitude: currentPosition.latitude,
+            currentLongitude: currentPosition.longitude,
             latitude: double.parse(e.latitud),
             longitude: double.parse(e.longitud));
         return PlaceWithDistance(

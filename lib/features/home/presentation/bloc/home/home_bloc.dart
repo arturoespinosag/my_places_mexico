@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:myplaces_mexico/src/src.dart';
 
 part 'home_bloc.freezed.dart';
@@ -26,13 +27,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       state.copyWith(
         status: HomeStatus.loading,
         locationStatus: LocationStatus.retrieving,
+        places: [],
       ),
     );
 
     var coordinates = '';
-
+    Position? position;
     try {
-      final position = await _placesUseCase.getCurrentPosition();
+      position = await _placesUseCase.getCurrentPosition();
       if (position == null) {
         emit(
           state.copyWith(
@@ -62,6 +64,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           coordinates: coordinates,
           distance: '500',
           kind: query,
+          currentPosition: position,
         );
         places.addAll(response.placesWithDistance);
       } catch (e) {

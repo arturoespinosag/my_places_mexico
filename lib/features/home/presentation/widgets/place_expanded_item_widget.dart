@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myplaces_mexico/core/core.dart';
-import 'package:myplaces_mexico/core/shared/presentation/widgets/animated_heart_widget.dart';
-import 'package:myplaces_mexico/src/domain/domain.dart';
+
+import 'package:myplaces_mexico/src/src.dart';
 
 class PlaceExpandedItemWidget extends StatelessWidget {
   const PlaceExpandedItemWidget({
