@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:myplaces_mexico/core/core.dart';
 import 'package:myplaces_mexico/features/features.dart';
 
@@ -43,36 +43,11 @@ class HeaderWidget extends StatelessWidget {
             children: [
               Row(children: [
                 ListIconWidget(
-                  icon: Icons.expand_sharp,
-                  isSelected: !isList,
-                  onTap: isList
-                      ? () => context.read<HomeBloc>().add(
-                            const HomeEvent.switchHomeList(
-                              isList: false,
-                            ),
-                          )
-                      : () {},
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                ListIconWidget(
                   icon: Icons.list_sharp,
                   isSelected: isList,
-                  onTap: !isList
-                      ? () => context.read<HomeBloc>().add(
-                            const HomeEvent.switchHomeList(
-                              isList: true,
-                            ),
-                          )
-                      : () {},
+                  onTap: () {},
                 ),
               ]),
-              RefreshButtonWidget(
-                onTap: () => context
-                    .read<HomeBloc>()
-                    .add(const HomeEvent.fetchNearbyPlaces()),
-              ),
             ],
           ),
         ),

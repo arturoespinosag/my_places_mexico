@@ -22,9 +22,9 @@ class PlacesListWidget extends StatelessWidget {
         padding: edgeInsetsSymetricH16.copyWith(top: 0),
         child: RefreshIndicator(
           onRefresh: onRefresh,
-          child: ListView.separated(
-            separatorBuilder: (context, index) => const Divider(),
-            padding: edgeInsetsSymetricV20,
+          displacement: 60,
+          child: ListView.builder(
+            padding: edgeInsetsSymetricV20.copyWith(left: 0),
             physics: const ClampingScrollPhysics(),
             itemCount: places.length,
             itemBuilder: (context, index) => AnimatedSwitcher(
@@ -35,11 +35,9 @@ class PlacesListWidget extends StatelessWidget {
                 scale: animation,
                 child: child,
               ),
-              child: isList
-                  ? PlaceListTileWidget(
-                      place: places[index],
-                    )
-                  : PlaceExpandedItemWidget(place: places[index]),
+              child: PlaceListTileWidget(
+                place: places[index],
+              ),
             ),
           ),
         ),

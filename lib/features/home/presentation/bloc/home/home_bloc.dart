@@ -14,7 +14,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       : _placesUseCase = placesUseCase,
         super(const HomeState()) {
     on<_FetchNearbyPlaces>(_onFetchNearbyPlaces);
-    on<_SwitchHomeList>(_onSwitchHomeList);
   }
 
   final PlacesUseCase _placesUseCase;
@@ -87,14 +86,5 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       status: HomeStatus.loaded,
       places: sortedPlaces,
     ));
-  }
-
-  Future<void> _onSwitchHomeList(
-    _SwitchHomeList event,
-    Emitter<HomeState> emit,
-  ) async {
-    emit(
-      state.copyWith(isList: !state.isList),
-    );
   }
 }
