@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:myplaces_mexico/core/core.dart';
+import 'package:myplaces_mexico/features/features.dart';
 import 'package:myplaces_mexico/src/src.dart';
 
 class PlaceListTileWidget extends StatelessWidget {
@@ -12,6 +14,7 @@ class PlaceListTileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       elevation: 5,
@@ -22,7 +25,7 @@ class PlaceListTileWidget extends StatelessWidget {
           children: [
             Row(
               children: [
-                const PlaceImage(),
+                const PlaceImageWidget(),
                 const SizedBox(width: 20),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -37,7 +40,7 @@ class PlaceListTileWidget extends StatelessWidget {
                     ),
                     const SizedBox(height: 12),
                     SizedBox(
-                      width: 235,
+                      width: width * 0.5,
                       child: Text(
                         place.nombre.toTitleCase(),
                         maxLines: 1,
@@ -52,7 +55,7 @@ class PlaceListTileWidget extends StatelessWidget {
                     const SizedBox(height: 12),
                     Row(
                       children: [
-                        const PlaceScore(),
+                        const PlaceScoreWidget(),
                         const SizedBox(width: 15),
                         Text(
                           'a ${place.distance.toStringAsFixed(0)} m',
@@ -66,45 +69,17 @@ class PlaceListTileWidget extends StatelessWidget {
                 ),
               ],
             ),
-            const Icon(Icons.arrow_forward_ios),
+            GestureDetector(
+              child: const Icon(Icons.arrow_forward_ios),
+              onTap: () => context.push(
+                Routes.placeDetailsPage,
+                extra: place,
+              ),
+            ),
             const SizedBox(width: 1),
           ],
         ),
       ),
-    );
-  }
-}
-
-class PlaceScore extends StatelessWidget {
-  const PlaceScore({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: List.generate(
-        5,
-        (index) => Icon(
-          Icons.star_border_outlined,
-          color: Palette.darkGrey.withOpacity(0.8),
-        ),
-      ),
-    );
-  }
-}
-
-class PlaceImage extends StatelessWidget {
-  const PlaceImage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-          borderRadius: BorderRadius.horizontal(
-            right: Radius.circular(40),
-          ),
-          color: Colors.red),
-      width: 75,
-      height: double.infinity,
     );
   }
 }

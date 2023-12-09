@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:myplaces_mexico/gen/assets.gen.dart';
 
 class AnimatedHeartWidget extends StatefulWidget {
-  const AnimatedHeartWidget({super.key});
+  const AnimatedHeartWidget({
+    super.key,
+    this.iconRateSize = 1,
+  });
+
+  final double iconRateSize;
 
   @override
   State<AnimatedHeartWidget> createState() => _AnimatedHeartWidgetState();
@@ -23,7 +28,7 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(
-        seconds: 2,
+        seconds: 1,
       ),
     )..forward(from: 1);
 
@@ -128,8 +133,8 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
                 animation: _controller,
                 builder: (context, child) {
                   return SizedBox(
-                    height: _redCircleSize.value,
-                    width: _redCircleSize.value,
+                    height: _redCircleSize.value * widget.iconRateSize,
+                    width: _redCircleSize.value * widget.iconRateSize,
                     child: Assets.images.circleRed.image(),
                   );
                 },
@@ -139,10 +144,10 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
               alignment: Alignment.center,
               child: AnimatedBuilder(
                   animation: _controller,
-                  builder: (context, widget) {
+                  builder: (context, _) {
                     return SizedBox(
-                      height: _whiteCircleSize.value,
-                      width: _whiteCircleSize.value,
+                      height: _whiteCircleSize.value * widget.iconRateSize,
+                      width: _whiteCircleSize.value * widget.iconRateSize,
                       child: Assets.images.circleWhite.image(),
                     );
                   }),
@@ -151,10 +156,10 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
               alignment: Alignment.center,
               child: AnimatedBuilder(
                   animation: _controller,
-                  builder: (context, widget) {
+                  builder: (context, _) {
                     return SizedBox(
-                      height: _waveEffectSize.value,
-                      width: _waveEffectSize.value,
+                      height: _waveEffectSize.value * widget.iconRateSize,
+                      width: _waveEffectSize.value * widget.iconRateSize,
                       child: Opacity(
                           opacity: _waveEffectOpacity.value,
                           child: Assets.images.heartWaveEffect.image()),
@@ -165,10 +170,10 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
               alignment: Alignment.center,
               child: AnimatedBuilder(
                   animation: _controller,
-                  builder: (context, widget) {
+                  builder: (context, _) {
                     return SizedBox(
-                      height: _redHeartSize.value,
-                      width: _redHeartSize.value,
+                      height: _redHeartSize.value * widget.iconRateSize,
+                      width: _redHeartSize.value * widget.iconRateSize,
                       child: isFavorite
                           ? Assets.images.heartRed.image()
                           : Assets.images.heartGrey.image(),
@@ -179,10 +184,10 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
               alignment: Alignment.center,
               child: AnimatedBuilder(
                   animation: _controller,
-                  builder: (context, widget) {
+                  builder: (context, _) {
                     return SizedBox(
-                      height: _greyHeartSize.value,
-                      width: _greyHeartSize.value,
+                      height: _greyHeartSize.value * widget.iconRateSize,
+                      width: _greyHeartSize.value * widget.iconRateSize,
                       child: isFavorite
                           ? Assets.images.heartGrey.image()
                           : Assets.images.heartRed.image(),

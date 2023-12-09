@@ -96,8 +96,8 @@ class HomeView extends StatelessWidget {
                 label: 'Home',
               ),
               NavigationDestination(
-                icon: Icon(Icons.home),
-                label: 'Home',
+                icon: Icon(Icons.map),
+                label: 'Map',
               ),
               NavigationDestination(
                 icon: Icon(Icons.home),

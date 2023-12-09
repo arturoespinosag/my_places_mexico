@@ -2,7 +2,6 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myplaces_mexico/core/core.dart';
-import 'package:myplaces_mexico/features/features.dart';
 import 'package:myplaces_mexico/src/src.dart';
 
 class MyPlacesApp extends StatelessWidget {
@@ -33,12 +32,12 @@ class MyPlacesApp extends StatelessWidget {
         },
         child: DevicePreview(
           enabled: false,
-          builder: (context) => MaterialApp(
+          builder: (context) => MaterialApp.router(
+            routerConfig: AppRouter.router,
             // ignore: deprecated_member_use
             useInheritedMediaQuery: true,
             locale: DevicePreview.locale(context),
             builder: DevicePreview.appBuilder,
-            home: const HomePage(),
             theme: AppTheme.light,
             debugShowCheckedModeBanner: false,
           ),
