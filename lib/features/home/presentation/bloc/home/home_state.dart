@@ -22,5 +22,7 @@ class HomeState with _$HomeState {
     @Default(LocationStatus.unknown) LocationStatus locationStatus,
     @Default([]) List<PlaceWithDistance> places,
     @Default(true) bool isList,
+    @Default(0) int selectedIndex,
+    PlaceWithDistance? mapSelectedPlace,
   }) = _HomeState;
 }

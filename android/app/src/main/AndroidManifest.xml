@@ -10,6 +10,8 @@
         android:label="myplaces_mexico"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+                   android:value="AIzaSyBg354MNAak6lI6iyrnVWEFIjKs4YYBN3Y"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -14,6 +14,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       : _placesUseCase = placesUseCase,
         super(const HomeState()) {
     on<_FetchNearbyPlaces>(_onFetchNearbyPlaces);
+    on<_IndexSelected>(_onIndexSelected);
+    on<_MapSelectedPlaceChanged>(_onMapSelectedPlaceChanged);
   }
 
   final PlacesUseCase _placesUseCase;
@@ -86,5 +88,23 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       status: HomeStatus.loaded,
       places: sortedPlaces,
     ));
+  }
+
+  void _onIndexSelected(_IndexSelected event, Emitter<HomeState> emit) {
+    emit(
+      state.copyWith(
+        selectedIndex: event.selectedIndex,
+      ),
+    );
+  }
+
+  void _onMapSelectedPlaceChanged(
+      _MapSelectedPlaceChanged event, Emitter<HomeState> emit) {
+    PlaceWithDistance? selectedPlace;
+    if (state.places.any((place) => place.id == event.placeId)) {
+      selectedPlace =
+          state.places.firstWhere((place) => place.id == event.placeId);
+    }
+    emit(state.copyWith(mapSelectedPlace: selectedPlace));
   }
 }

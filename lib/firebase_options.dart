@@ -63,7 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '652760207114',
     projectId: 'myplaces-mexico',
     storageBucket: 'myplaces-mexico.appspot.com',
-    iosClientId: '652760207114-gip7594ks95ji0qo0ajplsp1f8aut62f.apps.googleusercontent.com',
+    iosClientId:
+        '652760207114-gip7594ks95ji0qo0ajplsp1f8aut62f.apps.googleusercontent.com',
     iosBundleId: 'com.mx.arturo-espinosag.myplacesMexico',
   );
 }
