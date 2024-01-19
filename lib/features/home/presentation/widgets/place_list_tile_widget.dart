@@ -46,10 +46,10 @@ class PlaceListTileWidget extends StatelessWidget {
                               ),
                             ),
                             Icon(
-                              isFavorite
-                                  ? Icons.favorite
-                                  : Icons.favorite_outline,
-                              color: isFavorite ? Colors.red : Colors.grey,
+                              Icons.favorite,
+                              color: isFavorite
+                                  ? Colors.red
+                                  : Colors.grey.shade400,
                               size: 20,
                             )
                           ],
