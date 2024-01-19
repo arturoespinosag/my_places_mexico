@@ -5,9 +5,13 @@ class AnimatedHeartWidget extends StatefulWidget {
   const AnimatedHeartWidget({
     super.key,
     this.iconRateSize = 1,
+    this.onTap,
+    this.isFavorite = false,
   });
 
   final double iconRateSize;
+  final VoidCallback? onTap;
+  final bool isFavorite;
 
   @override
   State<AnimatedHeartWidget> createState() => _AnimatedHeartWidgetState();
@@ -15,7 +19,6 @@ class AnimatedHeartWidget extends StatefulWidget {
 
 class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
     with TickerProviderStateMixin {
-  bool isFavorite = false;
   late AnimationController _controller;
   late Animation<double> _greyHeartSize;
   late Animation<double> _redCircleSize;
@@ -119,11 +122,12 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
       dimension: 38,
       child: GestureDetector(
         onTap: () async {
-          setState(() {
-            isFavorite = !isFavorite;
-          });
+          // setState(() {
+          //   isFavorite = !isFavorite;
+          // });
           _controller.reset();
           _controller.forward();
+          widget.onTap?.call();
         },
         child: Stack(
           children: [
@@ -174,7 +178,7 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
                     return SizedBox(
                       height: _redHeartSize.value * widget.iconRateSize,
                       width: _redHeartSize.value * widget.iconRateSize,
-                      child: isFavorite
+                      child: widget.isFavorite
                           ? Assets.images.heartRed.image()
                           : Assets.images.heartGrey.image(),
                     );
@@ -188,7 +192,7 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
                     return SizedBox(
                       height: _greyHeartSize.value * widget.iconRateSize,
                       width: _greyHeartSize.value * widget.iconRateSize,
-                      child: isFavorite
+                      child: widget.isFavorite
                           ? Assets.images.heartGrey.image()
                           : Assets.images.heartRed.image(),
                     );

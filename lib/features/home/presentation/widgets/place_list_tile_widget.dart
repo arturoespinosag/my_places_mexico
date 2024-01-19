@@ -8,9 +8,11 @@ class PlaceListTileWidget extends StatelessWidget {
   const PlaceListTileWidget({
     super.key,
     required this.place,
+    required this.isFavorite,
   });
 
   final PlaceWithDistance place;
+  final bool isFavorite;
 
   @override
   Widget build(BuildContext context) {
@@ -27,45 +29,61 @@ class PlaceListTileWidget extends StatelessWidget {
               children: [
                 const PlaceImageWidget(),
                 const SizedBox(width: 20),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      place.kind.query.capitalize,
-                      style: TextStyle(
-                        color: Palette.darkGrey.withOpacity(0.8),
-                        fontSize: 13,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    SizedBox(
-                      width: width * 0.5,
-                      child: Text(
-                        place.nombre.toTitleCase(),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          color: Palette.spaceBlue,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                IntrinsicWidth(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              place.kind.query.capitalize,
+                              style: TextStyle(
+                                color: Palette.darkGrey.withOpacity(0.8),
+                                fontSize: 13,
+                              ),
+                            ),
+                            Icon(
+                              isFavorite
+                                  ? Icons.favorite
+                                  : Icons.favorite_outline,
+                              color: isFavorite ? Colors.red : Colors.grey,
+                              size: 20,
+                            )
+                          ],
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 12),
-                    Row(
-                      children: [
-                        const PlaceScoreWidget(),
-                        const SizedBox(width: 15),
-                        Text(
-                          'a ${place.distance.toStringAsFixed(0)} m',
-                          style: TextStyle(
-                            color: Palette.darkGrey.withOpacity(0.8),
+                      const SizedBox(height: 12),
+                      SizedBox(
+                        width: width * 0.5,
+                        child: Text(
+                          place.nombre.toTitleCase(),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            color: Palette.spaceBlue,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
                           ),
-                        )
-                      ],
-                    )
-                  ],
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      Row(
+                        children: [
+                          const PlaceScoreWidget(),
+                          const SizedBox(width: 15),
+                          Text(
+                            'a ${place.distance.toStringAsFixed(0)} m',
+                            style: TextStyle(
+                              color: Palette.darkGrey.withOpacity(0.8),
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ],
             ),

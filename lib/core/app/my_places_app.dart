@@ -2,6 +2,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myplaces_mexico/core/core.dart';
+import 'package:myplaces_mexico/features/home/home.dart';
 import 'package:myplaces_mexico/src/src.dart';
 
 class MyPlacesApp extends StatelessWidget {
@@ -26,20 +27,30 @@ class MyPlacesApp extends StatelessWidget {
           create: (_) => locationService,
         )
       ],
-      child: GestureDetector(
-        onTap: () {
-          FocusManager.instance.primaryFocus?.unfocus();
-        },
-        child: DevicePreview(
-          enabled: false,
-          builder: (context) => MaterialApp.router(
-            routerConfig: AppRouter.router,
-            // ignore: deprecated_member_use
-            useInheritedMediaQuery: true,
-            locale: DevicePreview.locale(context),
-            builder: DevicePreview.appBuilder,
-            theme: AppTheme.light,
-            debugShowCheckedModeBanner: false,
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => HomeBloc(
+                placesUseCase: PlacesUseCaseImpl(RepositoryProvider.of(context),
+                    RepositoryProvider.of(context)))
+              ..add(const HomeEvent.fetchNearbyPlaces()),
+          )
+        ],
+        child: GestureDetector(
+          onTap: () {
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          child: DevicePreview(
+            enabled: false,
+            builder: (context) => MaterialApp.router(
+              routerConfig: AppRouter.router,
+              // ignore: deprecated_member_use
+              useInheritedMediaQuery: true,
+              locale: DevicePreview.locale(context),
+              builder: DevicePreview.appBuilder,
+              theme: AppTheme.light,
+              debugShowCheckedModeBanner: false,
+            ),
           ),
         ),
       ),

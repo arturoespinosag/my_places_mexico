@@ -24,5 +24,6 @@ class HomeState with _$HomeState {
     @Default(true) bool isList,
     @Default(0) int selectedIndex,
     PlaceWithDistance? mapSelectedPlace,
+    @Default([]) List<String> favoritePlaces,
   }) = _HomeState;
 }

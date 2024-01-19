@@ -9,6 +9,19 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsAnimationsGen {
+  const $AssetsAnimationsGen();
+
+  /// File path: assets/animations/location.riv
+  String get location => 'assets/animations/location.riv';
+
+  /// File path: assets/animations/magnifier.riv
+  String get magnifier => 'assets/animations/magnifier.riv';
+
+  /// List of all assets
+  List<String> get values => [location, magnifier];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -101,6 +114,7 @@ class $AssetsPagesHomePageGen {
 class Assets {
   Assets._();
 
+  static const $AssetsAnimationsGen animations = $AssetsAnimationsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsPagesGen pages = $AssetsPagesGen();
 }

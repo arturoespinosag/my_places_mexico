@@ -14,7 +14,8 @@ class PlacesView extends StatelessWidget {
           p.status != c.status ||
           p.locationStatus != c.locationStatus ||
           p.isList != c.isList ||
-          p.places != c.places,
+          p.places != c.places ||
+          c.favoritePlaces != p.favoritePlaces,
       builder: (context, state) {
         final places = state.places;
         final status = state.status;
@@ -37,6 +38,7 @@ class PlacesView extends StatelessWidget {
                   )
                 : PlacesListWidget(
                     places: places,
+                    favoritePlaces: state.favoritePlaces,
                     isList: isList,
                     onRefresh: () async => context
                         .read<HomeBloc>()

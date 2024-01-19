@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myplaces_mexico/core/core.dart';
 import 'package:myplaces_mexico/core/global/widgets/action_button.dart';
 import 'package:myplaces_mexico/features/features.dart';
@@ -37,9 +38,20 @@ class PlaceDetailsView extends StatelessWidget {
                 child: Column(
                   children: [
                     const SizedBox(height: 20),
-                    DetailsTitleWidget(
-                      kind: place.kind,
-                      name: place.nombre,
+                    BlocSelector<HomeBloc, HomeState, List<String>>(
+                      selector: (state) {
+                        return state.favoritePlaces;
+                      },
+                      builder: (context, favoritePlaces) {
+                        final isFavorite =
+                            favoritePlaces.any((e) => e == place.id);
+                        return DetailsTitleWidget(
+                          kind: place.kind,
+                          name: place.nombre,
+                          isFavorite: isFavorite,
+                          placeId: place.id,
+                        );
+                      },
                     ),
                     const SizedBox(height: 20),
                     DetailsRowWidget(
@@ -167,10 +179,14 @@ class DetailsTitleWidget extends StatelessWidget {
     super.key,
     required this.kind,
     required this.name,
+    required this.isFavorite,
+    required this.placeId,
   });
 
   final PlaceKind kind;
   final String name;
+  final bool isFavorite;
+  final String placeId;
 
   @override
   Widget build(BuildContext context) {
@@ -187,12 +203,19 @@ class DetailsTitleWidget extends StatelessWidget {
             ),
           ],
         ),
-        const Row(
+        Row(
           children: [
-            Icon(Icons.share),
-            SizedBox(width: 20),
+            const Icon(Icons.share),
+            const SizedBox(width: 20),
             AnimatedHeartWidget(
               iconRateSize: 1.5,
+              isFavorite: isFavorite,
+              onTap: () {
+                final bloc = context.read<HomeBloc>();
+                isFavorite
+                    ? bloc.add(HomeEvent.favoriteRemoved(placeId: placeId))
+                    : bloc.add(HomeEvent.favoriteAdded(placeId: placeId));
+              },
             ),
           ],
         )
