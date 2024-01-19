@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:myplaces_mexico/core/core.dart';
+
 import 'package:myplaces_mexico/features/features.dart';
+import 'package:rive/rive.dart';
 
 class PlacesView extends StatelessWidget {
   const PlacesView({super.key});
@@ -29,11 +30,9 @@ class PlacesView extends StatelessWidget {
             isLoading
                 ? Expanded(
                     child: Center(
-                      child: AnimatedIconLoader(
-                        icon: isGettingLocation
-                            ? Icons.location_on
-                            : Icons.search,
-                      ),
+                      child: isGettingLocation
+                          ? const RiveLocationLoader()
+                          : const RiveSearchLoader(),
                     ),
                   )
                 : PlacesListWidget(
@@ -46,6 +45,34 @@ class PlacesView extends StatelessWidget {
           ],
         );
       },
+    );
+  }
+}
+
+class RiveSearchLoader extends StatelessWidget {
+  const RiveSearchLoader({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox(
+      height: 80,
+      child: RiveAnimation.asset(
+        'assets/animations/magnifier.riv',
+      ),
+    );
+  }
+}
+
+class RiveLocationLoader extends StatelessWidget {
+  const RiveLocationLoader({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox(
+      height: 150,
+      child: RiveAnimation.asset(
+        'assets/animations/location.riv',
+      ),
     );
   }
 }

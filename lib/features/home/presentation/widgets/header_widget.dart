@@ -17,11 +17,11 @@ class HeaderWidget extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         const Padding(
-          padding: edgeInsetsAll25,
+          padding: edgeInsetsAll10,
           child: Text(
             'Lugares cercanos',
             style: TextStyle(
-              fontSize: 22,
+              fontSize: 18,
               fontWeight: FontWeight.w600,
             ),
           ),

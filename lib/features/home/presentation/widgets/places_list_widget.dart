@@ -24,7 +24,6 @@ class PlacesListWidget extends StatelessWidget {
           onRefresh: onRefresh,
           displacement: 60,
           child: ListView.builder(
-            padding: edgeInsetsSymetricV20.copyWith(left: 0),
             physics: const ClampingScrollPhysics(),
             itemCount: places.length,
             itemBuilder: (context, index) => AnimatedSwitcher(

@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:myplaces_mexico/core/core.dart';
 import 'package:myplaces_mexico/features/features.dart';
-import 'package:myplaces_mexico/src/src.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -52,7 +51,10 @@ class HomeView extends StatelessWidget {
                 backgroundColor: Palette.mainBlue,
                 toolbarHeight: 70,
               ),
-              body: navigationViews[selectedIndex],
+              body: IndexedStack(
+                index: selectedIndex,
+                children: navigationViews,
+              ),
               bottomNavigationBar: NavigationBar(
                 indicatorShape:
                     const RoundedRectangleBorder(borderRadius: borderRadius40),
@@ -108,19 +110,16 @@ class MapView extends StatefulWidget {
 class _MapViewState extends State<MapView> {
   @override
   Widget build(BuildContext context) {
-    final places = context.read<HomeBloc>().state.places;
-
-    final initialLocation = places.isNotEmpty
-        ? LatLng(
-            double.tryParse(places[0].latitud) ?? 19.432366683023716,
-            double.tryParse(places[0].longitud) ?? -99.13323364074559,
-          )
-        : const LatLng(19.432366683023716, -99.13323364074559);
-    return BlocSelector<HomeBloc, HomeState, PlaceWithDistance?>(
-      selector: (state) {
-        return state.mapSelectedPlace;
-      },
-      builder: (context, mapSelectedPlace) {
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+        final mapSelectedPlace = state.mapSelectedPlace;
+        final places = state.places;
+        final initialLocation = places.isNotEmpty
+            ? LatLng(
+                double.tryParse(places[0].latitud) ?? 19.432366683023716,
+                double.tryParse(places[0].longitud) ?? -99.13323364074559,
+              )
+            : const LatLng(19.432366683023716, -99.13323364074559);
         final id = mapSelectedPlace?.id ?? '';
         final markers = places.map((place) {
           final icon = place.id == id
