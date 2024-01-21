@@ -12,9 +12,26 @@ class MapView extends StatefulWidget {
 }
 
 class _MapViewState extends State<MapView> {
+  late final GoogleMapController _controller;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
+    return BlocConsumer<HomeBloc, HomeState>(
+      listenWhen: (p, c) {
+        return c.currentPosition != null &&
+            p.locationStatus != c.locationStatus &&
+            c.locationStatus == LocationStatus.retrieved;
+      },
+      listener: (context, state) => _controller.animateCamera(
+        CameraUpdate.newCameraPosition(
+          CameraPosition(
+            target: LatLng(
+              state.currentPosition!.latitude,
+              state.currentPosition!.longitude,
+            ),
+            zoom: 17,
+          ),
+        ),
+      ),
       builder: (context, state) {
         final mapSelectedPlace = state.mapSelectedPlace;
         final places = state.places;
@@ -47,29 +64,31 @@ class _MapViewState extends State<MapView> {
           );
         }).toSet();
         return GoogleMap(
-          myLocationEnabled: true,
-          trafficEnabled: true,
-          circles: {
-            // TODO(all): add as many circles as opened places are and remove the circle of selected place
-            Circle(
-              circleId: const CircleId('value'),
-              visible: true,
-              center: LatLng(
-                  double.tryParse(mapSelectedPlace?.latitud ?? '') ?? 0,
-                  double.tryParse(mapSelectedPlace?.longitud ?? '') ?? 0),
-              radius: 10,
-              // TODO(all): animate radius
-              fillColor: Colors.blue.withOpacity(0.5),
-              strokeColor: Colors.blue.withOpacity(0.5),
-            )
-          },
-          mapType: MapType.normal,
-          rotateGesturesEnabled: true,
-          scrollGesturesEnabled: true,
-          initialCameraPosition:
-              CameraPosition(target: initialLocation, zoom: 15),
-          markers: markers,
-        );
+            myLocationEnabled: true,
+            trafficEnabled: true,
+            circles: {
+              // TODO(all): add as many circles as opened places are and remove the circle of selected place
+              Circle(
+                circleId: const CircleId('value'),
+                visible: true,
+                center: LatLng(
+                    double.tryParse(mapSelectedPlace?.latitud ?? '') ?? 0,
+                    double.tryParse(mapSelectedPlace?.longitud ?? '') ?? 0),
+                radius: 10,
+                // TODO(all): animate radius
+                fillColor: Colors.blue.withOpacity(0.5),
+                strokeColor: Colors.blue.withOpacity(0.5),
+              )
+            },
+            mapType: MapType.normal,
+            rotateGesturesEnabled: true,
+            scrollGesturesEnabled: true,
+            initialCameraPosition:
+                CameraPosition(target: initialLocation, zoom: 15),
+            markers: markers,
+            onMapCreated: (controller) {
+              _controller = controller;
+            });
       },
     );
   }

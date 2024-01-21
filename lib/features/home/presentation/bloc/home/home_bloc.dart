@@ -52,7 +52,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         return;
       } else {
         coordinates = '${position.latitude},${position.longitude}';
-        emit(state.copyWith(locationStatus: LocationStatus.retrieved));
+        emit(state.copyWith(
+          currentPosition: position,
+          locationStatus: LocationStatus.retrieved,
+        ));
       }
     } catch (e) {
       log(e.toString());
