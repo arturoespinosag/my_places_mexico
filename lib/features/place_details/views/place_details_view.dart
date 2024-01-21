@@ -39,18 +39,16 @@ class PlaceDetailsView extends StatelessWidget {
                 child: Column(
                   children: [
                     const SizedBox(height: 20),
-                    BlocSelector<HomeBloc, HomeState, List<String>>(
+                    BlocSelector<HomeBloc, HomeState, List<PlaceWithDistance>>(
                       selector: (state) {
                         return state.favoritePlaces;
                       },
                       builder: (context, favoritePlaces) {
                         final isFavorite =
-                            favoritePlaces.any((e) => e == place.id);
+                            favoritePlaces.any((e) => e.id == place.id);
                         return DetailsTitleWidget(
-                          kind: place.kind,
-                          name: place.nombre,
                           isFavorite: isFavorite,
-                          placeId: place.id,
+                          place: place,
                         );
                       },
                     ),
@@ -179,16 +177,13 @@ class DetailsRowWidget extends StatelessWidget {
 class DetailsTitleWidget extends StatelessWidget {
   const DetailsTitleWidget({
     super.key,
-    required this.kind,
-    required this.name,
     required this.isFavorite,
-    required this.placeId,
+    required this.place,
   });
 
-  final PlaceKind kind;
-  final String name;
   final bool isFavorite;
-  final String placeId;
+
+  final PlaceWithDistance place;
 
   @override
   Widget build(BuildContext context) {
@@ -197,12 +192,12 @@ class DetailsTitleWidget extends StatelessWidget {
       children: [
         Row(
           children: [
-            Icon(getIcon(kind)),
+            Icon(getIcon(place.kind)),
             const SizedBox(width: 15),
             SizedBox(
               width: MediaQuery.sizeOf(context).width * 0.57,
               child: Text(
-                name.toTitleCase(),
+                place.nombre.toTitleCase(),
                 style:
                     const TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
                 // overflow: TextOverflow.ellipsis,
@@ -220,8 +215,8 @@ class DetailsTitleWidget extends StatelessWidget {
               onTap: () {
                 final bloc = context.read<HomeBloc>();
                 isFavorite
-                    ? bloc.add(HomeEvent.favoriteRemoved(placeId: placeId))
-                    : bloc.add(HomeEvent.favoriteAdded(placeId: placeId));
+                    ? bloc.add(HomeEvent.favoriteRemoved(placeId: place.id))
+                    : bloc.add(HomeEvent.favoriteAdded(place: place));
               },
             ),
           ],

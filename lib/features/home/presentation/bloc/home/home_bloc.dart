@@ -112,7 +112,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   void _onFavoriteAdded(_FavoriteAdded event, Emitter<HomeState> emit) {
     final favoritesCopy = state.favoritePlaces.map((e) => e).toList();
-    favoritesCopy.add(event.placeId);
+    favoritesCopy.add(event.place);
     emit(
       state.copyWith(
         favoritePlaces: favoritesCopy,
@@ -122,7 +122,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   void _onFavoriteRemoved(_FavoriteRemoved event, Emitter<HomeState> emit) {
     final favoritesCopy = state.favoritePlaces.map((e) => e).toList();
-    favoritesCopy.removeWhere((e) => e == event.placeId);
+    favoritesCopy.removeWhere((e) => e.id == event.placeId);
 
     emit(
       state.copyWith(
