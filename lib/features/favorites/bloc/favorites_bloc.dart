@@ -9,10 +9,67 @@ part 'favorites_bloc.freezed.dart';
 class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
   FavoritesBloc() : super(const FavoritesState()) {
     on<_FilterSelected>(_onFilterSelected);
+    on<_FavoriteAdded>(_onFavoriteAdded);
+    on<_FavoriteRemoved>(_onFavoriteRemoved);
   }
   void _onFilterSelected(_FilterSelected event, Emitter<FavoritesState> emit) {
     emit(state.copyWith(
       selectedFilter: event.selectedFilter,
     ));
+    List<PlaceWithDistance> displayedFavoritePlaces = [];
+    if (event.selectedFilter == null) {
+      emit(
+        state.copyWith(
+          displayedFavoritePlaces: state.allFavoritePlaces,
+        ),
+      );
+    } else {
+      for (final place in state.allFavoritePlaces) {
+        if (place.kind == state.selectedFilter) {
+          displayedFavoritePlaces.add(place);
+        }
+      }
+      emit(
+        state.copyWith(
+          displayedFavoritePlaces: displayedFavoritePlaces,
+        ),
+      );
+    }
+  }
+
+  void _onFavoriteAdded(_FavoriteAdded event, Emitter<FavoritesState> emit) {
+    final favoritesCopy = state.allFavoritePlaces.map((e) => e).toList();
+    // if (event.place.kind == state.selectedFilter) {
+    //   final newDisplayedFavorites =
+    //       state.displayedFavoritePlaces.map((e) => e).toList();
+    //   newDisplayedFavorites.add(event.place);
+    //   emit(state.copyWith(displayedFavoritePlaces: newDisplayedFavorites));
+    // }
+    favoritesCopy.add(event.place);
+    emit(
+      state.copyWith(
+        allFavoritePlaces: favoritesCopy,
+      ),
+    );
+    add(FavoritesEvent.filterSelected(
+      selectedFilter: state.selectedFilter,
+    ));
+  }
+
+  void _onFavoriteRemoved(
+      _FavoriteRemoved event, Emitter<FavoritesState> emit) {
+    final favoritesCopy = state.allFavoritePlaces.map((e) => e).toList();
+    favoritesCopy.removeWhere((e) => e.id == event.placeId);
+
+    emit(
+      state.copyWith(
+        allFavoritePlaces: favoritesCopy,
+      ),
+    );
+    add(
+      FavoritesEvent.filterSelected(
+        selectedFilter: state.selectedFilter,
+      ),
+    );
   }
 }

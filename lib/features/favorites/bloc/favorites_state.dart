@@ -4,5 +4,7 @@ part of 'favorites_bloc.dart';
 class FavoritesState with _$FavoritesState {
   const factory FavoritesState({
     PlaceKind? selectedFilter,
+    @Default([]) List<PlaceWithDistance> displayedFavoritePlaces,
+    @Default([]) List<PlaceWithDistance> allFavoritePlaces,
   }) = _FavoritesState;
 }

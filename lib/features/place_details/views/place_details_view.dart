@@ -39,9 +39,10 @@ class PlaceDetailsView extends StatelessWidget {
                 child: Column(
                   children: [
                     const SizedBox(height: 20),
-                    BlocSelector<HomeBloc, HomeState, List<PlaceWithDistance>>(
+                    BlocSelector<FavoritesBloc, FavoritesState,
+                        List<PlaceWithDistance>>(
                       selector: (state) {
-                        return state.favoritePlaces;
+                        return state.allFavoritePlaces;
                       },
                       builder: (context, favoritePlaces) {
                         final isFavorite =
@@ -213,10 +214,11 @@ class DetailsTitleWidget extends StatelessWidget {
               iconRateSize: 1.5,
               isFavorite: isFavorite,
               onTap: () {
-                final bloc = context.read<HomeBloc>();
+                final bloc = context.read<FavoritesBloc>();
                 isFavorite
-                    ? bloc.add(HomeEvent.favoriteRemoved(placeId: place.id))
-                    : bloc.add(HomeEvent.favoriteAdded(place: place));
+                    ? bloc
+                        .add(FavoritesEvent.favoriteRemoved(placeId: place.id))
+                    : bloc.add(FavoritesEvent.favoriteAdded(place: place));
               },
             ),
           ],

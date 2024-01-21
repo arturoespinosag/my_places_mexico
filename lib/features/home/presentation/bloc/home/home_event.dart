@@ -7,8 +7,4 @@ class HomeEvent with _$HomeEvent {
       _IndexSelected;
   const factory HomeEvent.mapSelectedPlaceChanged({required String placeId}) =
       _MapSelectedPlaceChanged;
-  const factory HomeEvent.favoriteAdded({required PlaceWithDistance place}) =
-      _FavoriteAdded;
-  const factory HomeEvent.favoriteRemoved({required String placeId}) =
-      _FavoriteRemoved;
 }

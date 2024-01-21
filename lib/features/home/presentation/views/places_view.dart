@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:myplaces_mexico/features/features.dart';
+import 'package:myplaces_mexico/src/src.dart';
 import 'package:rive/rive.dart';
 
 class PlacesView extends StatelessWidget {
@@ -14,8 +15,7 @@ class PlacesView extends StatelessWidget {
           p.status != c.status ||
           p.locationStatus != c.locationStatus ||
           p.isList != c.isList ||
-          p.places != c.places ||
-          c.favoritePlaces != p.favoritePlaces,
+          p.places != c.places,
       builder: (context, state) {
         final places = state.places;
         final status = state.status;
@@ -23,28 +23,36 @@ class PlacesView extends StatelessWidget {
         final isGettingLocation =
             state.locationStatus == LocationStatus.retrieving;
         final isList = state.isList;
-        return Column(
-          children: [
-            HeaderWidget(
-              isList: isList,
-            ),
-            isLoading
-                ? Expanded(
-                    child: Center(
-                      child: isGettingLocation
-                          ? const RiveLocationLoader()
-                          : const RiveSearchLoader(),
-                    ),
-                  )
-                : PlacesListWidget(
-                    places: places,
-                    favoritePlaces: state.favoritePlaces,
-                    isList: isList,
-                    onRefresh: () async => context
-                        .read<HomeBloc>()
-                        .add(const HomeEvent.fetchNearbyPlaces()),
-                  ),
-          ],
+        return BlocSelector<FavoritesBloc, FavoritesState,
+            List<PlaceWithDistance>>(
+          selector: (state) {
+            return state.allFavoritePlaces;
+          },
+          builder: (context, allFavoritePlaces) {
+            return Column(
+              children: [
+                HeaderWidget(
+                  isList: isList,
+                ),
+                isLoading
+                    ? Expanded(
+                        child: Center(
+                          child: isGettingLocation
+                              ? const RiveLocationLoader()
+                              : const RiveSearchLoader(),
+                        ),
+                      )
+                    : PlacesListWidget(
+                        places: places,
+                        favoritePlaces: allFavoritePlaces,
+                        isList: isList,
+                        onRefresh: () async => context
+                            .read<HomeBloc>()
+                            .add(const HomeEvent.fetchNearbyPlaces()),
+                      ),
+              ],
+            );
+          },
         );
       },
     );

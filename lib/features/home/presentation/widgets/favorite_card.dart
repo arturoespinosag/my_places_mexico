@@ -59,6 +59,12 @@ class FavoriteCard extends StatelessWidget {
                     const SizedBox(height: 6),
                     Text(
                       '${'${place.calle} # ${place.num_Exterior}, '.toTitleCase()}${place.colonia.toTitleCase()}',
+                      style: TextStyle(
+                        color: Palette.darkGrey.withOpacity(0.8),
+                        fontSize: 13,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 6),
                   ],

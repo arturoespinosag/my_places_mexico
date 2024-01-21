@@ -16,8 +16,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<_FetchNearbyPlaces>(_onFetchNearbyPlaces);
     on<_IndexSelected>(_onIndexSelected);
     on<_MapSelectedPlaceChanged>(_onMapSelectedPlaceChanged);
-    on<_FavoriteAdded>(_onFavoriteAdded);
-    on<_FavoriteRemoved>(_onFavoriteRemoved);
   }
 
   final PlacesUseCase _placesUseCase;
@@ -111,26 +109,5 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           state.places.firstWhere((place) => place.id == event.placeId);
     }
     emit(state.copyWith(mapSelectedPlace: selectedPlace));
-  }
-
-  void _onFavoriteAdded(_FavoriteAdded event, Emitter<HomeState> emit) {
-    final favoritesCopy = state.favoritePlaces.map((e) => e).toList();
-    favoritesCopy.add(event.place);
-    emit(
-      state.copyWith(
-        favoritePlaces: favoritesCopy,
-      ),
-    );
-  }
-
-  void _onFavoriteRemoved(_FavoriteRemoved event, Emitter<HomeState> emit) {
-    final favoritesCopy = state.favoritePlaces.map((e) => e).toList();
-    favoritesCopy.removeWhere((e) => e.id == event.placeId);
-
-    emit(
-      state.copyWith(
-        favoritePlaces: favoritesCopy,
-      ),
-    );
   }
 }
