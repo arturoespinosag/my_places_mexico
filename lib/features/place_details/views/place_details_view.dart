@@ -30,6 +30,7 @@ class PlaceDetailsView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
+          physics: const ClampingScrollPhysics(),
           child: Column(
             children: [
               const DetailsHeaderWidget(),
@@ -140,6 +141,7 @@ class PlaceDetailsView extends StatelessWidget {
                       fontSize: 18,
                       onTap: () {},
                     ),
+                    const SizedBox(height: 20)
                   ],
                 ),
               )
@@ -197,9 +199,14 @@ class DetailsTitleWidget extends StatelessWidget {
           children: [
             Icon(getIcon(kind)),
             const SizedBox(width: 15),
-            Text(
-              name.toTitleCase(),
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
+            SizedBox(
+              width: MediaQuery.sizeOf(context).width * 0.57,
+              child: Text(
+                name.toTitleCase(),
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
+                // overflow: TextOverflow.ellipsis,
+              ),
             ),
           ],
         ),

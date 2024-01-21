@@ -9,7 +9,7 @@ class DetailsHeaderWidget extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: 400,
+          height: 300,
           color: Colors.green,
         ),
         const BackArrowWidget()
