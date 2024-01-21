@@ -16,7 +16,7 @@ class PlaceExpandedItemWidget extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
 
     return Container(
-      padding: edgeInsetsSymetricH20,
+      padding: edgeInsetsSymmetricH20,
       height: 120,
       width: double.infinity,
       child: Row(

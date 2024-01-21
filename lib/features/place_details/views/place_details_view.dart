@@ -35,7 +35,7 @@ class PlaceDetailsView extends StatelessWidget {
             children: [
               const DetailsHeaderWidget(),
               Padding(
-                padding: edgeInsetsSymetricH20,
+                padding: edgeInsetsSymmetricH20,
                 child: Column(
                   children: [
                     const SizedBox(height: 20),

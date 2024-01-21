@@ -27,7 +27,7 @@ class HeaderWidget extends StatelessWidget {
           ),
         ),
         Container(
-          padding: edgeInsetsSymetricH30,
+          padding: edgeInsetsSymmetricH30,
           height: 60,
           width: double.infinity,
           decoration: BoxDecoration(

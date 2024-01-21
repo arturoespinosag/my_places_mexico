@@ -86,7 +86,7 @@ class AppTheme {
             color: Colors.green,
             fontWeight: FontWeight.w600,
           ),
-          padding: edgeInsetsSymetricV20,
+          padding: edgeInsetsSymmetricV20,
           elevation: 0,
         ),
       );

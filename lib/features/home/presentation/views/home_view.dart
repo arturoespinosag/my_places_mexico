@@ -23,12 +23,12 @@ class HomeView extends StatelessWidget {
                       bottom: AppBar(
                         toolbarHeight: 80,
                         title: const Padding(
-                          padding: edgeInsetsSymetricH10,
+                          padding: edgeInsetsSymmetricH10,
                           child: SearchBarWidget(),
                         ),
                       ),
                       title: Padding(
-                        padding: edgeInsetsSymetricH14.copyWith(
+                        padding: edgeInsetsSymmetricH14.copyWith(
                           right: 0,
                         ),
                         child: const Text(
@@ -39,7 +39,7 @@ class HomeView extends StatelessWidget {
                       actions: [
                         const Icon(Icons.favorite_outline),
                         Padding(
-                          padding: edgeInsetsSymetricH14.copyWith(left: 6),
+                          padding: edgeInsetsSymmetricH14.copyWith(left: 6),
                           child: IconButton(
                             icon: const Icon(
                               Icons.message_outlined,

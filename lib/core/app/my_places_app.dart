@@ -2,7 +2,8 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myplaces_mexico/core/core.dart';
-import 'package:myplaces_mexico/features/home/home.dart';
+import 'package:myplaces_mexico/features/features.dart';
+
 import 'package:myplaces_mexico/src/src.dart';
 
 class MyPlacesApp extends StatelessWidget {
@@ -34,6 +35,10 @@ class MyPlacesApp extends StatelessWidget {
                 placesUseCase: PlacesUseCaseImpl(RepositoryProvider.of(context),
                     RepositoryProvider.of(context)))
               ..add(const HomeEvent.fetchNearbyPlaces()),
+          ),
+          BlocProvider(
+            create: (context) => FavoritesBloc(),
+            child: Container(),
           )
         ],
         child: GestureDetector(
