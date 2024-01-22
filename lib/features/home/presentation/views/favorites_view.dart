@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:myplaces_mexico/core/core.dart';
 
 import 'package:myplaces_mexico/features/features.dart';
@@ -107,11 +109,34 @@ class FavoritesView extends StatelessWidget {
                             favoritePlaces.length,
                             (index) => FavoriteCard(
                               place: favoritePlaces[index],
-                              onIconPressed: () => context
-                                  .read<FavoritesBloc>()
-                                  .add(FavoritesEvent.favoriteRemoved(
-                                    placeId: favoritePlaces[index].id,
-                                  )),
+                              onIconPressed: () => showAdaptiveDialog(
+                                context: context,
+                                builder: (context) => AlertDialog.adaptive(
+                                    title: const Text('Eliminar favorito'),
+                                    content: const Text(
+                                      '¿Estás seguro que deseas eliminar este favorito?',
+                                    ),
+                                    actions: [
+                                      adaptiveAction(
+                                        context: context,
+                                        onPressed: () {
+                                          context.read<FavoritesBloc>().add(
+                                                FavoritesEvent.favoriteRemoved(
+                                                    placeId:
+                                                        favoritePlaces[index]
+                                                            .id),
+                                              );
+                                          context.pop();
+                                        },
+                                        child: const Text('OK'),
+                                      ),
+                                      adaptiveAction(
+                                        context: context,
+                                        onPressed: () => context.pop(),
+                                        child: const Text('Cancelar'),
+                                      ),
+                                    ]),
+                              ),
                             ),
                           )
                         ],
@@ -125,5 +150,22 @@ class FavoritesView extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+Widget adaptiveAction(
+    {required BuildContext context,
+    required VoidCallback onPressed,
+    required Widget child}) {
+  final ThemeData theme = Theme.of(context);
+  switch (theme.platform) {
+    case TargetPlatform.android:
+    case TargetPlatform.fuchsia:
+    case TargetPlatform.linux:
+    case TargetPlatform.windows:
+      return TextButton(onPressed: onPressed, child: child);
+    case TargetPlatform.iOS:
+    case TargetPlatform.macOS:
+      return CupertinoDialogAction(onPressed: onPressed, child: child);
   }
 }
