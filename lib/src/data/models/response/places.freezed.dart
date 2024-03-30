@@ -12,7 +12,7 @@ part of 'places.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Places _$PlacesFromJson(Map<String, dynamic> json) {
   return _Places.fromJson(json);
@@ -60,19 +60,21 @@ class _$PlacesCopyWithImpl<$Res, $Val extends Places>
 }
 
 /// @nodoc
-abstract class _$$_PlacesCopyWith<$Res> implements $PlacesCopyWith<$Res> {
-  factory _$$_PlacesCopyWith(_$_Places value, $Res Function(_$_Places) then) =
-      __$$_PlacesCopyWithImpl<$Res>;
+abstract class _$$PlacesImplCopyWith<$Res> implements $PlacesCopyWith<$Res> {
+  factory _$$PlacesImplCopyWith(
+          _$PlacesImpl value, $Res Function(_$PlacesImpl) then) =
+      __$$PlacesImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Place> places});
 }
 
 /// @nodoc
-class __$$_PlacesCopyWithImpl<$Res>
-    extends _$PlacesCopyWithImpl<$Res, _$_Places>
-    implements _$$_PlacesCopyWith<$Res> {
-  __$$_PlacesCopyWithImpl(_$_Places _value, $Res Function(_$_Places) _then)
+class __$$PlacesImplCopyWithImpl<$Res>
+    extends _$PlacesCopyWithImpl<$Res, _$PlacesImpl>
+    implements _$$PlacesImplCopyWith<$Res> {
+  __$$PlacesImplCopyWithImpl(
+      _$PlacesImpl _value, $Res Function(_$PlacesImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +82,7 @@ class __$$_PlacesCopyWithImpl<$Res>
   $Res call({
     Object? places = null,
   }) {
-    return _then(_$_Places(
+    return _then(_$PlacesImpl(
       places: null == places
           ? _value._places
           : places // ignore: cast_nullable_to_non_nullable
@@ -92,11 +94,11 @@ class __$$_PlacesCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class _$_Places implements _Places {
-  _$_Places({required final List<Place> places}) : _places = places;
+class _$PlacesImpl implements _Places {
+  _$PlacesImpl({required final List<Place> places}) : _places = places;
 
-  factory _$_Places.fromJson(Map<String, dynamic> json) =>
-      _$$_PlacesFromJson(json);
+  factory _$PlacesImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PlacesImplFromJson(json);
 
   final List<Place> _places;
   @override
@@ -112,10 +114,10 @@ class _$_Places implements _Places {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Places &&
+            other is _$PlacesImpl &&
             const DeepCollectionEquality().equals(other._places, _places));
   }
 
@@ -127,26 +129,26 @@ class _$_Places implements _Places {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlacesCopyWith<_$_Places> get copyWith =>
-      __$$_PlacesCopyWithImpl<_$_Places>(this, _$identity);
+  _$$PlacesImplCopyWith<_$PlacesImpl> get copyWith =>
+      __$$PlacesImplCopyWithImpl<_$PlacesImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PlacesToJson(
+    return _$$PlacesImplToJson(
       this,
     );
   }
 }
 
 abstract class _Places implements Places {
-  factory _Places({required final List<Place> places}) = _$_Places;
+  factory _Places({required final List<Place> places}) = _$PlacesImpl;
 
-  factory _Places.fromJson(Map<String, dynamic> json) = _$_Places.fromJson;
+  factory _Places.fromJson(Map<String, dynamic> json) = _$PlacesImpl.fromJson;
 
   @override
   List<Place> get places;
   @override
   @JsonKey(ignore: true)
-  _$$_PlacesCopyWith<_$_Places> get copyWith =>
+  _$$PlacesImplCopyWith<_$PlacesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
