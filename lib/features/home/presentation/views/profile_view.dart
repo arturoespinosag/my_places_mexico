@@ -96,6 +96,7 @@ class ProfileTile extends StatelessWidget {
         Icon(
           icon,
           color: iconColor,
+          size: 45,
         ),
         const SizedBox(
           width: 10,
@@ -104,7 +105,7 @@ class ProfileTile extends StatelessWidget {
           title,
           style: const TextStyle(
             color: Colors.grey,
-            fontSize: 12,
+            fontSize: 22,
             fontWeight: FontWeight.w600,
           ),
         )
