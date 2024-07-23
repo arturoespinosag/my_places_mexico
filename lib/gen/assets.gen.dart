@@ -68,6 +68,7 @@ class $AssetsImagesGen {
 class $AssetsPagesGen {
   const $AssetsPagesGen();
 
+  /// Directory path: assets/pages/home_page
   $AssetsPagesHomePageGen get homePage => const $AssetsPagesHomePageGen();
 }
 
@@ -120,9 +121,16 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName);
+  const AssetGenImage(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  });
 
   final String _assetName;
+
+  final Size? size;
+  final Set<String> flavors;
 
   Image image({
     Key? key,

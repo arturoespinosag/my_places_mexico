@@ -8,70 +8,72 @@ class ProfileView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 30),
-            const ProfileImage(),
-            const SizedBox(height: 14),
-            const Text(
-              'Arturo Espinosa',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 30),
+              const ProfileImage(),
+              const SizedBox(height: 14),
+              const Text(
+                'Arturo Espinosa',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            const SizedBox(height: 6),
-            const Text(
-              'Tlalpan, CDMX',
-              style: TextStyle(fontSize: 10, fontWeight: FontWeight.w200),
-            ),
-            const SizedBox(height: 35),
-            const FavoritesCounter(),
-            const SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: [
-                  const ProfileTile(
-                    title: 'Personal Information',
-                    icon: Icons.person,
-                  ),
-                  const SizedBox(height: 14),
-                  const ProfileTile(
-                    title: 'Your Order',
-                    icon: Icons.shopping_cart,
-                  ),
-                  const SizedBox(height: 14),
-                  const ProfileTile(
-                    title: 'Your Favorites',
-                    icon: Icons.favorite,
-                  ),
-                  const SizedBox(height: 14),
-                  const ProfileTile(
-                    title: 'Payment',
-                    icon: Icons.wallet,
-                  ),
-                  const SizedBox(height: 14),
-                  const ProfileTile(
-                    title: 'Recommended Shops',
-                    icon: Icons.store,
-                  ),
-                  const SizedBox(height: 14),
-                  const ProfileTile(
-                    title: 'Nearest shop',
-                    icon: Icons.location_on,
-                  ),
-                  const SizedBox(height: 14),
-                  ProfileTile(
-                    title: 'Logout',
-                    icon: Icons.logout_outlined,
-                    iconColor: Colors.black.withOpacity(0.4),
-                  ),
-                ],
+              const SizedBox(height: 6),
+              const Text(
+                'Tlalpan, CDMX',
+                style: TextStyle(fontSize: 10, fontWeight: FontWeight.w200),
               ),
-            )
-          ],
+              const SizedBox(height: 35),
+              const FavoritesCounter(),
+              const SizedBox(height: 30),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  children: [
+                    const ProfileTile(
+                      title: 'Personal Information',
+                      icon: Icons.person,
+                    ),
+                    const SizedBox(height: 14),
+                    const ProfileTile(
+                      title: 'Your Order',
+                      icon: Icons.shopping_cart,
+                    ),
+                    const SizedBox(height: 14),
+                    const ProfileTile(
+                      title: 'Your Favorites',
+                      icon: Icons.favorite,
+                    ),
+                    const SizedBox(height: 14),
+                    const ProfileTile(
+                      title: 'Payment',
+                      icon: Icons.wallet,
+                    ),
+                    const SizedBox(height: 14),
+                    const ProfileTile(
+                      title: 'Recommended Shops',
+                      icon: Icons.store,
+                    ),
+                    const SizedBox(height: 14),
+                    const ProfileTile(
+                      title: 'Nearest shop',
+                      icon: Icons.location_on,
+                    ),
+                    const SizedBox(height: 14),
+                    ProfileTile(
+                      title: 'Logout',
+                      icon: Icons.logout_outlined,
+                      iconColor: Colors.black.withOpacity(0.4),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
