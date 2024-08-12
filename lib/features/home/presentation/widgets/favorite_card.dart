@@ -36,16 +36,16 @@ class FavoriteCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(
-                      height: 10,
+                      height: 2,
                     ),
                     Text(
                       place.kind.query.capitalize,
                       style: TextStyle(
                         color: Palette.darkGrey.withOpacity(0.8),
-                        fontSize: 13,
+                        fontSize: 12,
                       ),
                     ),
-                    const SizedBox(height: 6),
+                    const SizedBox(height: 4),
                     Text(
                       place.nombre.toTitleCase(),
                       maxLines: 1,
@@ -56,7 +56,7 @@ class FavoriteCard extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 6),
+                    const SizedBox(height: 4),
                     Text(
                       '${'${place.calle} # ${place.num_Exterior}, '.toTitleCase()}${place.colonia.toTitleCase()}',
                       style: TextStyle(
@@ -66,7 +66,7 @@ class FavoriteCard extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    const SizedBox(height: 6),
+                    const SizedBox(height: 4),
                   ],
                 ),
               ),

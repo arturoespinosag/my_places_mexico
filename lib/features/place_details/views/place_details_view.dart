@@ -4,6 +4,7 @@ import 'package:myplaces_mexico/core/core.dart';
 import 'package:myplaces_mexico/core/global/widgets/action_button.dart';
 import 'package:myplaces_mexico/features/features.dart';
 import 'package:myplaces_mexico/src/src.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PlaceDetailsView extends StatelessWidget {
   const PlaceDetailsView({
@@ -138,7 +139,7 @@ class PlaceDetailsView extends StatelessWidget {
                       height: 50,
                       textColor: Colors.white,
                       fontSize: 18,
-                      onTap: () {},
+                      onTap: () => navigateTo(place.latitud, place.longitud),
                     ),
                     const SizedBox(height: 20)
                   ],
@@ -149,6 +150,15 @@ class PlaceDetailsView extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+void navigateTo(String lat, String lng) async {
+  final uri = Uri.parse("google.navigation:q=$lat,$lng&mode=d");
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri);
+  } else {
+    throw 'Could not launch ${uri.toString()}';
   }
 }
 
