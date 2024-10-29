@@ -80,6 +80,7 @@ android {
             signingConfig = signingConfigs.release
         }
     }
+    namespace 'com.mx.arturoespinosag.myplaces_mexico'
 }
 
 flutter {
