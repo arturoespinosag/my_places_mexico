@@ -11,7 +11,7 @@ class PlaceScoreWidget extends StatelessWidget {
         5,
         (index) => Icon(
           Icons.star_border_outlined,
-          color: Palette.darkGrey.withOpacity(0.8),
+          color: Palette.darkGrey.withValues(alpha: 0.8),
         ),
       ),
     );

@@ -22,8 +22,12 @@ Places _$PlacesFromJson(Map<String, dynamic> json) {
 mixin _$Places {
   List<Place> get places => throw _privateConstructorUsedError;
 
+  /// Serializes this Places to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Places
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PlacesCopyWith<Places> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -45,6 +49,8 @@ class _$PlacesCopyWithImpl<$Res, $Val extends Places>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Places
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -77,6 +83,8 @@ class __$$PlacesImplCopyWithImpl<$Res>
       _$PlacesImpl _value, $Res Function(_$PlacesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Places
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -121,12 +129,14 @@ class _$PlacesImpl implements _Places {
             const DeepCollectionEquality().equals(other._places, _places));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_places));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Places
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlacesImplCopyWith<_$PlacesImpl> get copyWith =>
@@ -147,8 +157,11 @@ abstract class _Places implements Places {
 
   @override
   List<Place> get places;
+
+  /// Create a copy of Places
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlacesImplCopyWith<_$PlacesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

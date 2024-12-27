@@ -41,7 +41,7 @@ class FavoriteCard extends StatelessWidget {
                     Text(
                       place.kind.query.capitalize,
                       style: TextStyle(
-                        color: Palette.darkGrey.withOpacity(0.8),
+                        color: Palette.darkGrey.withValues(alpha: 0.8),
                         fontSize: 12,
                       ),
                     ),
@@ -60,7 +60,7 @@ class FavoriteCard extends StatelessWidget {
                     Text(
                       '${'${place.calle} # ${place.num_Exterior}, '.toTitleCase()}${place.colonia.toTitleCase()}',
                       style: TextStyle(
-                        color: Palette.darkGrey.withOpacity(0.8),
+                        color: Palette.darkGrey.withValues(alpha: 0.8),
                         fontSize: 13,
                       ),
                       maxLines: 1,

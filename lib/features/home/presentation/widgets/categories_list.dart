@@ -36,7 +36,7 @@ List<Category> _categories = [
 ];
 
 class CategoriesList extends StatelessWidget {
-  const CategoriesList({Key? key}) : super(key: key);
+  const CategoriesList({super.key});
 
   @override
   Widget build(BuildContext context) {

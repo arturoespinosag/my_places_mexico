@@ -67,7 +67,7 @@ class ProfileView extends StatelessWidget {
                     ProfileTile(
                       title: 'Logout',
                       icon: Icons.logout_outlined,
-                      iconColor: Colors.black.withOpacity(0.4),
+                      iconColor: Colors.black.withValues(alpha: 0.4),
                     ),
                   ],
                 ),

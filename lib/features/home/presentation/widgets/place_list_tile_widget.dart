@@ -46,7 +46,8 @@ class PlaceListTileWidget extends StatelessWidget {
                               Text(
                                 place.kind.query.capitalize,
                                 style: TextStyle(
-                                  color: Palette.darkGrey.withOpacity(0.8),
+                                  color:
+                                      Palette.darkGrey.withValues(alpha: 0.8),
                                   fontSize: 13,
                                 ),
                               ),
@@ -82,7 +83,7 @@ class PlaceListTileWidget extends StatelessWidget {
                             Text(
                               'a ${place.distance.toStringAsFixed(0)} m',
                               style: TextStyle(
-                                color: Palette.darkGrey.withOpacity(0.8),
+                                color: Palette.darkGrey.withValues(alpha: 0.8),
                               ),
                             )
                           ],

@@ -76,8 +76,8 @@ class _MapViewState extends State<MapView> {
                     double.tryParse(mapSelectedPlace?.longitud ?? '') ?? 0),
                 radius: 10,
                 // TODO(all): animate radius
-                fillColor: Colors.blue.withOpacity(0.5),
-                strokeColor: Colors.blue.withOpacity(0.5),
+                fillColor: Colors.blue.withValues(alpha: 0.5),
+                strokeColor: Colors.blue.withValues(alpha: 0.5),
               )
             },
             mapType: MapType.normal,
