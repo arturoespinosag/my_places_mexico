@@ -1,3 +1,4 @@
+// ignore: prefer-match-file-name
 extension StringX on String {
   String get capitalize {
     if (isEmpty) {
