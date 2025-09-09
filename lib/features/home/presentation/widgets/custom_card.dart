@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
+  const CustomCard({
+    required this.title,
+    this.firstColor,
+    this.child,
+    this.height = 300.0,
+    this.secondColor,
+    this.image,
+    super.key,
+  });
   final Color? secondColor;
   final Color? firstColor;
   final Widget? child;
@@ -8,47 +17,37 @@ class CustomCard extends StatelessWidget {
   final String? image;
   final Widget title;
 
-  const CustomCard({
-    this.firstColor,
-    this.child,
-    this.height = 300.0,
-    this.secondColor,
-    required this.title,
-    this.image,
-    super.key,
-  });
-
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       return Stack(
         children: [
-          (secondColor != null)
-              ? Container(
-                  margin: const EdgeInsets.symmetric(
-                      horizontal: 20.0, vertical: 5.0),
-                  height: height,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25.0),
-                    color: secondColor,
-                  ),
-                )
-              : Container(
-                  height: 0.0,
-                ),
+          if (secondColor != null)
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              height: height,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
+                color: secondColor,
+              ),
+            )
+          else
+            Container(
+              height: 0,
+            ),
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
+            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             height: secondColor != null ? height! * 0.6 : height,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
-                topLeft: const Radius.circular(25.0),
-                topRight: const Radius.circular(25.0),
+                topLeft: const Radius.circular(25),
+                topRight: const Radius.circular(25),
                 bottomLeft: secondColor != null
                     ? Radius.zero
-                    : const Radius.circular(25.0),
+                    : const Radius.circular(25),
                 bottomRight: secondColor != null
                     ? Radius.zero
-                    : const Radius.circular(25.0),
+                    : const Radius.circular(25),
               ),
               color: firstColor,
             ),

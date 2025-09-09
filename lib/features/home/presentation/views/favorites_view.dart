@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:myplaces_mexico/core/core.dart';
-
 import 'package:myplaces_mexico/features/features.dart';
 import 'package:myplaces_mexico/features/home/presentation/widgets/favorite_card.dart';
 import 'package:myplaces_mexico/src/domain/domain.dart';
@@ -109,12 +108,13 @@ class FavoritesView extends StatelessWidget {
                             favoritePlaces.length,
                             (index) => FavoriteCard(
                               place: favoritePlaces[index],
-                              onIconPressed: () => showAdaptiveDialog(
+                              onIconPressed: () => showAdaptiveDialog<void>(
                                 context: context,
                                 builder: (context) => AlertDialog.adaptive(
                                     title: const Text('Eliminar favorito'),
                                     content: const Text(
-                                      '¿Estás seguro que deseas eliminar este favorito?',
+                                      '¿Estás seguro que deseas'
+                                      ' eliminar este favorito?',
                                     ),
                                     actions: [
                                       adaptiveAction(
@@ -157,7 +157,7 @@ Widget adaptiveAction(
     {required BuildContext context,
     required VoidCallback onPressed,
     required Widget child}) {
-  final ThemeData theme = Theme.of(context);
+  final theme = Theme.of(context);
   switch (theme.platform) {
     case TargetPlatform.android:
     case TargetPlatform.fuchsia:

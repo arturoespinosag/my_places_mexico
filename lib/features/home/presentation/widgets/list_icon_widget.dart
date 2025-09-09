@@ -3,15 +3,15 @@ import 'package:myplaces_mexico/core/core.dart';
 
 class ListIconWidget extends StatelessWidget {
   const ListIconWidget({
-    super.key,
     required this.icon,
     required this.isSelected,
     required this.onTap,
+    super.key,
   });
 
   final IconData icon;
   final bool isSelected;
-  final Function() onTap;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {

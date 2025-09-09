@@ -5,8 +5,8 @@ import 'package:myplaces_mexico/src/domain/domain.dart';
 
 class FavoriteCard extends StatelessWidget {
   const FavoriteCard({
-    super.key,
     required this.place,
+    super.key,
     this.onIconPressed,
   });
 
@@ -58,7 +58,8 @@ class FavoriteCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '${'${place.calle} # ${place.num_Exterior}, '.toTitleCase()}${place.colonia.toTitleCase()}',
+                      '${'${place.calle} # ${place.num_Exterior},'
+                          ' '.toTitleCase()}${place.colonia.toTitleCase()}',
                       style: TextStyle(
                         color: Palette.darkGrey.withValues(alpha: 0.8),
                         fontSize: 13,

@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-
 import 'package:myplaces_mexico/features/features.dart';
 import 'package:myplaces_mexico/src/src.dart';
 
 class PlacesListWidget extends StatelessWidget {
   const PlacesListWidget({
-    super.key,
     required this.places,
     required this.isList,
     required this.onRefresh,
     required this.favoritePlaces,
+    super.key,
   });
 
   final List<PlaceWithDistance> places;
-  //TODO(arturo): remove this and add a property to the place that
+  // TODO(arturo): remove this and add a property to the place that
   // will be used to check wether this place is favorite or not
   final List<PlaceWithDistance> favoritePlaces;
   final bool isList;

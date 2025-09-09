@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const edgeInsetsZero = EdgeInsets.zero;
+const EdgeInsets edgeInsetsZero = EdgeInsets.zero;
 const edgeInsetsAll2 = EdgeInsets.all(2);
 const edgeInsetsAll3 = EdgeInsets.all(3);
 const edgeInsetsAll4 = EdgeInsets.all(4);

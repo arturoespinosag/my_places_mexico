@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class RefreshButtonWidget extends StatelessWidget {
   const RefreshButtonWidget({
-    super.key,
     required this.onTap,
+    super.key,
   });
 
-  final Function() onTap;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:myplaces_mexico/core/core.dart';
-
 import 'package:myplaces_mexico/src/src.dart';
 
 class PlaceExpandedItemWidget extends StatelessWidget {
   const PlaceExpandedItemWidget({
-    super.key,
     required this.place,
+    super.key,
   });
 
   final PlaceWithDistance place;

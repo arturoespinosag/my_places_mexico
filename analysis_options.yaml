@@ -1,8 +1,4 @@
-include: package:flutter_lints/flutter.yaml
-
-dart_code_metrics:
-  extends:
-    - recommended
+include: package:very_good_analysis/analysis_options.yaml
 
 analyzer:
   errors:
@@ -10,6 +6,8 @@ analyzer:
   exclude:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
+    - "**/firebase_options.dart"
 
 linter:
   rules:
+    public_member_api_docs: false

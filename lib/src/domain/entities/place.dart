@@ -1,4 +1,6 @@
+// ignoring temporarily, JsonKey will be used
 // ignore_for_file: non_constant_identifier_names
+// TODO(arturo): use JsonKey to avoid this ignore
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 

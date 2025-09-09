@@ -93,7 +93,7 @@ class HomeView extends StatelessWidget {
   }
 }
 
-final navigationViews = [
+final navigationViews = <Widget>[
   const PlacesView(),
   const MapView(),
   const FavoritesView(),

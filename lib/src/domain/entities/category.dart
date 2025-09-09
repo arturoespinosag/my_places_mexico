@@ -1,8 +1,8 @@
 class Category {
-  final String iconPath, label;
-
   Category({
     required this.iconPath,
     required this.label,
-  }) : assert(iconPath.contains('.svg'));
+  }) : assert(iconPath.contains('.svg'), 'Icon path must contain .svg');
+  final String iconPath;
+  final String label;
 }

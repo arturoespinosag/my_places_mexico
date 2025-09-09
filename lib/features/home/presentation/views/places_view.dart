@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:myplaces_mexico/features/features.dart';
 import 'package:myplaces_mexico/src/src.dart';
 import 'package:rive/rive.dart';
@@ -34,22 +33,23 @@ class PlacesView extends StatelessWidget {
                 HeaderWidget(
                   isList: isList,
                 ),
-                isLoading
-                    ? Expanded(
-                        child: Center(
-                          child: isGettingLocation
-                              ? const RiveLocationLoader()
-                              : const RiveSearchLoader(),
-                        ),
-                      )
-                    : PlacesListWidget(
-                        places: places,
-                        favoritePlaces: allFavoritePlaces,
-                        isList: isList,
-                        onRefresh: () async => context
-                            .read<HomeBloc>()
-                            .add(const HomeEvent.fetchNearbyPlaces()),
-                      ),
+                if (isLoading)
+                  Expanded(
+                    child: Center(
+                      child: isGettingLocation
+                          ? const RiveLocationLoader()
+                          : const RiveSearchLoader(),
+                    ),
+                  )
+                else
+                  PlacesListWidget(
+                    places: places,
+                    favoritePlaces: allFavoritePlaces,
+                    isList: isList,
+                    onRefresh: () async => context
+                        .read<HomeBloc>()
+                        .add(const HomeEvent.fetchNearbyPlaces()),
+                  ),
               ],
             );
           },

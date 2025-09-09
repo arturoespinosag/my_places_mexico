@@ -6,9 +6,9 @@ import 'package:myplaces_mexico/src/src.dart';
 
 class PlaceListTileWidget extends StatelessWidget {
   const PlaceListTileWidget({
-    super.key,
     required this.place,
     required this.isFavorite,
+    super.key,
   });
 
   final PlaceWithDistance place;

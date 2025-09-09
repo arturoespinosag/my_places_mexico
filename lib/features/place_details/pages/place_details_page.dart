@@ -4,17 +4,19 @@ import 'package:myplaces_mexico/features/features.dart';
 import 'package:myplaces_mexico/src/src.dart';
 
 class PlaceDetailsPage extends StatelessWidget {
-  const PlaceDetailsPage({super.key, required this.place});
+  const PlaceDetailsPage({required this.place, super.key});
 
-  final PlaceWithDistance place;
+  final PlaceWithDistance? place;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => PlaceDetailsBloc(),
-      child: PlaceDetailsView(
-        place: place,
-      ),
+      child: place == null
+          ? const SizedBox.shrink()
+          : PlaceDetailsView(
+              place: place!,
+            ),
     );
   }
 }

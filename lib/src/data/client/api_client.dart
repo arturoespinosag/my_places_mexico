@@ -49,7 +49,7 @@ class ApiClient {
     }
   }
 
-  static Future<Response> request(ApiRequest request) {
+  static Future<Response<dynamic>> request(ApiRequest request) {
     return _instance.dio.request<void>(
       request.url,
       data: request.body,

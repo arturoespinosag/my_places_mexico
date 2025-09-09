@@ -14,7 +14,7 @@ class AppRouter {
     GoRoute(
       path: Routes.placeDetailsPage,
       builder: (context, state) {
-        final place = state.extra as PlaceWithDistance;
+        final place = state.extra as PlaceWithDistance?;
         return PlaceDetailsPage(
           place: place,
         );

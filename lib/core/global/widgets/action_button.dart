@@ -3,8 +3,8 @@ import 'package:myplaces_mexico/core/core.dart';
 
 class ActionButton extends StatelessWidget {
   const ActionButton({
-    super.key,
     required this.text,
+    super.key,
     this.textColor,
     this.leadingIcon,
     this.trailingImage,

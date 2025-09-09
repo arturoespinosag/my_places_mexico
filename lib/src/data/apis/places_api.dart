@@ -15,11 +15,11 @@ class PlacesApi {
           PlacesEndpoint.search(query, coordinates, distance),
         ),
         (dynamic j) {
-          List<Place> places = [];
+          final places = <Place>[];
           (j as List<dynamic>)
               .map(
                 (e) => places.add(
-                  Place.fromJson(e),
+                  Place.fromJson(e as Map<String, dynamic>),
                 ),
               )
               .toList();
@@ -35,8 +35,8 @@ class PlacesApi {
           PlacesEndpoint.individual(placeId),
         ),
         (dynamic j) {
-          Place place = Place.fromJson((j as List<dynamic>)[0]);
-
+          final place =
+              Place.fromJson((j as List<dynamic>)[0] as Map<String, dynamic>);
           return place;
         },
       );

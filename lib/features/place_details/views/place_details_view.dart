@@ -8,8 +8,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 class PlaceDetailsView extends StatelessWidget {
   const PlaceDetailsView({
-    super.key,
     required this.place,
+    super.key,
   });
 
   final PlaceWithDistance place;
@@ -69,7 +69,8 @@ class PlaceDetailsView extends StatelessWidget {
                         style: style,
                       ),
                       rightWidget: Text(
-                        'Lunes - Viernes 9 - 18\n\nSábado 9 - 14\n\nDomingo Cerrado',
+                        'Lunes - Viernes 9 - 18\n\nSábado 9 '
+                        '- 14\n\nDomingo Cerrado',
                         textAlign: TextAlign.end,
                         style: style,
                       ),
@@ -97,7 +98,6 @@ class PlaceDetailsView extends StatelessWidget {
                       rightWidget: SizedBox(
                         width: width * 0.7,
                         child: RichText(
-                          textAlign: TextAlign.start,
                           text: TextSpan(children: [
                             TextSpan(
                               text: 'Roxana',
@@ -153,20 +153,20 @@ class PlaceDetailsView extends StatelessWidget {
   }
 }
 
-void navigateTo(String lat, String lng) async {
-  final uri = Uri.parse("google.navigation:q=$lat,$lng&mode=d");
+Future<void> navigateTo(String lat, String lng) async {
+  final uri = Uri.parse('google.navigation:q=$lat,$lng&mode=d');
   if (await canLaunchUrl(uri)) {
     await launchUrl(uri);
   } else {
-    throw 'Could not launch ${uri.toString()}';
+    throw Exception('Could not launch $uri');
   }
 }
 
 class DetailsRowWidget extends StatelessWidget {
   const DetailsRowWidget({
-    super.key,
     required this.leftWidget,
     required this.rightWidget,
+    super.key,
   });
 
   final Widget leftWidget;
@@ -187,9 +187,9 @@ class DetailsRowWidget extends StatelessWidget {
 
 class DetailsTitleWidget extends StatelessWidget {
   const DetailsTitleWidget({
-    super.key,
     required this.isFavorite,
     required this.place,
+    super.key,
   });
 
   final bool isFavorite;

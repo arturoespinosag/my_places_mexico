@@ -9,7 +9,7 @@ class PlacesRepository implements IPlacesRepository {
     final apiResult = await _placesApi.search(
         query: query, coordinates: coordinates, distance: distance);
     return apiResult.when(
-      success: ((data) => data),
+      success: (data) => data,
       failure: (e, s) => throw e,
     );
   }

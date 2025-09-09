@@ -35,23 +35,25 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
       ),
     )..forward(from: 1);
 
-    // Tween size from 148 to 0, on a 0.0 to 0.15 interval using an easeInOut curve
-    _greyHeartSize = Tween(begin: 18.0, end: 0.0).animate(
+    // Tween size from 148 to 0, on a 0.0 to 0.15
+    // interval using an easeInOut curve
+    _greyHeartSize = Tween<double>(begin: 18, end: 0).animate(
       CurvedAnimation(
         parent: _controller,
-        curve: const Interval(0.0, 0.15, curve: Curves.easeInOut),
+        curve: const Interval(0, 0.15, curve: Curves.easeInOut),
       ),
     );
 
-    _redCircleSize = Tween(begin: 0.0, end: 37.0).animate(
+    _redCircleSize = Tween<double>(begin: 0, end: 37).animate(
       CurvedAnimation(
         parent: _controller,
-        curve: const Interval(0.0, 0.3, curve: Curves.easeInOut),
+        curve: const Interval(0, 0.3, curve: Curves.easeInOut),
       ),
     );
 
-    // Tween size from 0 to 315 on a 0.1 to 0.25 interval using an easeInOut curve
-    _whiteCircleSize = Tween(begin: 0.0, end: 39.0).animate(
+    // Tween size from 0 to 315 on a 0.1 to 0.25
+    // interval using an easeInOut curve
+    _whiteCircleSize = Tween<double>(begin: 0, end: 39).animate(
       CurvedAnimation(
         parent: _controller,
         curve: const Interval(0.1, 0.25, curve: Curves.easeInOut),
@@ -71,31 +73,31 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
         TweenSequenceItem<double>(
           tween: Tween(begin: 0.6, end: 24.32)
               .chain(CurveTween(curve: Curves.easeOut)),
-          weight: 20.0,
+          weight: 20,
         ),
         TweenSequenceItem<double>(
           tween: Tween(begin: 24.32, end: 9.73)
-              .chain(CurveTween(curve: const Cubic(0.71, -0.01, 1.0, 1.0))),
-          weight: 20.0,
+              .chain(CurveTween(curve: const Cubic(0.71, -0.01, 1, 1))),
+          weight: 20,
         ),
         TweenSequenceItem<double>(
-          tween: Tween(begin: 9.73, end: 18.0)
+          tween: Tween<double>(begin: 9.73, end: 18)
               .chain(CurveTween(curve: Curves.elasticOut)),
-          weight: 60.0,
+          weight: 60,
         ),
       ],
-    ).animate((CurvedAnimation(
-        parent: _controller, curve: const Interval(0.1, 1.0))));
+    ).animate(
+        CurvedAnimation(parent: _controller, curve: const Interval(0.1, 1)));
 
     _waveEffectOpacity = TweenSequence(
       <TweenSequenceItem<double>>[
         TweenSequenceItem<double>(
-          tween: Tween(begin: 0.0, end: 1.0),
-          weight: 60.0,
+          tween: Tween(begin: 0, end: 1),
+          weight: 60,
         ),
         TweenSequenceItem<double>(
-          tween: Tween(begin: 1.0, end: 0.0),
-          weight: 40.0,
+          tween: Tween(begin: 1, end: 0),
+          weight: 40,
         ),
       ],
     ).animate(
@@ -121,18 +123,19 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
     return SizedBox.square(
       dimension: 38,
       child: GestureDetector(
-        onTap: () async {
+        onTap: () {
           // setState(() {
           //   isFavorite = !isFavorite;
           // });
-          _controller.reset();
-          _controller.forward();
+          _controller
+            ..reset()
+            ..forward();
+
           widget.onTap?.call();
         },
         child: Stack(
           children: [
             Align(
-              alignment: Alignment.center,
               child: AnimatedBuilder(
                 animation: _controller,
                 builder: (context, child) {
@@ -145,7 +148,6 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
               ),
             ),
             Align(
-              alignment: Alignment.center,
               child: AnimatedBuilder(
                   animation: _controller,
                   builder: (context, _) {
@@ -157,7 +159,6 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
                   }),
             ),
             Align(
-              alignment: Alignment.center,
               child: AnimatedBuilder(
                   animation: _controller,
                   builder: (context, _) {
@@ -171,7 +172,6 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
                   }),
             ),
             Align(
-              alignment: Alignment.center,
               child: AnimatedBuilder(
                   animation: _controller,
                   builder: (context, _) {
@@ -185,7 +185,6 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
                   }),
             ),
             Align(
-              alignment: Alignment.center,
               child: AnimatedBuilder(
                   animation: _controller,
                   builder: (context, _) {

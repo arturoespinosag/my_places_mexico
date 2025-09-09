@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class AnimatedIconLoader extends StatefulWidget {
   const AnimatedIconLoader({
-    super.key,
     required this.icon,
+    super.key,
   });
   final IconData icon;
 
@@ -19,8 +19,6 @@ class _AnimatedIconLoaderState extends State<AnimatedIconLoader>
   void initState() {
     _controller = AnimationController(
         vsync: this,
-        lowerBound: 0,
-        upperBound: 1,
         duration: const Duration(
           milliseconds: 2500,
         ))

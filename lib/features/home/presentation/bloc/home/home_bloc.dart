@@ -55,7 +55,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           locationStatus: LocationStatus.retrieved,
         ));
       }
-    } catch (e) {
+    } on Exception catch (e) {
       log(e.toString());
       return;
     }
@@ -63,7 +63,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     final places = <PlaceWithDistance>[];
     for (final query in queries) {
       try {
-        var response = await _placesUseCase.getPlaces(
+        final response = await _placesUseCase.getPlaces(
           query: query.query,
           coordinates: coordinates,
           distance: '500',
@@ -71,7 +71,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           currentPosition: position,
         );
         places.addAll(response.placesWithDistance);
-      } catch (e) {
+      } on Exception catch (_) {
         log('No se encontraron lugares ${query.query}');
         emit(
           state.copyWith(
@@ -80,12 +80,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         );
       }
     }
-    final sortedPlaces = <PlaceWithDistance>[];
-
-    sortedPlaces.addAll(places);
-    sortedPlaces.sort(
-      (a, b) => a.distance.compareTo(b.distance),
-    );
+    final sortedPlaces = <PlaceWithDistance>[...places]..sort(
+        (a, b) => a.distance.compareTo(b.distance),
+      );
 
     emit(state.copyWith(
       status: HomeStatus.loaded,

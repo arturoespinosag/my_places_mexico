@@ -10,7 +10,6 @@ class ProfileView extends StatelessWidget {
       child: Center(
         child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 30),
               const ProfileImage(),
@@ -82,9 +81,9 @@ class ProfileView extends StatelessWidget {
 
 class ProfileTile extends StatelessWidget {
   const ProfileTile({
-    super.key,
     required this.title,
     required this.icon,
+    super.key,
     this.iconColor = Colors.blue,
   });
   final String title;

@@ -3,15 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myplaces_mexico/core/core.dart';
 import 'package:myplaces_mexico/features/features.dart';
-
 import 'package:myplaces_mexico/src/src.dart';
 
 class MyPlacesApp extends StatelessWidget {
   const MyPlacesApp(
-      {super.key,
-      required,
-      required this.placesRepository,
-      required this.locationService});
+      {required this.placesRepository,
+      required this.locationService,
+      super.key});
 
   final IPlacesRepository placesRepository;
   final LocationService locationService;
@@ -49,8 +47,6 @@ class MyPlacesApp extends StatelessWidget {
             enabled: false,
             builder: (context) => MaterialApp.router(
               routerConfig: AppRouter.router,
-              // ignore: deprecated_member_use
-              useInheritedMediaQuery: true,
               locale: DevicePreview.locale(context),
               builder: DevicePreview.appBuilder,
               theme: AppTheme.light,

@@ -44,7 +44,7 @@ class CustomBottomSheet extends StatelessWidget {
 }
 
 void show(BuildContext context, Place place) {
-  showModalBottomSheet(
+  showModalBottomSheet<void>(
     context: context,
     builder: (context) => CustomBottomSheet(place: place),
   );

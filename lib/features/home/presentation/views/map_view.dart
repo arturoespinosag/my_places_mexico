@@ -67,10 +67,10 @@ class _MapViewState extends State<MapView> {
             myLocationEnabled: true,
             trafficEnabled: true,
             circles: {
-              // TODO(all): add as many circles as opened places are and remove the circle of selected place
+              // TODO(all): add as many circles as
+              //opened places are and remove the circle of selected place
               Circle(
                 circleId: const CircleId('value'),
-                visible: true,
                 center: LatLng(
                     double.tryParse(mapSelectedPlace?.latitud ?? '') ?? 0,
                     double.tryParse(mapSelectedPlace?.longitud ?? '') ?? 0),
@@ -80,9 +80,6 @@ class _MapViewState extends State<MapView> {
                 strokeColor: Colors.blue.withValues(alpha: 0.5),
               )
             },
-            mapType: MapType.normal,
-            rotateGesturesEnabled: true,
-            scrollGesturesEnabled: true,
             initialCameraPosition:
                 CameraPosition(target: initialLocation, zoom: 15),
             markers: markers,

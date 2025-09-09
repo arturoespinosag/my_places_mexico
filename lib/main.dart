@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:myplaces_mexico/core/core.dart';
 import 'package:myplaces_mexico/firebase_options.dart';
-
-import 'src/src.dart';
+import 'package:myplaces_mexico/src/src.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

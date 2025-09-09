@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-
 import 'package:myplaces_mexico/core/core.dart';
 import 'package:myplaces_mexico/features/features.dart';
 
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget({
-    super.key,
     required this.isList,
+    super.key,
   });
 
   final bool isList;
@@ -33,7 +32,6 @@ class HeaderWidget extends StatelessWidget {
           decoration: BoxDecoration(
             color: Palette.lightGrey,
             border: Border.all(
-              color: Colors.black,
               width: 0.1,
             ),
           ),
