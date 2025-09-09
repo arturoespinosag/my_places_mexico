@@ -38,9 +38,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
   }
 
   void _onFavoriteAdded(_FavoriteAdded event, Emitter<FavoritesState> emit) {
-    final favoritesCopy = state.allFavoritePlaces
-      ..map((e) => e).toList()
-      ..add(event.place);
+    final favoritesCopy = [...state.allFavoritePlaces, event.place];
     // if (event.place.kind == state.selectedFilter) {
     //   final newDisplayedFavorites =
     //       state.displayedFavoritePlaces.map((e) => e).toList();
@@ -59,10 +57,8 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
 
   void _onFavoriteRemoved(
       _FavoriteRemoved event, Emitter<FavoritesState> emit) {
-    final favoritesCopy = state.allFavoritePlaces
-      ..map((e) => e).toList()
-      ..removeWhere((e) => e.id == event.placeId);
-
+    final favoritesCopy =
+        state.allFavoritePlaces.where((e) => e.id != event.placeId).toList();
     emit(
       state.copyWith(
         allFavoritePlaces: favoritesCopy,
