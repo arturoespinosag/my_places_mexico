@@ -7,4 +7,7 @@ class HomeEvent with _$HomeEvent {
       _IndexSelected;
   const factory HomeEvent.mapSelectedPlaceChanged({required String placeId}) =
       _MapSelectedPlaceChanged;
+
+  const factory HomeEvent.filterPlaces({required String query}) =
+      _PlacesFiltered;
 }

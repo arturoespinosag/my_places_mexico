@@ -52,8 +52,9 @@ class AppTheme {
   //     );
 
   static AppBarTheme get _appBarTheme => const AppBarTheme(
-        backgroundColor: Palette.mainBlue,
+        backgroundColor: Colors.white,
         foregroundColor: Colors.white,
+        surfaceTintColor: Colors.transparent,
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarBrightness: Brightness.dark,
           statusBarIconBrightness: Brightness.light,
@@ -114,18 +115,8 @@ class AppTheme {
   static InputDecorationTheme get _inputDecorationTheme =>
       const InputDecorationTheme(
         border: OutlineInputBorder(borderRadius: borderRadius5),
-        enabledBorder: UnderlineInputBorder(
-          borderRadius: borderRadius5,
-          borderSide: BorderSide(
-            width: 0.75,
-          ),
-        ),
-        focusedBorder: UnderlineInputBorder(
-          borderRadius: borderRadius5,
-          borderSide: BorderSide(
-            width: 1.5,
-          ),
-        ),
+        enabledBorder: InputBorder.none,
+        focusedBorder: InputBorder.none,
       );
 
   static CheckboxThemeData get _checkboxTheme => CheckboxThemeData(

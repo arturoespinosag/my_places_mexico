@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
@@ -16,9 +17,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<_FetchNearbyPlaces>(_onFetchNearbyPlaces);
     on<_IndexSelected>(_onIndexSelected);
     on<_MapSelectedPlaceChanged>(_onMapSelectedPlaceChanged);
+    on<_PlacesFiltered>(_onPlacesFiltered);
   }
 
   final PlacesUseCase _placesUseCase;
+  late TextEditingController searchController;
+
+  void init() {
+    searchController = TextEditingController();
+  }
 
   Future<void> _onFetchNearbyPlaces(
     _FetchNearbyPlaces event,
@@ -106,5 +113,17 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           state.places.firstWhere((place) => place.id == event.placeId);
     }
     emit(state.copyWith(mapSelectedPlace: selectedPlace));
+  }
+
+  void _onPlacesFiltered(_PlacesFiltered event, Emitter<HomeState> emit) {
+    final filteredPlaces = state.places.where((place) {
+      final placeQuery = place.kind.query.toLowerCase();
+      final placeName = place.nombre.toLowerCase();
+      final query = event.query.toLowerCase();
+      final containsName = placeName.contains(query);
+      final containsQuery = placeQuery.contains(query);
+      return containsName || containsQuery;
+    }).toList();
+    emit(state.copyWith(filteredPlaces: filteredPlaces));
   }
 }

@@ -1,27 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:myplaces_mexico/core/core.dart';
 
-class SearchBarWidget extends StatefulWidget {
-  const SearchBarWidget({super.key});
+class SearchBarWidget extends StatelessWidget {
+  const SearchBarWidget({super.key, this.onChanged, this.controller});
 
-  @override
-  State<SearchBarWidget> createState() => _SearchBarWidgetState();
-}
-
-class _SearchBarWidgetState extends State<SearchBarWidget> {
-  late final TextEditingController _controller;
-
-  @override
-  void initState() {
-    _controller = TextEditingController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+  final void Function(String)? onChanged;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +18,14 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
         borderRadius: borderRadius4,
       ),
       child: TextField(
-        onChanged: (text) {},
-        controller: _controller,
+        onChanged: onChanged,
+        controller: controller,
         decoration: const InputDecoration(
           prefixIcon: Icon(
             Icons.search,
             color: Colors.grey,
           ),
-          hintText: 'Search',
+          hintText: 'Buscar',
           hintStyle: TextStyle(
             fontSize: 17,
             color: Colors.grey,

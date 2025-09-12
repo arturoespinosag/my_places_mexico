@@ -15,16 +15,6 @@ class HeaderWidget extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const Padding(
-          padding: edgeInsetsAll10,
-          child: Text(
-            'Lugares cercanos',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
         Container(
           padding: edgeInsetsSymmetricH30,
           height: 60,

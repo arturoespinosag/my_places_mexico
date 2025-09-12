@@ -6,6 +6,8 @@ class HomeState with _$HomeState {
     @Default(HomeStatus.initial) HomeStatus status,
     @Default(LocationStatus.unknown) LocationStatus locationStatus,
     @Default([]) List<PlaceWithDistance> places,
+    @Default([]) List<PlaceWithDistance> filteredPlaces,
+    @Default('') String query,
     @Default(true) bool isList,
     @Default(0) int selectedIndex,
     PlaceWithDistance? mapSelectedPlace,
@@ -13,12 +15,7 @@ class HomeState with _$HomeState {
   }) = _HomeState;
 }
 
-enum HomeStatus {
-  initial,
-  loading,
-  loaded,
-  error,
-}
+enum HomeStatus { initial, loading, loaded, error }
 
 enum LocationStatus {
   unknown,

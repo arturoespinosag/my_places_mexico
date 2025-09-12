@@ -14,10 +14,13 @@ class PlacesView extends StatelessWidget {
           p.status != c.status ||
           p.locationStatus != c.locationStatus ||
           p.isList != c.isList ||
-          p.places != c.places,
+          p.places != c.places ||
+          p.filteredPlaces != c.filteredPlaces,
       builder: (context, state) {
-        final places = state.places;
         final status = state.status;
+        final places = state.filteredPlaces.isNotEmpty
+            ? state.filteredPlaces
+            : state.places;
         final isLoading = status == HomeStatus.loading;
         final isGettingLocation =
             state.locationStatus == LocationStatus.retrieving;

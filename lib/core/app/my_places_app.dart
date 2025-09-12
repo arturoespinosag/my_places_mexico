@@ -32,6 +32,7 @@ class MyPlacesApp extends StatelessWidget {
             create: (context) => HomeBloc(
                 placesUseCase: PlacesUseCaseImpl(RepositoryProvider.of(context),
                     RepositoryProvider.of(context)))
+              ..init()
               ..add(const HomeEvent.fetchNearbyPlaces()),
           ),
           BlocProvider(
@@ -45,12 +46,17 @@ class MyPlacesApp extends StatelessWidget {
           },
           child: DevicePreview(
             enabled: false,
-            builder: (context) => MaterialApp.router(
-              routerConfig: AppRouter.router,
-              locale: DevicePreview.locale(context),
-              builder: DevicePreview.appBuilder,
-              theme: AppTheme.light,
-              debugShowCheckedModeBanner: false,
+            builder: (context) => GestureDetector(
+              onTap: () {
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
+              child: MaterialApp.router(
+                routerConfig: AppRouter.router,
+                locale: DevicePreview.locale(context),
+                builder: DevicePreview.appBuilder,
+                theme: AppTheme.light,
+                debugShowCheckedModeBanner: false,
+              ),
             ),
           ),
         ),

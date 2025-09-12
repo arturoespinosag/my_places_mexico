@@ -19,11 +19,18 @@ class HomeView extends StatelessWidget {
             child: Scaffold(
               appBar: selectedIndex == 0
                   ? AppBar(
+                      toolbarHeight: 70,
                       bottom: AppBar(
-                        toolbarHeight: 80,
-                        title: const Padding(
-                          padding: edgeInsetsSymmetricH10,
-                          child: SearchBarWidget(),
+                        toolbarHeight: 60,
+                        title: Padding(
+                          padding: edgeInsetsSymmetricH10.copyWith(bottom: 20),
+                          child: SearchBarWidget(
+                            controller:
+                                context.read<HomeBloc>().searchController,
+                            onChanged: (text) => context
+                                .read<HomeBloc>()
+                                .add(HomeEvent.filterPlaces(query: text)),
+                          ),
                         ),
                       ),
                       title: Padding(
@@ -32,6 +39,11 @@ class HomeView extends StatelessWidget {
                         ),
                         child: const Text(
                           'My Places',
+                          style: TextStyle(
+                            fontSize: 26,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
+                          ),
                           textAlign: TextAlign.left,
                         ),
                       ),
@@ -47,8 +59,6 @@ class HomeView extends StatelessWidget {
                           ),
                         ),
                       ],
-                      backgroundColor: Palette.mainBlue,
-                      toolbarHeight: 70,
                     )
                   : null,
               body: IndexedStack(
