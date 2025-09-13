@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myplaces_mexico/core/core.dart';
-import 'package:myplaces_mexico/features/features.dart';
+import 'package:myplaces_mexico/src/domain/domain.dart';
 
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget({
@@ -15,27 +15,35 @@ class HeaderWidget extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
-          padding: edgeInsetsSymmetricH30,
+        SizedBox(
           height: 60,
           width: double.infinity,
-          decoration: BoxDecoration(
-            color: Palette.lightGrey,
-            border: Border.all(
-              width: 0.1,
-            ),
-          ),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Row(children: [
-                ListIconWidget(
-                  icon: Icons.list_sharp,
-                  isSelected: isList,
-                  onTap: () {},
+              const SizedBox(width: 10),
+              Expanded(
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  physics: const ClampingScrollPhysics(),
+                  itemCount: PlaceKind.values.length,
+                  itemBuilder: (context, index) => FilterChip(
+                    label: Text(PlaceKind.values[index].query.capitalize),
+                    disabledColor: const Color.fromARGB(255, 249, 249, 248),
+                    selected: index.isOdd,
+                    onSelected: (_) {
+                      primaryFocus?.unfocus();
+                    },
+                    avatar: Icon(getIcon(PlaceKind.values[index])),
+                    chipAnimationStyle: ChipAnimationStyle(
+                        selectAnimation:
+                            const AnimationStyle(curve: Curves.bounceIn)),
+                    showCheckmark: false,
+                  ),
+                  separatorBuilder: (context, index) =>
+                      const SizedBox(width: 10),
                 ),
-              ]),
+              ),
+              const SizedBox(width: 10),
             ],
           ),
         ),

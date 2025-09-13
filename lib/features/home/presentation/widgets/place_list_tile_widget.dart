@@ -18,10 +18,13 @@ class PlaceListTileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.sizeOf(context).width;
     return InkWell(
-      onTap: () => context.push(
-        Routes.placeDetailsPage,
-        extra: place,
-      ),
+      onTap: () {
+        primaryFocus?.unfocus();
+        context.push(
+          Routes.placeDetailsPage,
+          extra: place,
+        );
+      },
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         elevation: 5,

@@ -117,12 +117,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   void _onPlacesFiltered(_PlacesFiltered event, Emitter<HomeState> emit) {
     final filteredPlaces = state.places.where((place) {
-      final placeQuery = place.kind.query.toLowerCase();
       final placeName = place.nombre.toLowerCase();
       final query = event.query.toLowerCase();
       final containsName = placeName.contains(query);
-      final containsQuery = placeQuery.contains(query);
-      return containsName || containsQuery;
+      return containsName;
     }).toList();
     emit(state.copyWith(filteredPlaces: filteredPlaces));
   }
