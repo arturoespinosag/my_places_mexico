@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myplaces_mexico/core/shared/shared.dart';
 import 'package:myplaces_mexico/features/features.dart';
 import 'package:myplaces_mexico/src/src.dart';
 import 'package:rive/rive.dart';
@@ -31,29 +32,32 @@ class PlacesView extends StatelessWidget {
             return state.allFavoritePlaces;
           },
           builder: (context, allFavoritePlaces) {
-            return Column(
-              children: [
-                HeaderWidget(
-                  isList: isList,
-                ),
-                if (isLoading)
-                  Expanded(
-                    child: Center(
-                      child: isGettingLocation
-                          ? const RiveLocationLoader()
-                          : const RiveSearchLoader(),
-                    ),
-                  )
-                else
-                  PlacesListWidget(
-                    places: places,
-                    favoritePlaces: allFavoritePlaces,
+            return Padding(
+              padding: edgeInsetsSymmetricH20,
+              child: Column(
+                children: [
+                  HeaderWidget(
                     isList: isList,
-                    onRefresh: () async => context
-                        .read<HomeBloc>()
-                        .add(const HomeEvent.fetchNearbyPlaces()),
                   ),
-              ],
+                  if (isLoading)
+                    Expanded(
+                      child: Center(
+                        child: isGettingLocation
+                            ? const RiveLocationLoader()
+                            : const RiveSearchLoader(),
+                      ),
+                    )
+                  else
+                    PlacesListWidget(
+                      places: places,
+                      favoritePlaces: allFavoritePlaces,
+                      isList: isList,
+                      onRefresh: () async => context
+                          .read<HomeBloc>()
+                          .add(const HomeEvent.fetchNearbyPlaces()),
+                    ),
+                ],
+              ),
             );
           },
         );

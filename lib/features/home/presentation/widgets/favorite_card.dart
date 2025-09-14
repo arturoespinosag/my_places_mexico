@@ -17,8 +17,9 @@ class FavoriteCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.sizeOf(context).width;
     return Card(
+      color: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      elevation: 5,
+      elevation: 1,
       child: SizedBox(
         height: 80,
         child: InkWell(
@@ -71,14 +72,13 @@ class FavoriteCard extends StatelessWidget {
                   ],
                 ),
               ),
-              InkWell(
-                onTap: onIconPressed,
-                child: const Icon(
-                  Icons.favorite,
-                  color: Colors.red,
-                  size: 30,
-                ),
-              )
+              GestureDetector(
+                  onTap: onIconPressed,
+                  child: Image.asset(
+                    'assets/images/Heart_Red.png',
+                    height: 30,
+                    width: 30,
+                  )),
             ],
           ),
         ),

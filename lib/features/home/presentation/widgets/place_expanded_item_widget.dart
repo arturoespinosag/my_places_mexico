@@ -26,7 +26,7 @@ class PlaceExpandedItemWidget extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(getIcon(place.kind)),
+                  Icon(place.kind.getIcon()),
                   const SizedBox(width: 10),
                   SizedBox(
                       width: width * 0.5,

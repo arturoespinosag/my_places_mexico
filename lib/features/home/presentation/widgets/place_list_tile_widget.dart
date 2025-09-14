@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:myplaces_mexico/core/core.dart';
 import 'package:myplaces_mexico/features/features.dart';
@@ -27,7 +28,8 @@ class PlaceListTileWidget extends StatelessWidget {
       },
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        elevation: 5,
+        elevation: 1,
+        color: Colors.white,
         child: SizedBox(
           height: 80,
           child: Row(
@@ -35,36 +37,16 @@ class PlaceListTileWidget extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const PlaceImageWidget(),
                   const SizedBox(width: 20),
+                  PlaceIconWidget(
+                    icon: Icon(place.kind.getIcon(), color: Colors.white),
+                  ),
+                  const SizedBox(width: 10),
                   IntrinsicWidth(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                place.kind.query.capitalize,
-                                style: TextStyle(
-                                  color:
-                                      Palette.darkGrey.withValues(alpha: 0.8),
-                                  fontSize: 13,
-                                ),
-                              ),
-                              Icon(
-                                Icons.favorite,
-                                color: isFavorite
-                                    ? Colors.red
-                                    : Colors.grey.shade400,
-                                size: 20,
-                              )
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 6),
                         SizedBox(
                           width: width * 0.5,
                           child: Text(
@@ -78,26 +60,45 @@ class PlaceListTileWidget extends StatelessWidget {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 6),
-                        Row(
-                          children: [
-                            const PlaceScoreWidget(),
-                            const SizedBox(width: 15),
-                            Text(
-                              'a ${place.distance.toStringAsFixed(0)} m',
-                              style: TextStyle(
-                                color: Palette.darkGrey.withValues(alpha: 0.8),
+                        Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                place.kind.query.capitalize,
+                                style: TextStyle(
+                                  color:
+                                      Palette.darkGrey.withValues(alpha: 0.8),
+                                  fontSize: 13,
+                                ),
                               ),
-                            )
-                          ],
+                            ],
+                          ),
                         ),
-                        const SizedBox(height: 6),
+                        const SizedBox(height: 10),
+                        Text(
+                          '${place.distance.toStringAsFixed(0)} m',
+                          style: TextStyle(
+                            color: Palette.darkGrey.withValues(alpha: 0.8),
+                          ),
+                        ),
+                        const Spacer()
                       ],
                     ),
                   ),
                 ],
               ),
-              const Icon(Icons.arrow_forward_ios),
+              AnimatedHeartWidget(
+                iconRateSize: 1.5,
+                isFavorite: isFavorite,
+                onTap: () {
+                  final bloc = context.read<FavoritesBloc>();
+                  isFavorite
+                      ? bloc.add(
+                          FavoritesEvent.favoriteRemoved(placeId: place.id))
+                      : bloc.add(FavoritesEvent.favoriteAdded(place: place));
+                },
+              ),
               const SizedBox(width: 1),
             ],
           ),

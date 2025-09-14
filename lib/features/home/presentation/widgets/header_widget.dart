@@ -33,7 +33,7 @@ class HeaderWidget extends StatelessWidget {
                     onSelected: (_) {
                       primaryFocus?.unfocus();
                     },
-                    avatar: Icon(getIcon(PlaceKind.values[index])),
+                    avatar: Icon(PlaceKind.values[index].getIcon()),
                     chipAnimationStyle: ChipAnimationStyle(
                         selectAnimation:
                             const AnimationStyle(curve: Curves.bounceIn)),

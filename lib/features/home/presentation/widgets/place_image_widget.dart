@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 
-class PlaceImageWidget extends StatelessWidget {
-  const PlaceImageWidget({super.key});
+class PlaceIconWidget extends StatelessWidget {
+  const PlaceIconWidget({required this.icon, super.key});
+
+  final Widget icon;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.all(10),
       decoration: const BoxDecoration(
-          borderRadius: BorderRadius.horizontal(
-            right: Radius.circular(40),
+          borderRadius: BorderRadius.all(
+            Radius.circular(15),
           ),
-          color: Colors.red),
-      width: 75,
-      height: double.infinity,
+          color: Color.fromARGB(255, 213, 222, 238)),
+      width: 50,
+      height: 50,
+      child: icon,
     );
   }
 }

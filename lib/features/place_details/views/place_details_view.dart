@@ -203,7 +203,7 @@ class DetailsTitleWidget extends StatelessWidget {
       children: [
         Row(
           children: [
-            Icon(getIcon(place.kind)),
+            Icon(place.kind.getIcon()),
             const SizedBox(width: 15),
             SizedBox(
               width: MediaQuery.sizeOf(context).width * 0.57,

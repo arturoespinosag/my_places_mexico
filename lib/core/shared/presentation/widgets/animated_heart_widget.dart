@@ -21,8 +21,6 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
     with TickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _greyHeartSize;
-  late Animation<double> _redCircleSize;
-  late Animation<double> _whiteCircleSize;
   late Animation<double> _waveEffectSize;
   late Animation<double> _waveEffectOpacity;
   late Animation<double> _redHeartSize;
@@ -41,22 +39,6 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
       CurvedAnimation(
         parent: _controller,
         curve: const Interval(0, 0.15, curve: Curves.easeInOut),
-      ),
-    );
-
-    _redCircleSize = Tween<double>(begin: 0, end: 37).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: const Interval(0, 0.3, curve: Curves.easeInOut),
-      ),
-    );
-
-    // Tween size from 0 to 315 on a 0.1 to 0.25
-    // interval using an easeInOut curve
-    _whiteCircleSize = Tween<double>(begin: 0, end: 39).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: const Interval(0.1, 0.25, curve: Curves.easeInOut),
       ),
     );
 
@@ -135,29 +117,6 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
         },
         child: Stack(
           children: [
-            Align(
-              child: AnimatedBuilder(
-                animation: _controller,
-                builder: (context, child) {
-                  return SizedBox(
-                    height: _redCircleSize.value * widget.iconRateSize,
-                    width: _redCircleSize.value * widget.iconRateSize,
-                    child: Assets.images.circleRed.image(),
-                  );
-                },
-              ),
-            ),
-            Align(
-              child: AnimatedBuilder(
-                  animation: _controller,
-                  builder: (context, _) {
-                    return SizedBox(
-                      height: _whiteCircleSize.value * widget.iconRateSize,
-                      width: _whiteCircleSize.value * widget.iconRateSize,
-                      child: Assets.images.circleWhite.image(),
-                    );
-                  }),
-            ),
             Align(
               child: AnimatedBuilder(
                   animation: _controller,
