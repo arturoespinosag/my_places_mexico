@@ -3,6 +3,11 @@ description: A new Flutter project.
 version: 1.0.0+1
 publish_to: "none"
 
+flutter_gen:
+  assets:
+    exclude:
+      - assets/icons/
+
 environment:
   sdk: ">=3.6.0 <4.0.0"
 
@@ -41,3 +46,4 @@ flutter:
     - assets/pages/home_page/
     - assets/images/
     - assets/animations/
+    - assets/icons/

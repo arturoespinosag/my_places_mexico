@@ -1,5 +1,4 @@
 import 'package:geolocator/geolocator.dart';
-
 import 'package:myplaces_mexico/src/src.dart';
 
 abstract class PlacesUseCase {
@@ -59,8 +58,8 @@ class PlacesUseCaseImpl implements PlacesUseCase {
         final distance = _locationService.getDistance(
             currentLatitude: currentPosition.latitude,
             currentLongitude: currentPosition.longitude,
-            latitude: double.parse(e.latitud),
-            longitude: double.parse(e.longitud));
+            latitude: double.tryParse(e.latitud) ?? 19.432366683023716,
+            longitude: double.tryParse(e.longitud) ?? -99.13323364074559);
         return PlaceWithDistance(
           id: e.id,
           nombre: e.nombre,

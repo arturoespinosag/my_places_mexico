@@ -12,10 +12,14 @@ class HomeState with _$HomeState {
     @Default(0) int selectedIndex,
     PlaceWithDistance? mapSelectedPlace,
     Position? currentPosition,
+    @Default({}) Set<Marker> markers,
+    @Default(BottomSheetStatus.closed) BottomSheetStatus bottomSheetStatus,
   }) = _HomeState;
 }
 
 enum HomeStatus { initial, loading, loaded, error }
+
+enum BottomSheetStatus { closed, open, openning }
 
 enum LocationStatus {
   unknown,

@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:myplaces_mexico/src/src.dart';
 
 part 'home_bloc.freezed.dart';
@@ -68,6 +69,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     }
     const queries = PlaceKind.values;
     final places = <PlaceWithDistance>[];
+    var markers = <Marker>{};
     for (final query in queries) {
       try {
         final response = await _placesUseCase.getPlaces(
@@ -78,6 +80,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           currentPosition: position,
         );
         places.addAll(response.placesWithDistance);
+        markers = await getMarkers(places: places);
       } on Exception catch (_) {
         log('No se encontraron lugares ${query.query}');
         emit(
@@ -94,6 +97,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(state.copyWith(
       status: HomeStatus.loaded,
       places: sortedPlaces,
+      markers: markers,
     ));
   }
 
@@ -108,11 +112,16 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   void _onMapSelectedPlaceChanged(
       _MapSelectedPlaceChanged event, Emitter<HomeState> emit) {
     PlaceWithDistance? selectedPlace;
+    emit(state.copyWith(bottomSheetStatus: BottomSheetStatus.openning));
     if (state.places.any((place) => place.id == event.placeId)) {
       selectedPlace =
           state.places.firstWhere((place) => place.id == event.placeId);
     }
-    emit(state.copyWith(mapSelectedPlace: selectedPlace));
+    emit(state.copyWith(
+      mapSelectedPlace: selectedPlace,
+      bottomSheetStatus: BottomSheetStatus.open,
+    ));
+    emit(state.copyWith(bottomSheetStatus: BottomSheetStatus.closed));
   }
 
   void _onPlacesFiltered(_PlacesFiltered event, Emitter<HomeState> emit) {
@@ -123,5 +132,27 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       return containsName;
     }).toList();
     emit(state.copyWith(filteredPlaces: filteredPlaces));
+  }
+
+  Future<Set<Marker>> getMarkers(
+      {required List<PlaceWithDistance> places}) async {
+    final markers = <Marker>{};
+    for (final place in places) {
+      final icon = await BitmapDescriptor.asset(
+        const ImageConfiguration(
+          size: Size.square(30),
+        ),
+        place.kind.path,
+      );
+      final marker = Marker(
+        icon: icon,
+        markerId: MarkerId(place.id),
+        onTap: () => add(HomeEvent.mapSelectedPlaceChanged(placeId: place.id)),
+        position: LatLng(double.tryParse(place.latitud) ?? 0,
+            double.tryParse(place.longitud) ?? 0),
+      );
+      markers.add(marker);
+    }
+    return markers;
   }
 }
