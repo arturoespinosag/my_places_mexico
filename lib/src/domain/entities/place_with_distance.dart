@@ -3,6 +3,7 @@
 // TODO(arturo): use JsonKey to avoid this ignore
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:myplaces_mexico/core/core.dart';
 import 'package:myplaces_mexico/src/src.dart';
 
 part 'place_with_distance.freezed.dart';
@@ -25,4 +26,9 @@ class PlaceWithDistance with _$PlaceWithDistance {
     required double distance,
     required PlaceKind kind,
   }) = _PlaceWithDistance;
+}
+
+extension PlaceAddress on PlaceWithDistance {
+  String get address => '${'$calle # $num_Exterior,'
+      ' '.toTitleCase()}${colonia.toTitleCase()}';
 }

@@ -6,6 +6,7 @@ class AppTheme {
   const AppTheme._();
 
   static ThemeData get light => ThemeData(
+        useMaterial3: true,
         appBarTheme: _appBarTheme,
         scaffoldBackgroundColor: Colors.white,
         iconTheme: _iconTheme,

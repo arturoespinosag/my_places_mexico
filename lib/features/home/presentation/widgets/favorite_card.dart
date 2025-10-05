@@ -59,8 +59,7 @@ class FavoriteCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '${'${place.calle} # ${place.num_Exterior},'
-                          ' '.toTitleCase()}${place.colonia.toTitleCase()}',
+                      place.address,
                       style: TextStyle(
                         color: Palette.darkGrey.withValues(alpha: 0.8),
                         fontSize: 13,

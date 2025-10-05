@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myplaces_mexico/core/shared/shared.dart';
 import 'package:myplaces_mexico/features/features.dart';
+import 'package:myplaces_mexico/gen/assets.gen.dart';
 import 'package:myplaces_mexico/src/src.dart';
 import 'package:rive/rive.dart';
 
@@ -71,10 +72,10 @@ class RiveSearchLoader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       height: 80,
       child: RiveAnimation.asset(
-        'assets/animations/magnifier.riv',
+        Assets.animations.magnifier,
       ),
     );
   }
@@ -85,10 +86,10 @@ class RiveLocationLoader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       height: 150,
       child: RiveAnimation.asset(
-        'assets/animations/location.riv',
+        Assets.animations.location,
       ),
     );
   }

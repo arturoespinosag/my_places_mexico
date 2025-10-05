@@ -22,6 +22,41 @@ class $AssetsAnimationsGen {
   List<String> get values => [location, magnifier];
 }
 
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/gas_station.png
+  AssetGenImage get gasStation =>
+      const AssetGenImage('assets/icons/gas_station.png');
+
+  /// File path: assets/icons/grocery.png
+  AssetGenImage get grocery => const AssetGenImage('assets/icons/grocery.png');
+
+  /// File path: assets/icons/hotel.png
+  AssetGenImage get hotel => const AssetGenImage('assets/icons/hotel.png');
+
+  /// File path: assets/icons/restaurant.png
+  AssetGenImage get restaurant =>
+      const AssetGenImage('assets/icons/restaurant.png');
+
+  /// File path: assets/icons/school.png
+  AssetGenImage get school => const AssetGenImage('assets/icons/school.png');
+
+  /// File path: assets/icons/stationery.png
+  AssetGenImage get stationery =>
+      const AssetGenImage('assets/icons/stationery.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    gasStation,
+    grocery,
+    hotel,
+    restaurant,
+    school,
+    stationery,
+  ];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -116,6 +151,7 @@ class Assets {
   const Assets._();
 
   static const $AssetsAnimationsGen animations = $AssetsAnimationsGen();
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsPagesGen pages = $AssetsPagesGen();
 }
