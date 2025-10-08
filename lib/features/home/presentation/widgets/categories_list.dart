@@ -10,7 +10,9 @@ List<Category> _categories = [
     label: 'Autolavado',
   ),
   Category(
-      iconPath: 'assets/pages/home_page/gas_station.svg', label: 'Gasolinería'),
+    iconPath: 'assets/pages/home_page/gas_station.svg',
+    label: 'Gasolinería',
+  ),
   Category(
     iconPath: 'assets/pages/home_page/groceries.svg',
     label: 'Abarrotes',
@@ -24,7 +26,9 @@ List<Category> _categories = [
     label: 'Mercado',
   ),
   Category(
-      iconPath: 'assets/pages/home_page/restaurant.svg', label: 'Restaurante'),
+    iconPath: 'assets/pages/home_page/restaurant.svg',
+    label: 'Restaurante',
+  ),
   Category(
     iconPath: 'assets/pages/home_page/school.svg',
     label: 'Escuela',
@@ -75,8 +79,9 @@ class _CategoryButton extends StatelessWidget {
         width: 100,
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
-            border: Border.all(width: 0.3),
-            borderRadius: BorderRadius.circular(20)),
+          border: Border.all(width: 0.3),
+          borderRadius: BorderRadius.circular(20),
+        ),
         child: Column(
           children: [
             SvgPicture.asset(

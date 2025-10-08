@@ -52,16 +52,20 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         );
         return;
       } else if (position.latitude == 0 && position.longitude == 0) {
-        emit(state.copyWith(
-          locationStatus: LocationStatus.deniedForever,
-        ));
+        emit(
+          state.copyWith(
+            locationStatus: LocationStatus.deniedForever,
+          ),
+        );
         return;
       } else {
         coordinates = '${position.latitude},${position.longitude}';
-        emit(state.copyWith(
-          currentPosition: position,
-          locationStatus: LocationStatus.retrieved,
-        ));
+        emit(
+          state.copyWith(
+            currentPosition: position,
+            locationStatus: LocationStatus.retrieved,
+          ),
+        );
       }
     } on Exception catch (e) {
       log(e.toString());
@@ -94,11 +98,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         (a, b) => a.distance.compareTo(b.distance),
       );
 
-    emit(state.copyWith(
-      status: HomeStatus.loaded,
-      places: sortedPlaces,
-      markers: markers,
-    ));
+    emit(
+      state.copyWith(
+        status: HomeStatus.loaded,
+        places: sortedPlaces,
+        markers: markers,
+      ),
+    );
   }
 
   void _onIndexSelected(_IndexSelected event, Emitter<HomeState> emit) {
@@ -110,17 +116,21 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   void _onMapSelectedPlaceChanged(
-      _MapSelectedPlaceChanged event, Emitter<HomeState> emit) {
+    _MapSelectedPlaceChanged event,
+    Emitter<HomeState> emit,
+  ) {
     PlaceWithDistance? selectedPlace;
     emit(state.copyWith(bottomSheetStatus: BottomSheetStatus.openning));
     if (state.places.any((place) => place.id == event.placeId)) {
       selectedPlace =
           state.places.firstWhere((place) => place.id == event.placeId);
     }
-    emit(state.copyWith(
-      mapSelectedPlace: selectedPlace,
-      bottomSheetStatus: BottomSheetStatus.open,
-    ));
+    emit(
+      state.copyWith(
+        mapSelectedPlace: selectedPlace,
+        bottomSheetStatus: BottomSheetStatus.open,
+      ),
+    );
     emit(state.copyWith(bottomSheetStatus: BottomSheetStatus.closed));
   }
 
@@ -134,8 +144,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(state.copyWith(filteredPlaces: filteredPlaces));
   }
 
-  Future<Set<Marker>> getMarkers(
-      {required List<PlaceWithDistance> places}) async {
+  Future<Set<Marker>> getMarkers({
+    required List<PlaceWithDistance> places,
+  }) async {
     final markers = <Marker>{};
     for (final place in places) {
       final icon = await BitmapDescriptor.asset(
@@ -148,8 +159,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         icon: icon,
         markerId: MarkerId(place.id),
         onTap: () => add(HomeEvent.mapSelectedPlaceChanged(placeId: place.id)),
-        position: LatLng(double.tryParse(place.latitud) ?? 0,
-            double.tryParse(place.longitud) ?? 0),
+        position: LatLng(
+          double.tryParse(place.latitud) ?? 0,
+          double.tryParse(place.longitud) ?? 0,
+        ),
       );
       markers.add(marker);
     }

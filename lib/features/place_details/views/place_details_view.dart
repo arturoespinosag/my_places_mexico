@@ -98,38 +98,40 @@ class PlaceDetailsView extends StatelessWidget {
                       rightWidget: SizedBox(
                         width: width * 0.7,
                         child: RichText(
-                          text: TextSpan(children: [
-                            TextSpan(
-                              text: 'Roxana',
-                              style: style.copyWith(
-                                color: Colors.red,
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: 'Roxana',
+                                style: style.copyWith(
+                                  color: Colors.red,
+                                ),
                               ),
-                            ),
-                            TextSpan(
-                              text: ', ',
-                              style: style.copyWith(color: Colors.black),
-                            ),
-                            TextSpan(
-                              text: 'Isaac',
-                              style: style.copyWith(
-                                color: Colors.red,
+                              TextSpan(
+                                text: ', ',
+                                style: style.copyWith(color: Colors.black),
                               ),
-                            ),
-                            TextSpan(
-                              text: ' y otros ',
-                              style: style.copyWith(color: Colors.black),
-                            ),
-                            TextSpan(
-                              text: '2 amigos',
-                              style: style.copyWith(
-                                color: Colors.red,
+                              TextSpan(
+                                text: 'Isaac',
+                                style: style.copyWith(
+                                  color: Colors.red,
+                                ),
                               ),
-                            ),
-                            TextSpan(
-                              text: ' agregaron este lugar como favorito.',
-                              style: style.copyWith(color: Colors.black),
-                            ),
-                          ]),
+                              TextSpan(
+                                text: ' y otros ',
+                                style: style.copyWith(color: Colors.black),
+                              ),
+                              TextSpan(
+                                text: '2 amigos',
+                                style: style.copyWith(
+                                  color: Colors.red,
+                                ),
+                              ),
+                              TextSpan(
+                                text: ' agregaron este lugar como favorito.',
+                                style: style.copyWith(color: Colors.black),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -141,10 +143,10 @@ class PlaceDetailsView extends StatelessWidget {
                       fontSize: 18,
                       onTap: () => navigateTo(place.latitud, place.longitud),
                     ),
-                    const SizedBox(height: 20)
+                    const SizedBox(height: 20),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -232,7 +234,7 @@ class DetailsTitleWidget extends StatelessWidget {
               },
             ),
           ],
-        )
+        ),
       ],
     );
   }

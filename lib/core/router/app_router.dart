@@ -6,21 +6,23 @@ import 'package:myplaces_mexico/src/src.dart';
 
 class AppRouter {
   const AppRouter._();
-  static GoRouter router = GoRouter(routes: [
-    GoRoute(
-      path: Routes.homePage,
-      builder: (context, state) => const HomePage(),
-    ),
-    GoRoute(
-      path: Routes.placeDetailsPage,
-      builder: (context, state) {
-        final place = state.extra as PlaceWithDistance?;
-        return PlaceDetailsPage(
-          place: place,
-        );
-      },
-    )
-  ]);
+  static GoRouter router = GoRouter(
+    routes: [
+      GoRoute(
+        path: Routes.homePage,
+        builder: (context, state) => const HomePage(),
+      ),
+      GoRoute(
+        path: Routes.placeDetailsPage,
+        builder: (context, state) {
+          final place = state.extra as PlaceWithDistance?;
+          return PlaceDetailsPage(
+            place: place,
+          );
+        },
+      ),
+    ],
+  );
 }
 
 extension SafeNavigation on BuildContext {

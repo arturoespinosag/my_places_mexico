@@ -24,7 +24,7 @@ class ApiClient {
       BaseOptions(
         baseUrl: baseUrl,
         headers: <String, String>{
-          HttpHeaders.contentTypeHeader: 'application/json'
+          HttpHeaders.contentTypeHeader: 'application/json',
         },
         connectTimeout: const Duration(milliseconds: 30000),
         receiveTimeout: const Duration(milliseconds: 30000),
@@ -41,7 +41,7 @@ class ApiClient {
           logPrint: (message) {
             log('$message');
             // Temporarily enable print at publish time
-            //ignore: avoid_print, temporary print to see log in adb logcat only on dev, execute command:  Mac: adb logcat | grep flutter. Windows: adb logcat | findstr flutter
+            //ignore: temporary print to see log in adb logcat only on dev, execute command:  Mac: adb logcat | grep flutter. Windows: adb logcat | findstr flutter
             // print(message);
           },
         ),

@@ -19,60 +19,62 @@ class CustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      return Stack(
-        children: [
-          if (secondColor != null)
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Stack(
+          children: [
+            if (secondColor != null)
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                height: height,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
+                  color: secondColor,
+                ),
+              )
+            else
+              Container(
+                height: 0,
+              ),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-              height: height,
+              height: secondColor != null ? height! * 0.6 : height,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                color: secondColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: const Radius.circular(25),
+                  topRight: const Radius.circular(25),
+                  bottomLeft: secondColor != null
+                      ? Radius.zero
+                      : const Radius.circular(25),
+                  bottomRight: secondColor != null
+                      ? Radius.zero
+                      : const Radius.circular(25),
+                ),
+                color: firstColor,
               ),
-            )
-          else
-            Container(
-              height: 0,
+              child: child,
             ),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-            height: secondColor != null ? height! * 0.6 : height,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: const Radius.circular(25),
-                topRight: const Radius.circular(25),
-                bottomLeft: secondColor != null
-                    ? Radius.zero
-                    : const Radius.circular(25),
-                bottomRight: secondColor != null
-                    ? Radius.zero
-                    : const Radius.circular(25),
-              ),
-              color: firstColor,
+            Positioned(
+              top: 30,
+              left: 40,
+              child: image != null
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: Image.asset(
+                        image!,
+                        width: constraints.maxWidth * 0.4,
+                      ),
+                    )
+                  : Container(),
             ),
-            child: child,
-          ),
-          Positioned(
-            top: 30,
-            left: 40,
-            child: image != null
-                ? ClipRRect(
-                    borderRadius: BorderRadius.circular(30),
-                    child: Image.asset(
-                      image!,
-                      width: constraints.maxWidth * 0.4,
-                    ),
-                  )
-                : Container(),
-          ),
-          Positioned(
-            bottom: 35,
-            left: 50,
-            child: title,
-          ),
-        ],
-      );
-    });
+            Positioned(
+              bottom: 35,
+              left: 50,
+              child: title,
+            ),
+          ],
+        );
+      },
+    );
   }
 }

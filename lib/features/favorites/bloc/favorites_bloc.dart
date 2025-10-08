@@ -13,9 +13,11 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     on<_FavoriteRemoved>(_onFavoriteRemoved);
   }
   void _onFilterSelected(_FilterSelected event, Emitter<FavoritesState> emit) {
-    emit(state.copyWith(
-      selectedFilter: event.selectedFilter,
-    ));
+    emit(
+      state.copyWith(
+        selectedFilter: event.selectedFilter,
+      ),
+    );
     final displayedFavoritePlaces = <PlaceWithDistance>[];
     if (event.selectedFilter == null) {
       emit(
@@ -50,13 +52,17 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
         allFavoritePlaces: favoritesCopy,
       ),
     );
-    add(FavoritesEvent.filterSelected(
-      selectedFilter: state.selectedFilter,
-    ));
+    add(
+      FavoritesEvent.filterSelected(
+        selectedFilter: state.selectedFilter,
+      ),
+    );
   }
 
   void _onFavoriteRemoved(
-      _FavoriteRemoved event, Emitter<FavoritesState> emit) {
+    _FavoriteRemoved event,
+    Emitter<FavoritesState> emit,
+  ) {
     final favoritesCopy =
         state.allFavoritePlaces.where((e) => e.id != event.placeId).toList();
     emit(

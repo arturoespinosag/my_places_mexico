@@ -1,3 +1,7 @@
+// We don't want to await for the future to be completed
+//to change the color of the heart
+// ignore_for_file: discarded_futures
+
 import 'package:flutter/material.dart';
 import 'package:myplaces_mexico/gen/assets.gen.dart';
 
@@ -69,7 +73,8 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
         ),
       ],
     ).animate(
-        CurvedAnimation(parent: _controller, curve: const Interval(0.1, 1)));
+      CurvedAnimation(parent: _controller, curve: const Interval(0.1, 1)),
+    );
 
     _waveEffectOpacity = TweenSequence(
       <TweenSequenceItem<double>>[
@@ -119,42 +124,46 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
           children: [
             Align(
               child: AnimatedBuilder(
-                  animation: _controller,
-                  builder: (context, _) {
-                    return SizedBox(
-                      height: _waveEffectSize.value * widget.iconRateSize,
-                      width: _waveEffectSize.value * widget.iconRateSize,
-                      child: Opacity(
-                          opacity: _waveEffectOpacity.value,
-                          child: Assets.images.heartWaveEffect.image()),
-                    );
-                  }),
+                animation: _controller,
+                builder: (context, _) {
+                  return SizedBox(
+                    height: _waveEffectSize.value * widget.iconRateSize,
+                    width: _waveEffectSize.value * widget.iconRateSize,
+                    child: Opacity(
+                      opacity: _waveEffectOpacity.value,
+                      child: Assets.images.heartWaveEffect.image(),
+                    ),
+                  );
+                },
+              ),
             ),
             Align(
               child: AnimatedBuilder(
-                  animation: _controller,
-                  builder: (context, _) {
-                    return SizedBox(
-                      height: _redHeartSize.value * widget.iconRateSize,
-                      width: _redHeartSize.value * widget.iconRateSize,
-                      child: widget.isFavorite
-                          ? Assets.images.heartRed.image()
-                          : Assets.images.heartGrey.image(),
-                    );
-                  }),
+                animation: _controller,
+                builder: (context, _) {
+                  return SizedBox(
+                    height: _redHeartSize.value * widget.iconRateSize,
+                    width: _redHeartSize.value * widget.iconRateSize,
+                    child: widget.isFavorite
+                        ? Assets.images.heartRed.image()
+                        : Assets.images.heartGrey.image(),
+                  );
+                },
+              ),
             ),
             Align(
               child: AnimatedBuilder(
-                  animation: _controller,
-                  builder: (context, _) {
-                    return SizedBox(
-                      height: _greyHeartSize.value * widget.iconRateSize,
-                      width: _greyHeartSize.value * widget.iconRateSize,
-                      child: widget.isFavorite
-                          ? Assets.images.heartGrey.image()
-                          : Assets.images.heartRed.image(),
-                    );
-                  }),
+                animation: _controller,
+                builder: (context, _) {
+                  return SizedBox(
+                    height: _greyHeartSize.value * widget.iconRateSize,
+                    width: _greyHeartSize.value * widget.iconRateSize,
+                    child: widget.isFavorite
+                        ? Assets.images.heartGrey.image()
+                        : Assets.images.heartRed.image(),
+                  );
+                },
+              ),
             ),
           ],
         ),

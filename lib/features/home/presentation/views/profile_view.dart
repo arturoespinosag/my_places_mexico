@@ -70,7 +70,7 @@ class ProfileView extends StatelessWidget {
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -109,7 +109,7 @@ class ProfileTile extends StatelessWidget {
             fontSize: 22,
             fontWeight: FontWeight.w600,
           ),
-        )
+        ),
       ],
     );
   }
@@ -152,7 +152,7 @@ class FavoritesCounter extends StatelessWidget {
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
                   ),
-                )
+                ),
               ],
             ),
           ),

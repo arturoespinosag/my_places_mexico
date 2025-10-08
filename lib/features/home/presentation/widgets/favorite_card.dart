@@ -72,12 +72,13 @@ class FavoriteCard extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                  onTap: onIconPressed,
-                  child: Image.asset(
-                    'assets/images/Heart_Red.png',
-                    height: 30,
-                    width: 30,
-                  )),
+                onTap: onIconPressed,
+                child: Image.asset(
+                  'assets/images/Heart_Red.png',
+                  height: 30,
+                  width: 30,
+                ),
+              ),
             ],
           ),
         ),

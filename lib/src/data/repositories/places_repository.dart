@@ -5,9 +5,15 @@ class PlacesRepository implements IPlacesRepository {
   final PlacesApi _placesApi;
   @override
   Future<Places> fetchNearbyPlaces(
-      String query, String coordinates, String distance) async {
+    String query,
+    String coordinates,
+    String distance,
+  ) async {
     final apiResult = await _placesApi.search(
-        query: query, coordinates: coordinates, distance: distance);
+      query: query,
+      coordinates: coordinates,
+      distance: distance,
+    );
     return apiResult.when(
       success: (data) => data,
       failure: (e, s) => throw e,

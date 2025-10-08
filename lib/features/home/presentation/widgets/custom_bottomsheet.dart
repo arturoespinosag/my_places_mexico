@@ -43,8 +43,8 @@ class CustomBottomSheet extends StatelessWidget {
   }
 }
 
-void show(BuildContext context, Place place) {
-  showModalBottomSheet<void>(
+Future<void> show(BuildContext context, Place place) async {
+  await showModalBottomSheet<void>(
     context: context,
     builder: (context) => CustomBottomSheet(place: place),
   );

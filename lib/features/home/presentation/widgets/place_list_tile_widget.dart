@@ -19,9 +19,9 @@ class PlaceListTileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.sizeOf(context).width;
     return InkWell(
-      onTap: () {
+      onTap: () async {
         primaryFocus?.unfocus();
-        context.push(
+        await context.push(
           Routes.placeDetailsPage,
           extra: place,
         );
@@ -82,7 +82,7 @@ class PlaceListTileWidget extends StatelessWidget {
                             color: Palette.darkGrey.withValues(alpha: 0.8),
                           ),
                         ),
-                        const Spacer()
+                        const Spacer(),
                       ],
                     ),
                   ),
@@ -95,7 +95,8 @@ class PlaceListTileWidget extends StatelessWidget {
                   final bloc = context.read<FavoritesBloc>();
                   isFavorite
                       ? bloc.add(
-                          FavoritesEvent.favoriteRemoved(placeId: place.id))
+                          FavoritesEvent.favoriteRemoved(placeId: place.id),
+                        )
                       : bloc.add(FavoritesEvent.favoriteAdded(place: place));
                 },
               ),

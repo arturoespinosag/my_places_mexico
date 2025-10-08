@@ -14,10 +14,11 @@ abstract class PlacesUseCase {
     required PlaceKind kind,
     required Position currentPosition,
   });
-  Future<Places> getNearbyPlaces(
-      {required String query,
-      required String coordinates,
-      required String distance});
+  Future<Places> getNearbyPlaces({
+    required String query,
+    required String coordinates,
+    required String distance,
+  });
   Future<Position?> getCurrentPosition();
 }
 
@@ -42,9 +43,11 @@ class PlacesUseCaseImpl implements PlacesUseCase {
       currentPosition: currentPosition,
     );
 
-    return Future.value(PlacesWithDistance(
-      placesWithDistance: resultsWithDistance,
-    ));
+    return Future.value(
+      PlacesWithDistance(
+        placesWithDistance: resultsWithDistance,
+      ),
+    );
   }
 
   @override
@@ -56,10 +59,11 @@ class PlacesUseCaseImpl implements PlacesUseCase {
     final placeswithDistance = places.map(
       (e) {
         final distance = _locationService.getDistance(
-            currentLatitude: currentPosition.latitude,
-            currentLongitude: currentPosition.longitude,
-            latitude: double.tryParse(e.latitud) ?? 19.432366683023716,
-            longitude: double.tryParse(e.longitud) ?? -99.13323364074559);
+          currentLatitude: currentPosition.latitude,
+          currentLongitude: currentPosition.longitude,
+          latitude: double.tryParse(e.latitud) ?? 19.432366683023716,
+          longitude: double.tryParse(e.longitud) ?? -99.13323364074559,
+        );
         return PlaceWithDistance(
           id: e.id,
           nombre: e.nombre,
@@ -82,10 +86,11 @@ class PlacesUseCaseImpl implements PlacesUseCase {
   }
 
   @override
-  Future<Places> getNearbyPlaces(
-          {required String query,
-          required String coordinates,
-          required String distance}) =>
+  Future<Places> getNearbyPlaces({
+    required String query,
+    required String coordinates,
+    required String distance,
+  }) =>
       _placesRepository.fetchNearbyPlaces(query, coordinates, distance);
 
   @override

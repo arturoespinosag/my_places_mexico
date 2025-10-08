@@ -35,8 +35,9 @@ class HeaderWidget extends StatelessWidget {
                     },
                     avatar: Icon(PlaceKind.values[index].getIcon()),
                     chipAnimationStyle: ChipAnimationStyle(
-                        selectAnimation:
-                            const AnimationStyle(curve: Curves.bounceIn)),
+                      selectAnimation:
+                          const AnimationStyle(curve: Curves.bounceIn),
+                    ),
                     showCheckmark: false,
                   ),
                   separatorBuilder: (context, index) =>

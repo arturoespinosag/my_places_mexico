@@ -2,6 +2,7 @@ include: package:very_good_analysis/analysis_options.yaml
 
 analyzer:
   errors:
+    todo: ignore
     invalid_annotation_target: ignore
   exclude:
     - "**/*.g.dart"

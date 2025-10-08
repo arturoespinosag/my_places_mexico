@@ -29,11 +29,12 @@ class PlaceExpandedItemWidget extends StatelessWidget {
                   Icon(place.kind.getIcon()),
                   const SizedBox(width: 10),
                   SizedBox(
-                      width: width * 0.5,
-                      child: Text(
-                        place.nombre.toTitleCase(),
-                        overflow: TextOverflow.ellipsis,
-                      )),
+                    width: width * 0.5,
+                    child: Text(
+                      place.nombre.toTitleCase(),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(

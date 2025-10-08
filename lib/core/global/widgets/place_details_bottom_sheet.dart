@@ -71,14 +71,18 @@ class PlaceDetailsBottomSheet extends StatelessWidget {
                 ),
               ),
               Flexible(
-                  child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  TextButton(onPressed: () {}, child: const Text('Llamar')),
-                  TextButton(onPressed: () {}, child: const Text('Navegar')),
-                  TextButton(onPressed: () {}, child: const Text('Compartir')),
-                ],
-              )),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    TextButton(onPressed: () {}, child: const Text('Llamar')),
+                    TextButton(onPressed: () {}, child: const Text('Navegar')),
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text('Compartir'),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

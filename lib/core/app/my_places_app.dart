@@ -6,10 +6,11 @@ import 'package:myplaces_mexico/features/features.dart';
 import 'package:myplaces_mexico/src/src.dart';
 
 class MyPlacesApp extends StatelessWidget {
-  const MyPlacesApp(
-      {required this.placesRepository,
-      required this.locationService,
-      super.key});
+  const MyPlacesApp({
+    required this.placesRepository,
+    required this.locationService,
+    super.key,
+  });
 
   final IPlacesRepository placesRepository;
   final LocationService locationService;
@@ -24,28 +25,31 @@ class MyPlacesApp extends StatelessWidget {
         ),
         RepositoryProvider(
           create: (_) => locationService,
-        )
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
             create: (context) => HomeBloc(
-                placesUseCase: PlacesUseCaseImpl(RepositoryProvider.of(context),
-                    RepositoryProvider.of(context)))
+              placesUseCase: PlacesUseCaseImpl(
+                RepositoryProvider.of(context),
+                RepositoryProvider.of(context),
+              ),
+            )
               ..init()
               ..add(const HomeEvent.fetchNearbyPlaces()),
           ),
           BlocProvider(
             create: (context) => FavoritesBloc(),
             child: Container(),
-          )
+          ),
         ],
         child: GestureDetector(
           onTap: () {
             FocusManager.instance.primaryFocus?.unfocus();
           },
           child: DevicePreview(
-            enabled: false,
+            // enabled: false,
             builder: (context) => GestureDetector(
               onTap: () {
                 FocusManager.instance.primaryFocus?.unfocus();

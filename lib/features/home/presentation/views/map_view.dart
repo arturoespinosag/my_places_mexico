@@ -48,38 +48,148 @@ class _MapViewState extends State<MapView> {
           listenWhen: (p, c) =>
               c.mapSelectedPlace != null &&
               (p.bottomSheetStatus != c.bottomSheetStatus),
-          listener: (context, bottomSheetState) {
+          listener: (context, bottomSheetState) async {
             final mapSelectedPlace = bottomSheetState.mapSelectedPlace;
             if (bottomSheetState.bottomSheetStatus == BottomSheetStatus.open) {
-              PlaceDetailsBottomSheet.show(context, place: mapSelectedPlace!);
+              await PlaceDetailsBottomSheet.show(
+                context,
+                place: mapSelectedPlace!,
+              );
             }
           },
-          child: GoogleMap(
-              trafficEnabled: true,
-              style: '[{"featureType": "poi.business", '
-                  '"stylers": [{"visibility": "off"}]}]',
-              circles: {
-                // TODO(all): add as many circles as
-                //opened places are and remove the circle of selected place
-                Circle(
-                  circleId: const CircleId('value'),
-                  center: LatLng(
+          child: Stack(
+            children: [
+              GoogleMap(
+                trafficEnabled: true,
+                style: '[{"featureType": "poi.business", '
+                    '"stylers": [{"visibility": "off"}]}]',
+                circles: {
+                  // TODO(all): add as many circles as
+                  //opened places are and remove the circle of selected place
+                  Circle(
+                    circleId: const CircleId('value'),
+                    center: LatLng(
                       double.tryParse(mapSelectedPlace?.latitud ?? '') ??
                           19.432366683023716,
                       double.tryParse(mapSelectedPlace?.longitud ?? '') ??
-                          -99.13323364074559),
-                  radius: 10,
-                  // TODO(all): animate radius
-                  fillColor: Colors.blue.withValues(alpha: 0.5),
-                  strokeColor: Colors.blue.withValues(alpha: 0.5),
-                )
-              },
-              initialCameraPosition:
-                  CameraPosition(target: initialLocation, zoom: 15),
-              markers: state.markers,
-              onMapCreated: (controller) {
-                _controller = controller;
-              }),
+                          -99.13323364074559,
+                    ),
+                    radius: 10,
+                    // TODO(all): animate radius
+                    fillColor: Colors.blue.withValues(alpha: 0.5),
+                    strokeColor: Colors.blue.withValues(alpha: 0.5),
+                  ),
+                },
+                initialCameraPosition:
+                    CameraPosition(target: initialLocation, zoom: 15),
+                markers: state.markers,
+                onMapCreated: (controller) {
+                  _controller = controller;
+                },
+              ),
+              DraggableScrollableSheet(
+                initialChildSize: 0.28,
+                maxChildSize: 0.28,
+                minChildSize: 0.28,
+                snap: true,
+                builder: (context, scrollController) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.surface,
+                      borderRadius: const BorderRadius.vertical(
+                        top: Radius.circular(20),
+                      ),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 8,
+                          offset: Offset(0, -2),
+                        ),
+                      ],
+                    ),
+                    child: ListView(
+                      controller: scrollController,
+                      padding: const EdgeInsets.all(16),
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              'Supermercado Juárez',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                            IconButton(
+                              icon: const Icon(Icons.close),
+                              onPressed: () {},
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'Groceries • Av. Juárez 123, Col. Centro, CDMX',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          '1.2 km away',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall
+                              ?.copyWith(
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                        ),
+                        const SizedBox(height: 16),
+
+                        /// Example action buttons
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Column(
+                              children: [
+                                Icon(
+                                  Icons.call,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
+                                const SizedBox(height: 4),
+                                const Text('Call'),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Icon(
+                                  Icons.navigation,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
+                                const SizedBox(height: 4),
+                                const Text('Navigate'),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Icon(
+                                  Icons.share,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
+                                const SizedBox(height: 4),
+                                const Text('Share'),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
         );
       },
     );

@@ -12,7 +12,7 @@ class DetailsHeaderWidget extends StatelessWidget {
           height: 300,
           color: Colors.green,
         ),
-        const BackArrowWidget()
+        const BackArrowWidget(),
       ],
     );
   }
