@@ -87,11 +87,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         markers = await getMarkers(places: places);
       } on Exception catch (_) {
         log('No se encontraron lugares ${query.query}');
-        emit(
-          state.copyWith(
-            status: HomeStatus.error,
-          ),
-        );
       }
     }
     final sortedPlaces = <PlaceWithDistance>[...places]..sort(

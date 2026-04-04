@@ -5,7 +5,7 @@ part 'places.freezed.dart';
 part 'places.g.dart';
 
 @freezed
-class Places with _$Places {
+abstract class Places with _$Places {
   @JsonSerializable(fieldRename: FieldRename.snake)
   factory Places({
     required List<Place> places,

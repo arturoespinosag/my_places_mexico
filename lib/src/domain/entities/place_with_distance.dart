@@ -9,7 +9,7 @@ import 'package:myplaces_mexico/src/src.dart';
 part 'place_with_distance.freezed.dart';
 
 @freezed
-class PlaceWithDistance with _$PlaceWithDistance {
+abstract class PlaceWithDistance with _$PlaceWithDistance {
   factory PlaceWithDistance({
     required String id,
     required String nombre,

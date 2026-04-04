@@ -11,7 +11,7 @@ abstract class FontStyles {
     fontSize: 16,
   );
 
-  static final TextStyle regular = GoogleFonts.robotoCondensed(
+  static final TextStyle regular = GoogleFonts.roboto(
     fontWeight: FontWeight.w600,
     fontSize: 18,
   );

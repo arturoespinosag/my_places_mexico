@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,79 +9,56 @@ part of 'places.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Places _$PlacesFromJson(Map<String, dynamic> json) {
-  return _Places.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Places {
-  List<Place> get places => throw _privateConstructorUsedError;
-
-  /// Serializes this Places to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  List<Place> get places;
 
   /// Create a copy of Places
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $PlacesCopyWith<Places> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PlacesCopyWith<$Res> {
-  factory $PlacesCopyWith(Places value, $Res Function(Places) then) =
-      _$PlacesCopyWithImpl<$Res, Places>;
-  @useResult
-  $Res call({List<Place> places});
-}
-
-/// @nodoc
-class _$PlacesCopyWithImpl<$Res, $Val extends Places>
-    implements $PlacesCopyWith<$Res> {
-  _$PlacesCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Places
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $PlacesCopyWith<Places> get copyWith =>
+      _$PlacesCopyWithImpl<Places>(this as Places, _$identity);
+
+  /// Serializes this Places to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? places = null,
-  }) {
-    return _then(_value.copyWith(
-      places: null == places
-          ? _value.places
-          : places // ignore: cast_nullable_to_non_nullable
-              as List<Place>,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Places &&
+            const DeepCollectionEquality().equals(other.places, places));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(places));
+
+  @override
+  String toString() {
+    return 'Places(places: $places)';
   }
 }
 
 /// @nodoc
-abstract class _$$PlacesImplCopyWith<$Res> implements $PlacesCopyWith<$Res> {
-  factory _$$PlacesImplCopyWith(
-          _$PlacesImpl value, $Res Function(_$PlacesImpl) then) =
-      __$$PlacesImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $PlacesCopyWith<$Res> {
+  factory $PlacesCopyWith(Places value, $Res Function(Places) _then) =
+      _$PlacesCopyWithImpl;
   @useResult
   $Res call({List<Place> places});
 }
 
 /// @nodoc
-class __$$PlacesImplCopyWithImpl<$Res>
-    extends _$PlacesCopyWithImpl<$Res, _$PlacesImpl>
-    implements _$$PlacesImplCopyWith<$Res> {
-  __$$PlacesImplCopyWithImpl(
-      _$PlacesImpl _value, $Res Function(_$PlacesImpl) _then)
-      : super(_value, _then);
+class _$PlacesCopyWithImpl<$Res> implements $PlacesCopyWith<$Res> {
+  _$PlacesCopyWithImpl(this._self, this._then);
+
+  final Places _self;
+  final $Res Function(Places) _then;
 
   /// Create a copy of Places
   /// with the given fields replaced by the non-null parameter values.
@@ -90,23 +67,178 @@ class __$$PlacesImplCopyWithImpl<$Res>
   $Res call({
     Object? places = null,
   }) {
-    return _then(_$PlacesImpl(
+    return _then(_self.copyWith(
       places: null == places
-          ? _value._places
+          ? _self.places
           : places // ignore: cast_nullable_to_non_nullable
               as List<Place>,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [Places].
+extension PlacesPatterns on Places {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_Places value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Places() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_Places value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Places():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_Places value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Places() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<Place> places)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Places() when $default != null:
+        return $default(_that.places);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(List<Place> places) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Places():
+        return $default(_that.places);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(List<Place> places)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Places() when $default != null:
+        return $default(_that.places);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class _$PlacesImpl implements _Places {
-  _$PlacesImpl({required final List<Place> places}) : _places = places;
-
-  factory _$PlacesImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PlacesImplFromJson(json);
+class _Places implements Places {
+  _Places({required final List<Place> places}) : _places = places;
+  factory _Places.fromJson(Map<String, dynamic> json) => _$PlacesFromJson(json);
 
   final List<Place> _places;
   @override
@@ -116,16 +248,26 @@ class _$PlacesImpl implements _Places {
     return EqualUnmodifiableListView(_places);
   }
 
+  /// Create a copy of Places
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'Places(places: $places)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PlacesCopyWith<_Places> get copyWith =>
+      __$PlacesCopyWithImpl<_Places>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PlacesToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PlacesImpl &&
+            other is _Places &&
             const DeepCollectionEquality().equals(other._places, _places));
   }
 
@@ -134,34 +276,42 @@ class _$PlacesImpl implements _Places {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_places));
 
-  /// Create a copy of Places
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$PlacesImplCopyWith<_$PlacesImpl> get copyWith =>
-      __$$PlacesImplCopyWithImpl<_$PlacesImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PlacesImplToJson(
-      this,
-    );
+  String toString() {
+    return 'Places(places: $places)';
   }
 }
 
-abstract class _Places implements Places {
-  factory _Places({required final List<Place> places}) = _$PlacesImpl;
-
-  factory _Places.fromJson(Map<String, dynamic> json) = _$PlacesImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$PlacesCopyWith<$Res> implements $PlacesCopyWith<$Res> {
+  factory _$PlacesCopyWith(_Places value, $Res Function(_Places) _then) =
+      __$PlacesCopyWithImpl;
   @override
-  List<Place> get places;
+  @useResult
+  $Res call({List<Place> places});
+}
+
+/// @nodoc
+class __$PlacesCopyWithImpl<$Res> implements _$PlacesCopyWith<$Res> {
+  __$PlacesCopyWithImpl(this._self, this._then);
+
+  final _Places _self;
+  final $Res Function(_Places) _then;
 
   /// Create a copy of Places
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PlacesImplCopyWith<_$PlacesImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? places = null,
+  }) {
+    return _then(_Places(
+      places: null == places
+          ? _self._places
+          : places // ignore: cast_nullable_to_non_nullable
+              as List<Place>,
+    ));
+  }
 }
+
+// dart format on

@@ -26,6 +26,9 @@ class PlacesView extends StatelessWidget {
         final isLoading = status == HomeStatus.loading;
         final isGettingLocation =
             state.locationStatus == LocationStatus.retrieving;
+        print(
+          'Arturo isLoading: $isLoading, isGettingLocation: $isGettingLocation, places: ${places.length}, filteredPlaces: ${state.filteredPlaces.length}',
+        );
         final isList = state.isList;
         return BlocSelector<FavoritesBloc, FavoritesState,
             List<PlaceWithDistance>>(
@@ -37,9 +40,7 @@ class PlacesView extends StatelessWidget {
               padding: edgeInsetsSymmetricH20,
               child: Column(
                 children: [
-                  HeaderWidget(
-                    isList: isList,
-                  ),
+                  const HeaderWidget(),
                   if (isLoading)
                     Expanded(
                       child: Center(

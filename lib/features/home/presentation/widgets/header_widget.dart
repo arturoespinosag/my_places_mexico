@@ -4,12 +4,8 @@ import 'package:myplaces_mexico/src/domain/domain.dart';
 
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget({
-    required this.isList,
     super.key,
   });
-
-  final bool isList;
-
   @override
   Widget build(BuildContext context) {
     return Column(

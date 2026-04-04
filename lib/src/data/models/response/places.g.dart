@@ -6,13 +6,12 @@ part of 'places.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PlacesImpl _$$PlacesImplFromJson(Map<String, dynamic> json) => _$PlacesImpl(
+_Places _$PlacesFromJson(Map<String, dynamic> json) => _Places(
       places: (json['places'] as List<dynamic>)
           .map((e) => Place.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$PlacesImplToJson(_$PlacesImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$PlacesToJson(_Places instance) => <String, dynamic>{
       'places': instance.places,
     };
