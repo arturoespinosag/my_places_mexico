@@ -92,7 +92,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     final sortedPlaces = <PlaceWithDistance>[...places]..sort(
         (a, b) => a.distance.compareTo(b.distance),
       );
-
     emit(
       state.copyWith(
         status: HomeStatus.loaded,
