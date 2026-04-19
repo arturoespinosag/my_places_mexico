@@ -49,8 +49,14 @@ class $AssetsIconsGen {
       const AssetGenImage('assets/icons/stationery.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [gasStation, grocery, hotel, restaurant, school, stationery];
+  List<AssetGenImage> get values => [
+    gasStation,
+    grocery,
+    hotel,
+    restaurant,
+    school,
+    stationery,
+  ];
 }
 
 class $AssetsImagesGen {
@@ -86,14 +92,14 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
-        circleRed,
-        circleWhite,
-        heartGrey,
-        heartRed,
-        heartWaveEffect,
-        noImage,
-        tabBarBg
-      ];
+    circleRed,
+    circleWhite,
+    heartGrey,
+    heartRed,
+    heartWaveEffect,
+    noImage,
+    tabBarBg,
+  ];
 }
 
 class $AssetsPagesGen {
@@ -132,15 +138,15 @@ class $AssetsPagesHomePageGen {
 
   /// List of all assets
   List<String> get values => [
-        carWash,
-        gasStation,
-        groceries,
-        hotel,
-        market,
-        restaurant,
-        school,
-        stationery
-      ];
+    carWash,
+    gasStation,
+    groceries,
+    hotel,
+    market,
+    restaurant,
+    school,
+    stationery,
+  ];
 }
 
 class Assets {
@@ -219,15 +225,8 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider({
-    AssetBundle? bundle,
-    String? package,
-  }) {
-    return AssetImage(
-      _assetName,
-      bundle: bundle,
-      package: package,
-    );
+  ImageProvider provider({AssetBundle? bundle, String? package}) {
+    return AssetImage(_assetName, bundle: bundle, package: package);
   }
 
   String get path => _assetName;
