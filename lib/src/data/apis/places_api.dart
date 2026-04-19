@@ -11,8 +11,8 @@ class PlacesApi {
     required String distance,
   }) =>
       ClientRequest.request<Places>(
-        ApiRequest.get(
-          PlacesEndpoint.search(query, coordinates, distance),
+        ApiGet(
+          url: PlacesEndpoint.search(query, coordinates, distance),
         ),
         (dynamic j) {
           final places = <Place>[];
@@ -31,8 +31,8 @@ class PlacesApi {
     required String placeId,
   }) =>
       ClientRequest.request<Place>(
-        ApiRequest.get(
-          PlacesEndpoint.individual(placeId),
+        ApiGet(
+          url: PlacesEndpoint.individual(placeId),
         ),
         (dynamic j) {
           final place =
