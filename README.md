@@ -10,15 +10,13 @@ A Flutter application to save and manage favorite places with geolocation suppor
 ## Architecture
 - Clean Architecture (presentation / domain / data)
 - State Management: BLoC
-- Networking / storage: (specify)
+- Networking: Dio
 
 ## Tech Stack
 - Flutter
 - BLoC
-- (others)
+- Firebase integration
 
-## Screenshots
-(add images here)
 
 ## Key Learnings
 - Handling geolocation in Flutter
