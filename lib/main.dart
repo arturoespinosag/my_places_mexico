@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:myplaces_mexico/core/core.dart';
 import 'package:myplaces_mexico/firebase_options.dart';
 import 'package:myplaces_mexico/src/src.dart';
@@ -14,14 +13,11 @@ Future<void> main() async {
   );
   final placesRepository = PlacesRepository();
   final locationService = LocationService();
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]).then(
-    (_) => runApp(
-      MyPlacesApp(
-        placesRepository: placesRepository,
-        locationService: locationService,
-      ),
+
+  runApp(
+    MyPlacesApp(
+      placesRepository: placesRepository,
+      locationService: locationService,
     ),
   );
 }

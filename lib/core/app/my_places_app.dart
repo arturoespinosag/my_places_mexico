@@ -30,14 +30,15 @@ class MyPlacesApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => HomeBloc(
-              placesUseCase: PlacesUseCaseImpl(
-                RepositoryProvider.of(context),
-                RepositoryProvider.of(context),
-              ),
-            )
-              ..init()
-              ..add(const HomeEvent.fetchNearbyPlaces()),
+            create: (context) =>
+                HomeBloc(
+                    placesUseCase: PlacesUseCaseImpl(
+                      RepositoryProvider.of(context),
+                      RepositoryProvider.of(context),
+                    ),
+                  )
+                  ..init()
+                  ..add(const HomeEvent.fetchNearbyPlaces()),
           ),
           BlocProvider(
             create: (context) => FavoritesBloc(),
@@ -49,7 +50,7 @@ class MyPlacesApp extends StatelessWidget {
             FocusManager.instance.primaryFocus?.unfocus();
           },
           child: DevicePreview(
-            // enabled: false,
+            enabled: false,
             builder: (context) => GestureDetector(
               onTap: () {
                 FocusManager.instance.primaryFocus?.unfocus();

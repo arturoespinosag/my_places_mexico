@@ -19,8 +19,9 @@ class PlaceDetailsView extends StatelessWidget {
     final street = place.calle.toTitleCase();
     final cp = place.cP.isEmpty ? '' : 'C.P. ${place.cP}';
     final colony = place.colonia.toTitleCase();
-    final intNumber =
-        place.num_Interior.isEmpty ? '' : ' int. ${place.num_Interior}';
+    final intNumber = place.num_Interior.isEmpty
+        ? ''
+        : ' int. ${place.num_Interior}';
     const style = TextStyle(
       fontSize: 15,
       fontWeight: FontWeight.w500,
@@ -40,14 +41,18 @@ class PlaceDetailsView extends StatelessWidget {
                 child: Column(
                   children: [
                     const SizedBox(height: 20),
-                    BlocSelector<FavoritesBloc, FavoritesState,
-                        List<PlaceWithDistance>>(
+                    BlocSelector<
+                      FavoritesBloc,
+                      FavoritesState,
+                      List<PlaceWithDistance>
+                    >(
                       selector: (state) {
                         return state.allFavoritePlaces;
                       },
                       builder: (context, favoritePlaces) {
-                        final isFavorite =
-                            favoritePlaces.any((e) => e.id == place.id);
+                        final isFavorite = favoritePlaces.any(
+                          (e) => e.id == place.id,
+                        );
                         return DetailsTitleWidget(
                           isFavorite: isFavorite,
                           place: place,
@@ -160,7 +165,10 @@ Future<void> navigateTo(String lat, String lng) async {
   if (await canLaunchUrl(uri)) {
     await launchUrl(uri);
   } else {
-    throw Exception('Could not launch $uri');
+    final url = Uri.parse(
+      'https://www.google.com/maps/search/?api=1&query=$lat,$lng',
+    );
+    await launchUrl(url, mode: LaunchMode.externalNonBrowserApplication);
   }
 }
 
@@ -211,8 +219,10 @@ class DetailsTitleWidget extends StatelessWidget {
               width: MediaQuery.sizeOf(context).width * 0.57,
               child: Text(
                 place.nombre.toTitleCase(),
-                style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w900,
+                ),
                 // overflow: TextOverflow.ellipsis,
               ),
             ),
@@ -228,8 +238,9 @@ class DetailsTitleWidget extends StatelessWidget {
               onTap: () {
                 final bloc = context.read<FavoritesBloc>();
                 isFavorite
-                    ? bloc
-                        .add(FavoritesEvent.favoriteRemoved(placeId: place.id))
+                    ? bloc.add(
+                        FavoritesEvent.favoriteRemoved(placeId: place.id),
+                      )
                     : bloc.add(FavoritesEvent.favoriteAdded(place: place));
               },
             ),

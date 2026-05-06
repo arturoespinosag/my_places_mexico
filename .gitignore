@@ -54,7 +54,6 @@ flutter_*.png
 linked_*.ds
 unlinked.ds
 unlinked_spec.ds
-!.fvm/fvm_config.json
 
 # Android related
 **/android/**/gradle-wrapper.jar
