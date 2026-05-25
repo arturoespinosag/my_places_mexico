@@ -10,7 +10,7 @@ part 'place_with_distance.freezed.dart';
 
 @freezed
 abstract class PlaceWithDistance with _$PlaceWithDistance {
-  factory PlaceWithDistance({
+  const factory PlaceWithDistance({
     required String id,
     required String nombre,
     required String razon_social,
@@ -29,6 +29,7 @@ abstract class PlaceWithDistance with _$PlaceWithDistance {
 }
 
 extension PlaceAddress on PlaceWithDistance {
-  String get address => '${'$calle # $num_Exterior,'
-      ' '.toTitleCase()}${colonia.toTitleCase()}';
+  String get address =>
+      '${'$calle # $num_Exterior,'
+          ' '.toTitleCase()}${colonia.toTitleCase()}';
 }

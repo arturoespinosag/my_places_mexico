@@ -5,7 +5,7 @@ part 'places_with_distance.freezed.dart';
 
 @freezed
 abstract class PlacesWithDistance with _$PlacesWithDistance {
-  factory PlacesWithDistance({
+  const factory PlacesWithDistance({
     required List<PlaceWithDistance> placesWithDistance,
   }) = _PlacesWithDistance;
 }
