@@ -4,7 +4,19 @@ import 'package:myplaces_mexico/core/core.dart';
 import 'package:myplaces_mexico/features/features.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  const HomeView({
+    super.key,
+    this.navigationViews = _defaultNavigationViews,
+  });
+
+  final List<Widget> navigationViews;
+
+  static const List<Widget> _defaultNavigationViews = [
+    PlacesView(),
+    MapView(),
+    FavoritesView(),
+    ProfileView(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +37,12 @@ class HomeView extends StatelessWidget {
                         title: Padding(
                           padding: edgeInsetsSymmetricH10.copyWith(bottom: 20),
                           child: SearchBarWidget(
-                            controller:
-                                context.read<HomeBloc>().searchController,
-                            onChanged: (text) => context
+                            controller: context
                                 .read<HomeBloc>()
-                                .add(HomeEvent.filterPlaces(query: text)),
+                                .searchController,
+                            onChanged: (text) => context.read<HomeBloc>().add(
+                              HomeEvent.filterPlaces(query: text),
+                            ),
                           ),
                         ),
                       ),
@@ -66,8 +79,9 @@ class HomeView extends StatelessWidget {
                 children: navigationViews,
               ),
               bottomNavigationBar: NavigationBar(
-                indicatorShape:
-                    const RoundedRectangleBorder(borderRadius: borderRadius40),
+                indicatorShape: const RoundedRectangleBorder(
+                  borderRadius: borderRadius40,
+                ),
                 backgroundColor: Colors.white,
                 elevation: 10,
                 selectedIndex: selectedIndex,
@@ -90,10 +104,10 @@ class HomeView extends StatelessWidget {
                   ),
                 ],
                 onDestinationSelected: (index) => context.read<HomeBloc>().add(
-                      HomeEvent.indexSelected(
-                        selectedIndex: index,
-                      ),
-                    ),
+                  HomeEvent.indexSelected(
+                    selectedIndex: index,
+                  ),
+                ),
               ),
             ),
           );
@@ -102,10 +116,3 @@ class HomeView extends StatelessWidget {
     );
   }
 }
-
-final navigationViews = <Widget>[
-  const PlacesView(),
-  const MapView(),
-  const FavoritesView(),
-  const ProfileView(),
-];

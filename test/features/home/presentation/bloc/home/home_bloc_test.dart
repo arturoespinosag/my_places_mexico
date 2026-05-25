@@ -68,6 +68,15 @@ void main() {
       },
     );
 
+    blocTest<HomeBloc, HomeState>(
+      'init creates the search controller',
+      build: () => TestableHomeBloc(placesUseCase: mockUseCase),
+      act: (bloc) => bloc.init(),
+      verify: (bloc) {
+        expect(bloc.searchController, isNotNull);
+      },
+    );
+
     group('indexSelected', () {
       blocTest<HomeBloc, HomeState>(
         'updates selected index',
