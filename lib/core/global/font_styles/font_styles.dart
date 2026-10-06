@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart' show FontWeight, TextStyle, TextTheme;
 import 'package:google_fonts/google_fonts.dart';
+import 'package:material_ui/material_ui.dart'
+    show FontWeight, TextStyle, TextTheme;
 
 abstract class FontStyles {
   static final TextStyle title = GoogleFonts.roboto(

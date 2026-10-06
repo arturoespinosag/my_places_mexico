@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:myplaces_mexico/core/core.dart';
 import 'package:myplaces_mexico/firebase_options.dart';
 import 'package:myplaces_mexico/src/src.dart';

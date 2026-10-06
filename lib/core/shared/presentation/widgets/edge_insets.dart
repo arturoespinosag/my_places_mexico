@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 const EdgeInsets edgeInsetsZero = EdgeInsets.zero;
 const edgeInsetsAll2 = EdgeInsets.all(2);

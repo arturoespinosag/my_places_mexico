@@ -35,9 +35,6 @@ PODS:
     - Flutter
   - rive_common (0.0.1):
     - Flutter
-  - shared_preferences_foundation (0.0.1):
-    - Flutter
-    - FlutterMacOS
   - url_launcher_ios (0.0.1):
     - Flutter
 
@@ -48,7 +45,6 @@ DEPENDENCIES:
   - google_maps_flutter_ios (from `.symlinks/plugins/google_maps_flutter_ios/ios`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - rive_common (from `.symlinks/plugins/rive_common/ios`)
-  - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 SPEC REPOS:
@@ -73,8 +69,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/package_info_plus/ios"
   rive_common:
     :path: ".symlinks/plugins/rive_common/ios"
-  shared_preferences_foundation:
-    :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
@@ -91,7 +85,6 @@ SPEC CHECKSUMS:
   GoogleUtilities: db34c1c11c6f2eccb6fab2340cb8ceb1451299dc
   package_info_plus: c0502532a26c7662a62a356cebe2692ec5fe4ec4
   rive_common: 4743dbfd2911c99066547a3c6454681e0fa907df
-  shared_preferences_foundation: 5086985c1d43c5ba4d5e69a4e8083a389e2909e6
   url_launcher_ios: bb13df5870e8c4234ca12609d04010a21be43dfa
 
 PODFILE CHECKSUM: 1f99857aaa4dbf2b0fac4a9c6d3dca65e6ceb70d

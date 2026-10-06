@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:myplaces_mexico/src/src.dart';
 
 extension PlaceKindExt on PlaceKind {

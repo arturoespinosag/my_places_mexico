@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:myplaces_mexico/core/shared/shared.dart';
 import 'package:myplaces_mexico/features/features.dart';
 import 'package:myplaces_mexico/gen/assets.gen.dart';

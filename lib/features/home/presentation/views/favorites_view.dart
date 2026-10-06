@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:myplaces_mexico/core/core.dart';
 import 'package:myplaces_mexico/features/features.dart';
 import 'package:myplaces_mexico/features/home/presentation/widgets/favorite_card.dart';

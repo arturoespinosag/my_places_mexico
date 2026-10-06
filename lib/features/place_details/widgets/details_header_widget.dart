@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:myplaces_mexico/core/core.dart';
 
 class DetailsHeaderWidget extends StatelessWidget {

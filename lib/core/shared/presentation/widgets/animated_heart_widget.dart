@@ -1,7 +1,7 @@
 // We don't want to await for the future to be completed
 //to change the color of the heart
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:myplaces_mexico/gen/assets.gen.dart';
 
 class AnimatedHeartWidget extends StatefulWidget {
