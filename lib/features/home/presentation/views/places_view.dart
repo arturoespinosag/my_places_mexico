@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:myplaces_mexico/core/shared/shared.dart';
@@ -72,8 +74,9 @@ class RiveSearchLoader extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 80,
-      child: RiveAnimation.asset(
-        Assets.animations.magnifier,
+      child: _RiveAssetLoader(
+        assetPath: Assets.animations.magnifier,
+        animationName: 'searching',
       ),
     );
   }
@@ -86,9 +89,92 @@ class RiveLocationLoader extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 150,
-      child: RiveAnimation.asset(
-        Assets.animations.location,
+      child: _RiveAssetLoader(
+        assetPath: Assets.animations.location,
+        animationName: 'map',
       ),
+    );
+  }
+}
+
+class _RiveAssetLoader extends StatefulWidget {
+  const _RiveAssetLoader({
+    required this.assetPath,
+    required this.animationName,
+  });
+
+  final String assetPath;
+  final String animationName;
+
+  @override
+  State<_RiveAssetLoader> createState() => _RiveAssetLoaderState();
+}
+
+class _RiveAssetLoaderState extends State<_RiveAssetLoader> {
+  File? _file;
+  Artboard? _artboard;
+  SingleAnimationPainter? _painter;
+
+  @override
+  void initState() {
+    super.initState();
+    unawaited(_loadAnimation());
+  }
+
+  @override
+  void didUpdateWidget(covariant _RiveAssetLoader oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.assetPath != widget.assetPath ||
+        oldWidget.animationName != widget.animationName) {
+      _painter?.dispose();
+      _artboard?.dispose();
+      _file?.dispose();
+      _painter = null;
+      _artboard = null;
+      _file = null;
+      unawaited(_loadAnimation());
+    }
+  }
+
+  Future<void> _loadAnimation() async {
+    final file = await File.asset(
+      widget.assetPath,
+      riveFactory: Factory.flutter,
+    );
+    if (!mounted || file == null) {
+      return;
+    }
+    final artboard = file.defaultArtboard();
+    if (artboard == null) {
+      return;
+    }
+    final painter = SingleAnimationPainter(widget.animationName);
+
+    setState(() {
+      _file = file;
+      _artboard = artboard;
+      _painter = painter;
+    });
+  }
+
+  @override
+  void dispose() {
+    _painter?.dispose();
+    _artboard?.dispose();
+    _file?.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final artboard = _artboard;
+    final painter = _painter;
+    if (artboard == null || painter == null) {
+      return const SizedBox.shrink();
+    }
+    return RiveArtboardWidget(
+      artboard: artboard,
+      painter: painter,
     );
   }
 }

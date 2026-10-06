@@ -33,7 +33,7 @@ PODS:
   - GoogleUtilities/Privacy (8.1.4)
   - package_info_plus (0.4.5):
     - Flutter
-  - rive_common (0.0.1):
+  - rive_native (0.0.1):
     - Flutter
   - url_launcher_ios (0.0.1):
     - Flutter
@@ -44,7 +44,7 @@ DEPENDENCIES:
   - geolocator_apple (from `.symlinks/plugins/geolocator_apple/darwin`)
   - google_maps_flutter_ios (from `.symlinks/plugins/google_maps_flutter_ios/ios`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
-  - rive_common (from `.symlinks/plugins/rive_common/ios`)
+  - rive_native (from `.symlinks/plugins/rive_native/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 SPEC REPOS:
@@ -67,8 +67,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/google_maps_flutter_ios/ios"
   package_info_plus:
     :path: ".symlinks/plugins/package_info_plus/ios"
-  rive_common:
-    :path: ".symlinks/plugins/rive_common/ios"
+  rive_native:
+    :path: ".symlinks/plugins/rive_native/ios"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
@@ -84,7 +84,7 @@ SPEC CHECKSUMS:
   GoogleMaps: 0608099d4870cac8754bdba9b6953db543432438
   GoogleUtilities: db34c1c11c6f2eccb6fab2340cb8ceb1451299dc
   package_info_plus: c0502532a26c7662a62a356cebe2692ec5fe4ec4
-  rive_common: 4743dbfd2911c99066547a3c6454681e0fa907df
+  rive_native: 6fd739ece3e1976374c6804badde07053aa05b36
   url_launcher_ios: bb13df5870e8c4234ca12609d04010a21be43dfa
 
 PODFILE CHECKSUM: 1f99857aaa4dbf2b0fac4a9c6d3dca65e6ceb70d
