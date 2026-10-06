@@ -1,4 +1,3 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myplaces_mexico/core/core.dart';
@@ -49,19 +48,14 @@ class MyPlacesApp extends StatelessWidget {
           onTap: () {
             FocusManager.instance.primaryFocus?.unfocus();
           },
-          child: DevicePreview(
-            enabled: false,
-            builder: (context) => GestureDetector(
-              onTap: () {
-                FocusManager.instance.primaryFocus?.unfocus();
-              },
-              child: MaterialApp.router(
-                routerConfig: AppRouter.router,
-                locale: DevicePreview.locale(context),
-                builder: DevicePreview.appBuilder,
-                theme: AppTheme.light,
-                debugShowCheckedModeBanner: false,
-              ),
+          child: GestureDetector(
+            onTap: () {
+              FocusManager.instance.primaryFocus?.unfocus();
+            },
+            child: MaterialApp.router(
+              routerConfig: AppRouter.router,
+              theme: AppTheme.light,
+              debugShowCheckedModeBanner: false,
             ),
           ),
         ),
