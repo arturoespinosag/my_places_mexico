@@ -14,18 +14,20 @@ class PlacesRepository implements IPlacesRepository {
       coordinates: coordinates,
       distance: distance,
     );
-    return apiResult.when(
+    final places = apiResult.when(
       success: (data) => data,
       failure: (e, s) => throw e,
     );
+    return places;
   }
 
   @override
   Future<Place> fetchPlace(String placeId) async {
     final apiResult = await _placesApi.individual(placeId: placeId);
-    return apiResult.when(
+    final place = apiResult.when(
       success: (data) => data,
       failure: (e, s) => throw e,
     );
+    return place;
   }
 }

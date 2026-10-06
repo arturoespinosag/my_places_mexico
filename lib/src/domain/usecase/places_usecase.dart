@@ -46,9 +46,7 @@ class PlacesUseCaseImpl implements PlacesUseCase {
       currentPosition: currentPosition,
     );
 
-    return Future.value(
-      PlacesWithDistance(placesWithDistance: resultsWithDistance),
-    );
+    return PlacesWithDistance(placesWithDistance: resultsWithDistance);
   }
 
   @override

@@ -46,7 +46,7 @@ class LocationService {
     }
     if (locationPermission == LocationPermission.always ||
         locationPermission == LocationPermission.whileInUse) {
-      final position = Geolocator.getCurrentPosition();
+      final position = await Geolocator.getCurrentPosition();
       return position;
     }
     return null;
