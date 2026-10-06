@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'place.dart';
@@ -9,6 +9,7 @@ part of 'place.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -28,16 +29,21 @@ $PlaceCopyWith<Place> get copyWith => _$PlaceCopyWithImpl<Place>(this as Place, 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Place&&(identical(other.cLEE, cLEE) || other.cLEE == cLEE)&&(identical(other.id, id) || other.id == id)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.razon_social, razon_social) || other.razon_social == razon_social)&&(identical(other.clase_actividad, clase_actividad) || other.clase_actividad == clase_actividad)&&(identical(other.estrato, estrato) || other.estrato == estrato)&&(identical(other.tipo_vialidad, tipo_vialidad) || other.tipo_vialidad == tipo_vialidad)&&(identical(other.calle, calle) || other.calle == calle)&&(identical(other.num_Exterior, num_Exterior) || other.num_Exterior == num_Exterior)&&(identical(other.num_Interior, num_Interior) || other.num_Interior == num_Interior)&&(identical(other.colonia, colonia) || other.colonia == colonia)&&(identical(other.cP, cP) || other.cP == cP)&&(identical(other.ubicacion, ubicacion) || other.ubicacion == ubicacion)&&(identical(other.telefono, telefono) || other.telefono == telefono)&&(identical(other.correo_e, correo_e) || other.correo_e == correo_e)&&(identical(other.sitio_internet, sitio_internet) || other.sitio_internet == sitio_internet)&&(identical(other.tipo, tipo) || other.tipo == tipo)&&(identical(other.longitud, longitud) || other.longitud == longitud)&&(identical(other.latitud, latitud) || other.latitud == latitud)&&(identical(other.centroComercial, centroComercial) || other.centroComercial == centroComercial)&&(identical(other.tipoCentroComercial, tipoCentroComercial) || other.tipoCentroComercial == tipoCentroComercial)&&(identical(other.numLocal, numLocal) || other.numLocal == numLocal));
+  final _this = this as Place;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Place&&(identical(other.cLEE, _this.cLEE) || other.cLEE == _this.cLEE)&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.nombre, _this.nombre) || other.nombre == _this.nombre)&&(identical(other.razon_social, _this.razon_social) || other.razon_social == _this.razon_social)&&(identical(other.clase_actividad, _this.clase_actividad) || other.clase_actividad == _this.clase_actividad)&&(identical(other.estrato, _this.estrato) || other.estrato == _this.estrato)&&(identical(other.tipo_vialidad, _this.tipo_vialidad) || other.tipo_vialidad == _this.tipo_vialidad)&&(identical(other.calle, _this.calle) || other.calle == _this.calle)&&(identical(other.num_Exterior, _this.num_Exterior) || other.num_Exterior == _this.num_Exterior)&&(identical(other.num_Interior, _this.num_Interior) || other.num_Interior == _this.num_Interior)&&(identical(other.colonia, _this.colonia) || other.colonia == _this.colonia)&&(identical(other.cP, _this.cP) || other.cP == _this.cP)&&(identical(other.ubicacion, _this.ubicacion) || other.ubicacion == _this.ubicacion)&&(identical(other.telefono, _this.telefono) || other.telefono == _this.telefono)&&(identical(other.correo_e, _this.correo_e) || other.correo_e == _this.correo_e)&&(identical(other.sitio_internet, _this.sitio_internet) || other.sitio_internet == _this.sitio_internet)&&(identical(other.tipo, _this.tipo) || other.tipo == _this.tipo)&&(identical(other.longitud, _this.longitud) || other.longitud == _this.longitud)&&(identical(other.latitud, _this.latitud) || other.latitud == _this.latitud)&&(identical(other.centroComercial, _this.centroComercial) || other.centroComercial == _this.centroComercial)&&(identical(other.tipoCentroComercial, _this.tipoCentroComercial) || other.tipoCentroComercial == _this.tipoCentroComercial)&&(identical(other.numLocal, _this.numLocal) || other.numLocal == _this.numLocal));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hashAll([runtimeType,cLEE,id,nombre,razon_social,clase_actividad,estrato,tipo_vialidad,calle,num_Exterior,num_Interior,colonia,cP,ubicacion,telefono,correo_e,sitio_internet,tipo,longitud,latitud,centroComercial,tipoCentroComercial,numLocal]);
+int get hashCode {
+  final _this = this as Place;
+  return Object.hashAll([runtimeType,_this.cLEE,_this.id,_this.nombre,_this.razon_social,_this.clase_actividad,_this.estrato,_this.tipo_vialidad,_this.calle,_this.num_Exterior,_this.num_Interior,_this.colonia,_this.cP,_this.ubicacion,_this.telefono,_this.correo_e,_this.sitio_internet,_this.tipo,_this.longitud,_this.latitud,_this.centroComercial,_this.tipoCentroComercial,_this.numLocal]);
+}
 
 @override
 String toString() {
-  return 'Place(cLEE: $cLEE, id: $id, nombre: $nombre, razon_social: $razon_social, clase_actividad: $clase_actividad, estrato: $estrato, tipo_vialidad: $tipo_vialidad, calle: $calle, num_Exterior: $num_Exterior, num_Interior: $num_Interior, colonia: $colonia, cP: $cP, ubicacion: $ubicacion, telefono: $telefono, correo_e: $correo_e, sitio_internet: $sitio_internet, tipo: $tipo, longitud: $longitud, latitud: $latitud, centroComercial: $centroComercial, tipoCentroComercial: $tipoCentroComercial, numLocal: $numLocal)';
+  final _this = this as Place;
+  return 'Place(cLEE: ${_this.cLEE}, id: ${_this.id}, nombre: ${_this.nombre}, razon_social: ${_this.razon_social}, clase_actividad: ${_this.clase_actividad}, estrato: ${_this.estrato}, tipo_vialidad: ${_this.tipo_vialidad}, calle: ${_this.calle}, num_Exterior: ${_this.num_Exterior}, num_Interior: ${_this.num_Interior}, colonia: ${_this.colonia}, cP: ${_this.cP}, ubicacion: ${_this.ubicacion}, telefono: ${_this.telefono}, correo_e: ${_this.correo_e}, sitio_internet: ${_this.sitio_internet}, tipo: ${_this.tipo}, longitud: ${_this.longitud}, latitud: ${_this.latitud}, centroComercial: ${_this.centroComercial}, tipoCentroComercial: ${_this.tipoCentroComercial}, numLocal: ${_this.numLocal})';
 }
 
 
@@ -66,7 +72,7 @@ class _$PlaceCopyWithImpl<$Res>
 /// Create a copy of Place
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? cLEE = null,Object? id = null,Object? nombre = null,Object? razon_social = null,Object? clase_actividad = null,Object? estrato = null,Object? tipo_vialidad = null,Object? calle = null,Object? num_Exterior = null,Object? num_Interior = null,Object? colonia = null,Object? cP = null,Object? ubicacion = null,Object? telefono = null,Object? correo_e = null,Object? sitio_internet = null,Object? tipo = null,Object? longitud = null,Object? latitud = null,Object? centroComercial = null,Object? tipoCentroComercial = null,Object? numLocal = null,}) {
-  return _then(_self.copyWith(
+  return _then(Place(
 cLEE: null == cLEE ? _self.cLEE : cLEE // ignore: cast_nullable_to_non_nullable
 as String,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,nombre: null == nombre ? _self.nombre : nombre // ignore: cast_nullable_to_non_nullable
@@ -269,16 +275,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Place&&(identical(other.cLEE, cLEE) || other.cLEE == cLEE)&&(identical(other.id, id) || other.id == id)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.razon_social, razon_social) || other.razon_social == razon_social)&&(identical(other.clase_actividad, clase_actividad) || other.clase_actividad == clase_actividad)&&(identical(other.estrato, estrato) || other.estrato == estrato)&&(identical(other.tipo_vialidad, tipo_vialidad) || other.tipo_vialidad == tipo_vialidad)&&(identical(other.calle, calle) || other.calle == calle)&&(identical(other.num_Exterior, num_Exterior) || other.num_Exterior == num_Exterior)&&(identical(other.num_Interior, num_Interior) || other.num_Interior == num_Interior)&&(identical(other.colonia, colonia) || other.colonia == colonia)&&(identical(other.cP, cP) || other.cP == cP)&&(identical(other.ubicacion, ubicacion) || other.ubicacion == ubicacion)&&(identical(other.telefono, telefono) || other.telefono == telefono)&&(identical(other.correo_e, correo_e) || other.correo_e == correo_e)&&(identical(other.sitio_internet, sitio_internet) || other.sitio_internet == sitio_internet)&&(identical(other.tipo, tipo) || other.tipo == tipo)&&(identical(other.longitud, longitud) || other.longitud == longitud)&&(identical(other.latitud, latitud) || other.latitud == latitud)&&(identical(other.centroComercial, centroComercial) || other.centroComercial == centroComercial)&&(identical(other.tipoCentroComercial, tipoCentroComercial) || other.tipoCentroComercial == tipoCentroComercial)&&(identical(other.numLocal, numLocal) || other.numLocal == numLocal));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Place&&(identical(other.cLEE, cLEE) || other.cLEE == cLEE)&&(identical(other.id, id) || other.id == id)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.razon_social, razon_social) || other.razon_social == razon_social)&&(identical(other.clase_actividad, clase_actividad) || other.clase_actividad == clase_actividad)&&(identical(other.estrato, estrato) || other.estrato == estrato)&&(identical(other.tipo_vialidad, tipo_vialidad) || other.tipo_vialidad == tipo_vialidad)&&(identical(other.calle, calle) || other.calle == calle)&&(identical(other.num_Exterior, num_Exterior) || other.num_Exterior == num_Exterior)&&(identical(other.num_Interior, num_Interior) || other.num_Interior == num_Interior)&&(identical(other.colonia, colonia) || other.colonia == colonia)&&(identical(other.cP, cP) || other.cP == cP)&&(identical(other.ubicacion, ubicacion) || other.ubicacion == ubicacion)&&(identical(other.telefono, telefono) || other.telefono == telefono)&&(identical(other.correo_e, correo_e) || other.correo_e == correo_e)&&(identical(other.sitio_internet, sitio_internet) || other.sitio_internet == sitio_internet)&&(identical(other.tipo, tipo) || other.tipo == tipo)&&(identical(other.longitud, longitud) || other.longitud == longitud)&&(identical(other.latitud, latitud) || other.latitud == latitud)&&(identical(other.centroComercial, centroComercial) || other.centroComercial == centroComercial)&&(identical(other.tipoCentroComercial, tipoCentroComercial) || other.tipoCentroComercial == tipoCentroComercial)&&(identical(other.numLocal, numLocal) || other.numLocal == numLocal));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hashAll([runtimeType,cLEE,id,nombre,razon_social,clase_actividad,estrato,tipo_vialidad,calle,num_Exterior,num_Interior,colonia,cP,ubicacion,telefono,correo_e,sitio_internet,tipo,longitud,latitud,centroComercial,tipoCentroComercial,numLocal]);
+int get hashCode {
+    return Object.hashAll([runtimeType,cLEE,id,nombre,razon_social,clase_actividad,estrato,tipo_vialidad,calle,num_Exterior,num_Interior,colonia,cP,ubicacion,telefono,correo_e,sitio_internet,tipo,longitud,latitud,centroComercial,tipoCentroComercial,numLocal]);
+}
 
 @override
 String toString() {
-  return 'Place(cLEE: $cLEE, id: $id, nombre: $nombre, razon_social: $razon_social, clase_actividad: $clase_actividad, estrato: $estrato, tipo_vialidad: $tipo_vialidad, calle: $calle, num_Exterior: $num_Exterior, num_Interior: $num_Interior, colonia: $colonia, cP: $cP, ubicacion: $ubicacion, telefono: $telefono, correo_e: $correo_e, sitio_internet: $sitio_internet, tipo: $tipo, longitud: $longitud, latitud: $latitud, centroComercial: $centroComercial, tipoCentroComercial: $tipoCentroComercial, numLocal: $numLocal)';
+    return 'Place(cLEE: $cLEE, id: $id, nombre: $nombre, razon_social: $razon_social, clase_actividad: $clase_actividad, estrato: $estrato, tipo_vialidad: $tipo_vialidad, calle: $calle, num_Exterior: $num_Exterior, num_Interior: $num_Interior, colonia: $colonia, cP: $cP, ubicacion: $ubicacion, telefono: $telefono, correo_e: $correo_e, sitio_internet: $sitio_internet, tipo: $tipo, longitud: $longitud, latitud: $latitud, centroComercial: $centroComercial, tipoCentroComercial: $tipoCentroComercial, numLocal: $numLocal)';
 }
 
 

@@ -1,6 +1,5 @@
 // We don't want to await for the future to be completed
 //to change the color of the heart
-// ignore_for_file: discarded_futures
 
 import 'package:flutter/material.dart';
 import 'package:myplaces_mexico/gen/assets.gen.dart';
@@ -54,45 +53,53 @@ class _AnimatedHeartWidgetState extends State<AnimatedHeartWidget>
       ),
     );
 
-    _redHeartSize = TweenSequence(
-      <TweenSequenceItem<double>>[
-        TweenSequenceItem<double>(
-          tween: Tween(begin: 0.6, end: 24.32)
-              .chain(CurveTween(curve: Curves.easeOut)),
-          weight: 20,
-        ),
-        TweenSequenceItem<double>(
-          tween: Tween(begin: 24.32, end: 9.73)
-              .chain(CurveTween(curve: const Cubic(0.71, -0.01, 1, 1))),
-          weight: 20,
-        ),
-        TweenSequenceItem<double>(
-          tween: Tween<double>(begin: 9.73, end: 18)
-              .chain(CurveTween(curve: Curves.elasticOut)),
-          weight: 60,
-        ),
-      ],
-    ).animate(
-      CurvedAnimation(parent: _controller, curve: const Interval(0.1, 1)),
-    );
+    _redHeartSize =
+        TweenSequence(
+          <TweenSequenceItem<double>>[
+            TweenSequenceItem<double>(
+              tween: Tween(
+                begin: 0.6,
+                end: 24.32,
+              ).chain(CurveTween(curve: Curves.easeOut)),
+              weight: 20,
+            ),
+            TweenSequenceItem<double>(
+              tween: Tween(
+                begin: 24.32,
+                end: 9.73,
+              ).chain(CurveTween(curve: const Cubic(0.71, -0.01, 1, 1))),
+              weight: 20,
+            ),
+            TweenSequenceItem<double>(
+              tween: Tween<double>(
+                begin: 9.73,
+                end: 18,
+              ).chain(CurveTween(curve: Curves.elasticOut)),
+              weight: 60,
+            ),
+          ],
+        ).animate(
+          CurvedAnimation(parent: _controller, curve: const Interval(0.1, 1)),
+        );
 
-    _waveEffectOpacity = TweenSequence(
-      <TweenSequenceItem<double>>[
-        TweenSequenceItem<double>(
-          tween: Tween(begin: 0, end: 1),
-          weight: 60,
-        ),
-        TweenSequenceItem<double>(
-          tween: Tween(begin: 1, end: 0),
-          weight: 40,
-        ),
-      ],
-    ).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: const Interval(0.2, 0.7, curve: Curves.easeInOut),
-      ),
-    );
+    _waveEffectOpacity =
+        TweenSequence(
+          <TweenSequenceItem<double>>[
+            TweenSequenceItem<double>(
+              tween: Tween(begin: 0, end: 1),
+              weight: 60,
+            ),
+            TweenSequenceItem<double>(
+              tween: Tween(begin: 1, end: 0),
+              weight: 40,
+            ),
+          ],
+        ).animate(
+          CurvedAnimation(
+            parent: _controller,
+            curve: const Interval(0.2, 0.7, curve: Curves.easeInOut),
+          ),
+        );
 
     super.initState();
   }

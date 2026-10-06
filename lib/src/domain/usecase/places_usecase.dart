@@ -35,8 +35,11 @@ class PlacesUseCaseImpl implements PlacesUseCase {
     required PlaceKind kind,
     required Position currentPosition,
   }) async {
-    final result =
-        await _placesRepository.fetchNearbyPlaces(query, coordinates, distance);
+    final result = await _placesRepository.fetchNearbyPlaces(
+      query,
+      coordinates,
+      distance,
+    );
     final resultsWithDistance = getDistances(
       places: result.places,
       kind: kind,
@@ -44,9 +47,7 @@ class PlacesUseCaseImpl implements PlacesUseCase {
     );
 
     return Future.value(
-      PlacesWithDistance(
-        placesWithDistance: resultsWithDistance,
-      ),
+      PlacesWithDistance(placesWithDistance: resultsWithDistance),
     );
   }
 
@@ -56,32 +57,30 @@ class PlacesUseCaseImpl implements PlacesUseCase {
     required PlaceKind kind,
     required Position currentPosition,
   }) {
-    final placeswithDistance = places.map(
-      (e) {
-        final distance = _locationService.getDistance(
-          currentLatitude: currentPosition.latitude,
-          currentLongitude: currentPosition.longitude,
-          latitude: double.tryParse(e.latitud) ?? 19.432366683023716,
-          longitude: double.tryParse(e.longitud) ?? -99.13323364074559,
-        );
-        return PlaceWithDistance(
-          id: e.id,
-          nombre: e.nombre,
-          razon_social: e.razon_social,
-          tipo_vialidad: e.tipo_vialidad,
-          calle: e.calle,
-          num_Exterior: e.num_Exterior,
-          num_Interior: e.num_Interior,
-          colonia: e.colonia,
-          cP: e.cP,
-          telefono: e.telefono,
-          longitud: e.longitud,
-          latitud: e.latitud,
-          distance: distance,
-          kind: kind,
-        );
-      },
-    ).toList();
+    final placeswithDistance = places.map((e) {
+      final distance = _locationService.getDistance(
+        currentLatitude: currentPosition.latitude,
+        currentLongitude: currentPosition.longitude,
+        latitude: double.tryParse(e.latitud) ?? 19.432366683023716,
+        longitude: double.tryParse(e.longitud) ?? -99.13323364074559,
+      );
+      return PlaceWithDistance(
+        id: e.id,
+        nombre: e.nombre,
+        razon_social: e.razon_social,
+        tipo_vialidad: e.tipo_vialidad,
+        calle: e.calle,
+        num_Exterior: e.num_Exterior,
+        num_Interior: e.num_Interior,
+        colonia: e.colonia,
+        cP: e.cP,
+        telefono: e.telefono,
+        longitud: e.longitud,
+        latitud: e.latitud,
+        distance: distance,
+        kind: kind,
+      );
+    }).toList();
     return placeswithDistance;
   }
 
@@ -90,8 +89,7 @@ class PlacesUseCaseImpl implements PlacesUseCase {
     required String query,
     required String coordinates,
     required String distance,
-  }) =>
-      _placesRepository.fetchNearbyPlaces(query, coordinates, distance);
+  }) => _placesRepository.fetchNearbyPlaces(query, coordinates, distance);
 
   @override
   Future<Position?> getCurrentPosition() {
